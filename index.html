@@ -368,34 +368,32 @@
 </div>
 </div>
 </div>
- <script>
-    async function loadJobs() {
-      try {
-        const response = await fetch('reliefweb_jobs.json');
-        const jobs = await response.json();
+<script>
+  async function loadJobs() {
+    try {
+      const response = await fetch('reliefweb_jobs.json');
+      const jobs = await response.json();
 
-        const container = document.getElementById('job-cards-container');
-        container.innerHTML = '';
+      const container = document.getElementById('job-cards-container');
+      container.innerHTML = '';
 
-        jobs.forEach(job => {
-          const card = `
-            <div class="job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100 p-4 mb-4">
-              <h3 class="text-xl font-semibold text-blue-800">${job["Job Title"]}</h3>
-              <p class="text-gray-600">${job["Company"]} — ${job["Location"]}</p>
-              <p class="text-sm text-gray-400">${job["Date"]}</p>
-              <a href="${job["Link"]}" target="_blank" class="text-white bg-blue-500 px-4 py-2 rounded mt-2 inline-block">التفاصيل</a>
-            </div>
-          `;
-          container.innerHTML += card;
-        });
-      } catch (error) {
-        console.error("فشل تحميل الوظائف:", error);
-        const container = document.getElementById('job-cards-container');
-        container.innerHTML = '<p class="text-red-500">فشل تحميل الوظائف. يرجى المحاولة لاحقًا.</p>';
-      }
+      jobs.forEach(job => {
+        const card = `
+          <div class="job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100 p-4 mb-4">
+            <h3 class="text-xl font-semibold text-blue-800">${job["Job Title"]}</h3>
+            <p class="text-gray-600">${job["Company"]} — ${job["Location"]}</p>
+            <p class="text-sm text-gray-400">${job["Date"]}</p>
+            <a href="${job["Link"]}" class="text-white bg-blue-500 px-4 py-2 rounded mt-2 inline-block">التفاصيل</a>
+          </div>
+        `;
+        container.innerHTML += card;
+      });
+    } catch (error) {
+      console.error("فشل تحميل الوظائف:", error);
     }
+  }
 
-    loadJobs();
-  </script>
+  loadJobs();
+</script>
 </body>
 </html>
