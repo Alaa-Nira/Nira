@@ -426,7 +426,7 @@
         });
     </script>
 <script>
-  fetch("https://api.reliefweb.int/v1/jobs?appname=nira&profile=list&limit=10")
+  fetch("https://api.reliefweb.int/v1/jobs?appname=nira&profile=list&limit=10&filter[field]=country&filter[value]=syria")
     .then((res) => res.json())
     .then((data) => {
       const jobs = data.data;
