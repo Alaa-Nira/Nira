@@ -8,6 +8,8 @@ on:
 jobs:
   update-jobs:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout repository
@@ -24,13 +26,10 @@ jobs:
       - name: Run fetch_jobs.py
         run: python fetch_jobs.py
 
-      - name: Configure git user
+      - name: Commit changes
         run: |
           git config --global user.name 'github-actions'
-          git config --global user.email 'actions@github.com'
-
-      - name: Add reliefweb_jobs.json
-        run: |
+          git config --global user.email 'github-actions@github.com'
           git add reliefweb_jobs.json
-          git commit -m "Update ReliefWeb jobs"
+          git commit -m "Update jobs data from ReliefWeb" || echo "No changes to commit"
           git push
