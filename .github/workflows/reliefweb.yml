@@ -3,33 +3,31 @@ name: Fetch ReliefWeb Jobs
 on:
   schedule:
     - cron: '0 * * * *'  # كل ساعة
-  workflow_dispatch:      # تشغيل يدوي أيضًا
+  workflow_dispatch:     # للتشغيل اليدوي
 
 jobs:
   update-jobs:
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
 
-      - name: Install requests
-        run: pip install requests
+    - name: Install requests
+      run: pip install requests
 
-      - name: Run fetch_jobs.py
-        run: python fetch_jobs.py
+    - name: Run fetch_jobs.py
+      run: python fetch_jobs.py
 
-      - name: Commit changes
-        run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
-          git add reliefweb_jobs.json
-          git commit -m "Update jobs data from ReliefWeb" || echo "No changes to commit"
-          git push
+    - name: Commit changes
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@users.noreply.github.com'
+        git add reliefweb_jobs.json
+        git commit -m "Update reliefweb_jobs.json"
+        git push
