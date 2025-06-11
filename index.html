@@ -426,36 +426,31 @@
         });
     </script>
 <script>
-  fetch("https://api.reliefweb.int/v1/jobs?appname=nira&profile=list&limit=10&filter[field]=country&filter[value]=syria")
-    .then((res) => res.json())
-    .then((data) => {
-      const jobs = data.data;
-      const container = document.getElementById("jobCards");
-      container.innerHTML = "";
+  async function loadJobs() {
+    try {
+      const response = await fetch('reliefweb_jobs.json');
+      const jobs = await response.json();
 
-      jobs.forEach((job) => {
-        const title = job.fields.title;
-        const org = job.fields.organization?.[0]?.name || "Unknown";
-        const country = job.fields.country?.[0]?.name || "N/A";
-        const date = new Date(job.fields.date.posted).toLocaleDateString();
-        const link = job.fields.url;
+      const container = document.getElementById('job-cards-container');
+      container.innerHTML = '';
 
-        container.innerHTML += `
-          <div class="bg-white rounded-lg shadow p-4 mb-4 border border-gray-100 hover:shadow-lg transition">
-            <h3 class="text-lg font-semibold text-blue-700">${title}</h3>
-            <p class="text-sm text-gray-600">${org} — ${country}</p>
-            <p class="text-xs text-gray-400 mt-1">${date}</p>
-            <a href="${link}" target="_blank" class="inline-block mt-3 text-sm text-white bg-blue-600 px-3 py-1 rounded hover:bg-blue-700">
-              التفاصيل
-            </a>
+      jobs.forEach(job => {
+        const card = `
+          <div class="job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100 p-4 mb-4">
+            <h3 class="text-xl font-semibold text-blue-800">${job["Job Title"]}</h3>
+            <p class="text-gray-600">${job["Company"]} — ${job["Location"]}</p>
+            <p class="text-sm text-gray-400">${job["Date"]}</p>
+            <a href="${job["Link"]}" class="text-white bg-blue-500 px-4 py-2 rounded mt-2 inline-block">التفاصيل</a>
           </div>
         `;
+        container.innerHTML += card;
       });
-    })
-    .catch((err) => {
-      document.getElementById("jobCards").innerText = "فشل تحميل الوظائف.";
-      console.error(err);
-    });
+    } catch (error) {
+      console.error("فشل تحميل الوظائف:", error);
+    }
+  }
+
+  loadJobs();
 </script>
 </body>
 </html>
