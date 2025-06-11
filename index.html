@@ -75,194 +75,188 @@
 </div>
 </div>
 </nav>
- <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-16">
-            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0 rtl-support">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4" data-i18n="hero.title">ابحث عن الوظيفة المثالية في سوريا</h2>
-                    <p class="text-lg mb-6" data-i18n="hero.subtitle">Nira يجمع لك أحدث الفرص الوظيفية من مختلف المواقع في مكان واحد</p>
-                    <div class="relative w-full max-w-lg">
-                        <input type="text" placeholder="ابحث بكلمات مفتاحية، تخصص، أو اسم شركة..." 
-                               class="w-full py-3 px-4 pr-12 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300" data-i18n="search.placeholder">
-                        <button class="absolute left-3 top-3 text-blue-500" id="searchBtn">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full" data-i18n="tags.reliefweb">ReliefWeb</span>
-                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full" data-i18n="tags.jobsy">Job.sy</span>
-                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full" data-i18n="tags.nes">شبكة شمال شرق سوريا</span>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <img src="https://illustrations.popsy.co/amber/digital-nomad.svg" alt="Job Search Illustration" class="w-full max-w-md">
-                </div>
-            </div>
-        </section>
+<!-- Main Content -->
+<main>
 <!-- Hero Section -->
- <!-- Job Categories -->
-        <section class="py-12 bg-white">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-10 rtl-support">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2" data-i18n="categories.title">تصفح حسب التخصص</h3>
-                    <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="categories.subtitle">اختر مجال عملك المفضل وابحث عن أحدث الفرص المتاحة</p>
-                </div>
-                
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
-                        <div class="bg-blue-100 text-blue-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-laptop-code text-xl"></i>
-                        </div>
-                        <h4 class="font-medium text-gray-800" data-i18n="categories.it">تكنولوجيا المعلومات</h4>
-                    </div>
-                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
-                        <div class="bg-green-100 text-green-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-heartbeat text-xl"></i>
-                        </div>
-                        <h4 class="font-medium text-gray-800" data-i18n="categories.health">الصحة</h4>
-                    </div>
-                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
-                        <div class="bg-yellow-100 text-yellow-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-graduation-cap text-xl"></i>
-                        </div>
-                        <h4 class="font-medium text-gray-800" data-i18n="categories.education">التعليم</h4>
-                    </div>
-                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
-                        <div class="bg-purple-100 text-purple-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-building text-xl"></i>
-                        </div>
-                        <h4 class="font-medium text-gray-800" data-i18n="categories.engineering">الهندسة</h4>
-                    </div>
-                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
-                        <div class="bg-red-100 text-red-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-hands-helping text-xl"></i>
-                        </div>
-                        <h4 class="font-medium text-gray-800" data-i18n="categories.ngo">المنظمات</h4>
-                    </div>
-                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
-                        <div class="bg-indigo-100 text-indigo-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-ellipsis-h text-xl"></i>
-                        </div>
-                        <h4 class="font-medium text-gray-800" data-i18n="categories.more">المزيد</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Jobs -->
-        <section id="jobs" class="py-12 bg-gray-50">
-            <div class="container mx-auto px-4">
-                <div class="flex justify-between items-center mb-8 rtl-support">
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-800" data-i18n="jobs.title">أحدث الوظائف</h3>
-                        <p class="text-gray-600" data-i18n="jobs.subtitle">اكتشف أحدث الفرص الوظيفية المتاحة اليوم</p>
-                    </div>
-                    <a href="jobs.html" class="text-blue-500 hover:text-blue-600 font-medium flex items-center" data-i18n="jobs.view_all">
+<section class="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-16">
+<div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+<div class="md:w-1/2 mb-8 md:mb-0 rtl-support">
+<h2 class="text-3xl md:text-4xl font-bold mb-4" data-i18n="hero.title">ابحث عن الوظيفة المثالية في سوريا</h2>
+<p class="text-lg mb-6" data-i18n="hero.subtitle">Nira يجمع لك أحدث الفرص الوظيفية من مختلف المواقع في مكان واحد</p>
+<div class="relative w-full max-w-lg">
+<input class="w-full py-3 px-4 pr-12 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300" data-i18n="search.placeholder" placeholder="ابحث بكلمات مفتاحية، تخصص، أو اسم شركة..." type="text"/>
+<button class="absolute left-3 top-3 text-blue-500" id="searchBtn">
+<i class="fas fa-search"></i>
+</button>
+</div>
+<div class="mt-4 flex flex-wrap gap-2">
+<span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full" data-i18n="tags.reliefweb">ReliefWeb</span>
+<span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full" data-i18n="tags.jobsy">Job.sy</span>
+<span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full" data-i18n="tags.nes">شبكة شمال شرق سوريا</span>
+</div>
+</div>
+<div class="md:w-1/2 flex justify-center">
+<img alt="Job Search Illustration" class="w-full max-w-md" src="https://illustrations.popsy.co/amber/digital-nomad.svg"/>
+</div>
+</div>
+</section>
+<!-- Hero Section -->
+<!-- Job Categories -->
+<section class="py-12 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-10 rtl-support">
+<h3 class="text-2xl font-bold text-gray-800 mb-2" data-i18n="categories.title">تصفح حسب التخصص</h3>
+<p class="text-gray-600 max-w-2xl mx-auto" data-i18n="categories.subtitle">اختر مجال عملك المفضل وابحث عن أحدث الفرص المتاحة</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+<div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+<div class="bg-blue-100 text-blue-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+<i class="fas fa-laptop-code text-xl"></i>
+</div>
+<h4 class="font-medium text-gray-800" data-i18n="categories.it">تكنولوجيا المعلومات</h4>
+</div>
+<div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+<div class="bg-green-100 text-green-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+<i class="fas fa-heartbeat text-xl"></i>
+</div>
+<h4 class="font-medium text-gray-800" data-i18n="categories.health">الصحة</h4>
+</div>
+<div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+<div class="bg-yellow-100 text-yellow-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+<i class="fas fa-graduation-cap text-xl"></i>
+</div>
+<h4 class="font-medium text-gray-800" data-i18n="categories.education">التعليم</h4>
+</div>
+<div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+<div class="bg-purple-100 text-purple-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+<i class="fas fa-building text-xl"></i>
+</div>
+<h4 class="font-medium text-gray-800" data-i18n="categories.engineering">الهندسة</h4>
+</div>
+<div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+<div class="bg-red-100 text-red-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+<i class="fas fa-hands-helping text-xl"></i>
+</div>
+<h4 class="font-medium text-gray-800" data-i18n="categories.ngo">المنظمات</h4>
+</div>
+<div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+<div class="bg-indigo-100 text-indigo-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+<i class="fas fa-ellipsis-h text-xl"></i>
+</div>
+<h4 class="font-medium text-gray-800" data-i18n="categories.more">المزيد</h4>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Jobs -->
+<section class="py-12 bg-gray-50" id="jobs">
+<div class="container mx-auto px-4">
+<div class="flex justify-between items-center mb-8 rtl-support">
+<div>
+<h3 class="text-2xl font-bold text-gray-800" data-i18n="jobs.title">أحدث الوظائف</h3>
+<p class="text-gray-600" data-i18n="jobs.subtitle">اكتشف أحدث الفرص الوظيفية المتاحة اليوم</p>
+</div>
+<a class="text-blue-500 hover:text-blue-600 font-medium flex items-center" data-i18n="jobs.view_all" href="jobs.html">
                         عرض الكل <i class="fas fa-arrow-left mr-2 rtl-mirror"></i>
-                    </a>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Job Card 1 -->
-                    <div class="job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100">
-                        <div class="p-5">
-                            <div class="flex justify-between items-start mb-3">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-1">مطور ويب</h4>
-                                    <p class="text-gray-600 text-sm">شركة التقنية الحديثة</p>
-                                </div>
-                                <div class="flex space-x-1 rtl:space-x-reverse">
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded" data-i18n="jobs.fulltime">دوام كامل</span>
-                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">IT</span>
-                                </div>
-                            </div>
-                            <p class="text-gray-700 mb-4">مطلوب مطور ويب لديه خبرة في تقنيات Front-end مع معرفة جيدة بالـ React.js</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">React</span>
-                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">JavaScript</span>
-                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">HTML/CSS</span>
-                            </div>
-                            <div class="flex justify-between items-center text-sm">
-                                <span class="text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> دمشق</span>
-                                <span class="text-gray-500"><i class="fas fa-clock mr-1"></i> منذ يومين</span>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 px-5 py-3 flex justify-between items-center">
-                            <a href="#" class="text-blue-500 hover:text-blue-600 text-sm font-medium" data-i18n="jobs.view_details">عرض التفاصيل</a>
-                            <button class="text-blue-500 hover:text-blue-600">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Job Card 2 -->
-                    <div class="job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100">
-                        <div class="p-5">
-                            <div class="flex justify-between items-start mb-3">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-1">ممرضة مسجلة</h4>
-                                    <p class="text-gray-600 text-sm">المشفى الوطني</p>
-                                </div>
-                                <div class="flex space-x-1 rtl:space-x-reverse">
-                                    <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded" data-i18n="jobs.parttime">دوام جزئي</span>
-                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">الصحة</span>
-                                </div>
-                            </div>
-                            <p class="text-gray-700 mb-4">مطلوب ممرضات ذوات خبرة للعمل في قسم الطوارئ بالمشفى الوطني</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">تمريض</span>
-                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">طوارئ</span>
-                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">رعاية صحية</span>
-                            </div>
-                            <div class="flex justify-between items-center text-sm">
-                                <span class="text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> حلب</span>
-                                <span class="text-gray-500"><i class="fas fa-clock mr-1"></i> منذ 5 أيام</span>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 px-5 py-3 flex justify-between items-center">
-                            <a href="#" class="text-blue-500 hover:text-blue-600 text-sm font-medium" data-i18n="jobs.view_details">عرض التفاصيل</a>
-                            <button class="text-blue-500 hover:text-blue-600">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Job Card 3 -->
-                    <div class="job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100">
-                        <div class="p-5">
-                            <div class="flex justify-between items-start mb-3">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-lg mb-1">مدير مشروع</h4>
-                                    <p class="text-gray-600 text-sm">منظمة إنسانية دولية</p>
-                                </div>
-                                <div class="flex space-x-1 rtl:space-x-reverse">
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded" data-i18n="jobs.fulltime">دوام كامل</span>
-                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">منظمات</span>
-                                </div>
-                            </div>
-                            <p class="text-gray-700 mb-4">مطلوب مدير مشروع بخبرة لا تقل عن 5 سنوات في إدارة المشاريع الإنسانية</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">إدارة المشاريع</span>
-                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">التخطيط</span>
-                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">الإنجليزية</span>
-                            </div>
-                            <div class="flex justify-between items-center text-sm">
-                                <span class="text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> شمال شرق سوريا</span>
-                                <span class="text-gray-500"><i class="fas fa-clock mr-1"></i> منذ أسبوع</span>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 px-5 py-3 flex justify-between items-center">
-                            <a href="#" class="text-blue-500 hover:text-blue-600 text-sm font-medium" data-i18n="jobs.view_details">عرض التفاصيل</a>
-                            <button class="text-blue-500 hover:text-blue-600">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Job Card 1 -->
+<div class="job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100">
+<div class="p-5">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-bold text-gray-800 text-lg mb-1">مطور ويب</h4>
+<p class="text-gray-600 text-sm">شركة التقنية الحديثة</p>
+</div>
+<div class="flex space-x-1 rtl:space-x-reverse">
+<span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded" data-i18n="jobs.fulltime">دوام كامل</span>
+<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">IT</span>
+</div>
+</div>
+<p class="text-gray-700 mb-4">مطلوب مطور ويب لديه خبرة في تقنيات Front-end مع معرفة جيدة بالـ React.js</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">React</span>
+<span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">JavaScript</span>
+<span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">HTML/CSS</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> دمشق</span>
+<span class="text-gray-500"><i class="fas fa-clock mr-1"></i> منذ يومين</span>
+</div>
+</div>
+<div class="bg-gray-50 px-5 py-3 flex justify-between items-center">
+<a class="text-blue-500 hover:text-blue-600 text-sm font-medium" data-i18n="jobs.view_details" href="#">عرض التفاصيل</a>
+<button class="text-blue-500 hover:text-blue-600">
+<i class="far fa-bookmark"></i>
+</button>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100">
+<div class="p-5">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-bold text-gray-800 text-lg mb-1">ممرضة مسجلة</h4>
+<p class="text-gray-600 text-sm">المشفى الوطني</p>
+</div>
+<div class="flex space-x-1 rtl:space-x-reverse">
+<span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded" data-i18n="jobs.parttime">دوام جزئي</span>
+<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">الصحة</span>
+</div>
+</div>
+<p class="text-gray-700 mb-4">مطلوب ممرضات ذوات خبرة للعمل في قسم الطوارئ بالمشفى الوطني</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">تمريض</span>
+<span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">طوارئ</span>
+<span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">رعاية صحية</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> حلب</span>
+<span class="text-gray-500"><i class="fas fa-clock mr-1"></i> منذ 5 أيام</span>
+</div>
+</div>
+<div class="bg-gray-50 px-5 py-3 flex justify-between items-center">
+<a class="text-blue-500 hover:text-blue-600 text-sm font-medium" data-i18n="jobs.view_details" href="#">عرض التفاصيل</a>
+<button class="text-blue-500 hover:text-blue-600">
+<i class="far fa-bookmark"></i>
+</button>
+</div>
+</div>
+<!-- Job Card 3 -->
+<div class="job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100">
+<div class="p-5">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-bold text-gray-800 text-lg mb-1">مدير مشروع</h4>
+<p class="text-gray-600 text-sm">منظمة إنسانية دولية</p>
+</div>
+<div class="flex space-x-1 rtl:space-x-reverse">
+<span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded" data-i18n="jobs.fulltime">دوام كامل</span>
+<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">منظمات</span>
+</div>
+</div>
+<p class="text-gray-700 mb-4">مطلوب مدير مشروع بخبرة لا تقل عن 5 سنوات في إدارة المشاريع الإنسانية</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">إدارة المشاريع</span>
+<span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">التخطيط</span>
+<span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">الإنجليزية</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> شمال شرق سوريا</span>
+<span class="text-gray-500"><i class="fas fa-clock mr-1"></i> منذ أسبوع</span>
+</div>
+</div>
+<div class="bg-gray-50 px-5 py-3 flex justify-between items-center">
+<a class="text-blue-500 hover:text-blue-600 text-sm font-medium" data-i18n="jobs.view_details" href="#">عرض التفاصيل</a>
+<button class="text-blue-500 hover:text-blue-600">
+<i class="far fa-bookmark"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
 <!-- How It Works -->
 <div class="bg-indigo-50 rounded-xl p-8 mb-16">
 <h2 class="text-2xl font-bold mb-6 text-center">كيف يعمل نيرا؟</h2>
@@ -291,7 +285,7 @@
 </div>
 </div>
 </main>
-</div>
+
 <!-- Search Results Page (Hidden by default) -->
 <div class="page hidden" id="searchPage">
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -415,11 +409,11 @@
 <div>
 <h3 class="text-lg font-semibold mb-4">اشترك في النشرة البريدية</h3>
 <div class="flex">
-<input class="px-4 py-2 w-full rounded-r-md focus:outline-none text-gray-800" placeholder="بريدك الإلكتروني" type="email"/>
+<input class="px-4 py-2 w-full rounded-r-md focus:outline-none text-gray-800" placeholder="بريدك الإلكتروني" type="email">
 <button class="bg-indigo-600 text-white px-4 py-2 rounded-l-md hover:bg-indigo-700 focus:outline-none">
 <i class="fas fa-paper-plane"></i>
 </button>
-</div>
+</input></div>
 <div class="mt-4 flex space-x-4 space-x-reverse">
 <a class="text-gray-300 hover:text-white text-xl" href="#"><i class="fab fa-facebook"></i></a>
 <a class="text-gray-300 hover:text-white text-xl" href="#"><i class="fab fa-twitter"></i></a>
@@ -525,5 +519,33 @@
             }
         });
     </script>
-</body>
+<script>
+const sheetID = "1h09JXEEHlplBBJO7jNaaPDRoe4Q61LMsqKc6lE1zO4E";
+const sheetURL = `https://opensheet.elk.sh/${sheetID}/Sheet1`;
+
+fetch(sheetURL)
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("jobCards");
+    container.innerHTML = "";
+
+    data.forEach(job => {
+      const card = `
+        <div class="bg-white rounded-lg shadow p-4 mb-4 border border-gray-100 hover:shadow-lg transition">
+          <h3 class="text-lg font-semibold text-blue-700">${job["Job Title"]}</h3>
+          <p class="text-sm text-gray-600">${job.Company} — ${job.Location}</p>
+          <p class="text-xs text-gray-400 mt-1">${new Date(job.Date).toLocaleDateString()}</p>
+          <a href="${job.Link}" target="_blank" class="inline-block mt-3 text-sm text-white bg-blue-600 px-3 py-1 rounded hover:bg-blue-700">
+            التفاصيل
+          </a>
+        </div>
+      `;
+      container.innerHTML += card;
+    });
+  })
+  .catch(err => {
+    document.getElementById("jobCards").innerHTML = "فشل في تحميل الوظائف.";
+    console.error("Error fetching jobs:", err);
+  });
+</script></body>
 </html>
