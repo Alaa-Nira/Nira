@@ -426,32 +426,36 @@
         });
     </script>
 <script>
-const sheetID = "1h09JXEEHlplBBJO7jNaaPDRoe4Q61LMsqKc6lE1zO4E";
-const sheetURL = `https://opensheet.elk.sh/${sheetID}/Sheet1`;
+  fetch("https://api.reliefweb.int/v1/jobs?appname=nira&profile=list&limit=10")
+    .then((res) => res.json())
+    .then((data) => {
+      const jobs = data.data;
+      const container = document.getElementById("jobCards");
+      container.innerHTML = "";
 
-fetch(sheetURL)
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("jobCards");
-    container.innerHTML = "";
+      jobs.forEach((job) => {
+        const title = job.fields.title;
+        const org = job.fields.organization?.[0]?.name || "Unknown";
+        const country = job.fields.country?.[0]?.name || "N/A";
+        const date = new Date(job.fields.date.posted).toLocaleDateString();
+        const link = job.fields.url;
 
-    data.forEach(job => {
-      const card = `
-        <div class="bg-white rounded-lg shadow p-4 mb-4 border border-gray-100 hover:shadow-lg transition">
-          <h3 class="text-lg font-semibold text-blue-700">${job["Job Title"]}</h3>
-          <p class="text-sm text-gray-600">${job.Company} — ${job.Location}</p>
-          <p class="text-xs text-gray-400 mt-1">${new Date(job.Date).toLocaleDateString()}</p>
-          <a href="${job.Link}" target="_blank" class="inline-block mt-3 text-sm text-white bg-blue-600 px-3 py-1 rounded hover:bg-blue-700">
-            التفاصيل
-          </a>
-        </div>
-      `;
-      container.innerHTML += card;
+        container.innerHTML += `
+          <div class="bg-white rounded-lg shadow p-4 mb-4 border border-gray-100 hover:shadow-lg transition">
+            <h3 class="text-lg font-semibold text-blue-700">${title}</h3>
+            <p class="text-sm text-gray-600">${org} — ${country}</p>
+            <p class="text-xs text-gray-400 mt-1">${date}</p>
+            <a href="${link}" target="_blank" class="inline-block mt-3 text-sm text-white bg-blue-600 px-3 py-1 rounded hover:bg-blue-700">
+              التفاصيل
+            </a>
+          </div>
+        `;
+      });
+    })
+    .catch((err) => {
+      document.getElementById("jobCards").innerText = "فشل تحميل الوظائف.";
+      console.error(err);
     });
-  })
-  .catch(err => {
-    document.getElementById("jobCards").innerHTML = "فشل في تحميل الوظائف.";
-    console.error("Error fetching jobs:", err);
-  });
-</script></body>
+</script>
+</body>
 </html>
