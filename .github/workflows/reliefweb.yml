@@ -3,7 +3,7 @@ name: Fetch ReliefWeb Jobs
 on:
   schedule:
     - cron: '0 * * * *'  # كل ساعة
-  workflow_dispatch:     # تشغيل يدوي إذا أردتِ
+  workflow_dispatch:      # تشغيل يدوي أيضًا
 
 jobs:
   update-jobs:
@@ -24,10 +24,13 @@ jobs:
       - name: Run fetch_jobs.py
         run: python fetch_jobs.py
 
-      - name: Commit changes
+      - name: Configure git user
         run: |
           git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
+          git config --global user.email 'actions@github.com'
+
+      - name: Add reliefweb_jobs.json
+        run: |
           git add reliefweb_jobs.json
-          git commit -m "Update jobs data" || echo "No changes to commit"
+          git commit -m "Update ReliefWeb jobs"
           git push
