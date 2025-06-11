@@ -36,9 +36,6 @@
             color: white;
         }
     </style>
-
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
 </head>
 <body class="bg-gray-50 text-gray-800" dir="rtl">
 <!-- Navigation -->
@@ -156,51 +153,115 @@
 
         <!-- Featured Jobs -->
         <section id="jobs" class="py-12 bg-gray-50">
-        <section class="py-12 bg-gray-50" id="jobs">
-  <div class="container mx-auto px-4">
-    <div class="flex justify-between items-center mb-8 rtl-support">
-      <div>
-        <h3 class="text-2xl font-bold text-gray-800" data-i18n="jobs.title">أحدث الوظائف</h3>
-        <p class="text-gray-600" data-i18n="jobs.subtitle">اكتشف أحدث الفرص الوظيفية المتاحة اليوم</p>
-      </div>
-      <a class="text-blue-500 hover:text-blue-600 font-medium flex items-center" data-i18n="jobs.view_all" href="jobs.html">
-        عرض الكل
-        <i class="fas fa-arrow-left mr-2 rtl-mirror"></i>
-      </a>
-    </div>
-
-    <div id="job-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- سيتم إدراج البطاقات هنا تلقائيًا -->
-    </div>
-  </div>
-</section>
-
-<script>
-fetch('reliefweb_jobs.json')
-  .then(response => response.json())
-  .then(jobs => {
-    const container = document.getElementById('job-cards-container');
-    container.innerHTML = '';
-
-    jobs.slice(0, 6).forEach(job => {
-      const card = document.createElement('div');
-      card.className = 'job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100 p-4 flex flex-col justify-between';
-
-      card.innerHTML = `
-        <div>
-          <h3 class="text-lg font-bold text-gray-800 mb-1">${job["Job Title"]}</h3>
-          <p class="text-sm text-gray-600 mb-2">${job["Company"]}</p>
-          <p class="text-sm text-gray-500 mb-4">${job["Location"]}</p>
-        </div>
-        <div class="flex justify-between items-center text-sm text-gray-400">
-          <span>${job["Date"]}</span>
-          <a href="${job["Link"]}" target="_blank" class="text-blue-500 hover:underline">التفاصيل</a>
-        </div>
-      `;
-      container.appendChild(card);
-    });
-  });
-</script>
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center mb-8 rtl-support">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800" data-i18n="jobs.title">أحدث الوظائف</h3>
+                        <p class="text-gray-600" data-i18n="jobs.subtitle">اكتشف أحدث الفرص الوظيفية المتاحة اليوم</p>
+                    </div>
+                    <a href="jobs.html" class="text-blue-500 hover:text-blue-600 font-medium flex items-center" data-i18n="jobs.view_all">
+                        عرض الكل <i class="fas fa-arrow-left mr-2 rtl-mirror"></i>
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Job Card 1 -->
+                    <div class="job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100">
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg mb-1">مطور ويب</h4>
+                                    <p class="text-gray-600 text-sm">شركة التقنية الحديثة</p>
+                                </div>
+                                <div class="flex space-x-1 rtl:space-x-reverse">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded" data-i18n="jobs.fulltime">دوام كامل</span>
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">IT</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4">مطلوب مطور ويب لديه خبرة في تقنيات Front-end مع معرفة جيدة بالـ React.js</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">React</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">JavaScript</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">HTML/CSS</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> دمشق</span>
+                                <span class="text-gray-500"><i class="fas fa-clock mr-1"></i> منذ يومين</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-5 py-3 flex justify-between items-center">
+                            <a href="#" class="text-blue-500 hover:text-blue-600 text-sm font-medium" data-i18n="jobs.view_details">عرض التفاصيل</a>
+                            <button class="text-blue-500 hover:text-blue-600">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Job Card 2 -->
+                    <div class="job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100">
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg mb-1">ممرضة مسجلة</h4>
+                                    <p class="text-gray-600 text-sm">المشفى الوطني</p>
+                                </div>
+                                <div class="flex space-x-1 rtl:space-x-reverse">
+                                    <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded" data-i18n="jobs.parttime">دوام جزئي</span>
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">الصحة</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4">مطلوب ممرضات ذوات خبرة للعمل في قسم الطوارئ بالمشفى الوطني</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">تمريض</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">طوارئ</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">رعاية صحية</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> حلب</span>
+                                <span class="text-gray-500"><i class="fas fa-clock mr-1"></i> منذ 5 أيام</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-5 py-3 flex justify-between items-center">
+                            <a href="#" class="text-blue-500 hover:text-blue-600 text-sm font-medium" data-i18n="jobs.view_details">عرض التفاصيل</a>
+                            <button class="text-blue-500 hover:text-blue-600">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Job Card 3 -->
+                    <div class="job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100">
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg mb-1">مدير مشروع</h4>
+                                    <p class="text-gray-600 text-sm">منظمة إنسانية دولية</p>
+                                </div>
+                                <div class="flex space-x-1 rtl:space-x-reverse">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded" data-i18n="jobs.fulltime">دوام كامل</span>
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">منظمات</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4">مطلوب مدير مشروع بخبرة لا تقل عن 5 سنوات في إدارة المشاريع الإنسانية</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">إدارة المشاريع</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">التخطيط</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">الإنجليزية</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> شمال شرق سوريا</span>
+                                <span class="text-gray-500"><i class="fas fa-clock mr-1"></i> منذ أسبوع</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-5 py-3 flex justify-between items-center">
+                            <a href="#" class="text-blue-500 hover:text-blue-600 text-sm font-medium" data-i18n="jobs.view_details">عرض التفاصيل</a>
+                            <button class="text-blue-500 hover:text-blue-600">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 <!-- How It Works -->
 <div class="bg-indigo-50 rounded-xl p-8 mb-16">
@@ -229,11 +290,6 @@ fetch('reliefweb_jobs.json')
 </div>
 </div>
 </div>
-
-<div id="jobs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-  <!-- سيتم حقن البطاقات هنا -->
-</div>
-
 </main>
 </div>
 <!-- Search Results Page (Hidden by default) -->
@@ -278,7 +334,8 @@ fetch('reliefweb_jobs.json')
 </nav>
 </div>
 </div>
-
+</main>
+</div>
 <!-- About Page (Hidden by default) -->
 <div class="page hidden" id="aboutPage">
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -329,11 +386,6 @@ fetch('reliefweb_jobs.json')
 </div>
 </div>
 </div>
-
-<div id="jobs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-  <!-- سيتم حقن البطاقات هنا -->
-</div>
-
 </main>
 </div>
 <!-- Footer -->
@@ -473,39 +525,5 @@ fetch('reliefweb_jobs.json')
             }
         });
     </script>
-
-<script>
-  fetch('reliefweb_jobs.json')
-    .then(response => response.json())
-    .then(data => {
-      const container = document.getElementById('jobs-container');
-      data.forEach(job => {
-        const card = document.createElement('div');
-        card.className = 'bg-white rounded-xl shadow overflow-hidden border border-gray-100 p-6 flex flex-col justify-between';
-
-        card.innerHTML = `
-          <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-1">${job["Job Title"]}</h3>
-            <p class="text-gray-500 text-sm mb-2">${job["Company"]}</p>
-            <div class="flex flex-wrap gap-2 mb-3">
-              ${(job["Tags"] || []).map(tag => `
-                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">${tag}</span>
-              `).join('')}
-            </div>
-            <div class="flex items-center justify-between text-sm text-gray-500">
-              <span>${job["Location"]}</span>
-              <span>${job["Date"]}</span>
-            </div>
-          </div>
-          <div class="mt-4">
-            <a href="${job["Link"]}" target="_blank" class="text-blue-500 hover:text-blue-700 font-medium text-sm">عرض التفاصيل</a>
-          </div>
-        `;
-
-        container.appendChild(card);
-      });
-    });
-</script>
-
 </body>
 </html>
