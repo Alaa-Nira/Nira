@@ -1,23 +1,25 @@
 import requests
 import json
 
-url = "https://api.reliefweb.int/v1/jobs?appname=nira&profile=list&limit=30&filter[field]=country&filter[value]=syria"
+url = "https://api.reliefweb.int/v1/jobs?appname=nira-jobs&limit=100"
 response = requests.get(url)
 data = response.json()
 
 jobs = []
-for job in data["data"]:
-    fields = job["fields"]
-    jobs.append({
+
+for item in data["data"]:
+    fields = item["fields"]
+    job = {
         "Job Title": fields.get("title", "بدون عنوان"),
         "Company": fields.get("organization", [{}])[0].get("name", "غير معروف"),
-        "City": fields.get("city", ["غير محددة"])[0],
-        "Description": fields.get("description", {}).get("content", "").replace("\n", " ")[:200],
-        "Tags": [tag.get("name", "") for tag in fields.get("theme", [])],
-        "Category": fields.get("career_categories", [{}])[0].get("name", ""),
-        "Type": fields.get("job_type", "غير محدد"),
-        "Link": fields.get("url", "#")
-    })
+        "Location": fields.get("city", "") or fields.get("country", [{}])[0].get("name", "غير معروف"),
+        "Tags": [t["name"] for t in fields.get("theme", [])],
+        "Description": fields.get("body", "").split("\n")[0] if fields.get("body") else "",
+        "Link": fields.get("url", "#"),
+        "Deadline": fields.get("deadline", "")[:10] if "deadline" in fields else ""
+    }
+    jobs.append(job)
 
+# حفظ النتيجة إلى reliefweb_jobs.json
 with open("reliefweb_jobs.json", "w", encoding="utf-8") as f:
     json.dump(jobs, f, ensure_ascii=False, indent=2)
