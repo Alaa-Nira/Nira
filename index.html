@@ -152,21 +152,19 @@
         </section>
 
         <!-- Featured Jobs -->
-        <section id="jobs" class="py-12 bg-gray-50">
-            <div class="container mx-auto px-4">
-                <div class="flex justify-between items-center mb-8 rtl-support">
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-800" data-i18n="jobs.title">أحدث الوظائف</h3>
-                        <p class="text-gray-600" data-i18n="jobs.subtitle">اكتشف أحدث الفرص الوظيفية المتاحة اليوم</p>
-                    </div>
-                    <a href="jobs.html" class="text-blue-500 hover:text-blue-600 font-medium flex items-center" data-i18n="jobs.view_all">
-                        عرض الكل <i class="fas fa-arrow-left mr-2 rtl-mirror"></i>
-                    </a>
-                </div> 
-            <div id="jobs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  <!-- سيتم إدراج البطاقات هنا -->
-</div>
-        </section>
+       <section id="jobs" class="py-12 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center mb-8 rtl-support">
+      <div>
+        <h3 class="text-2xl font-bold text-gray-800">أحدث الوظائف في سوريا</h3>
+        <p class="text-gray-600">تعرف على أحدث الفرص المتاحة في مدن سوريا</p>
+      </div>
+    </div>
+    <div id="job-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- سيتم إدراج البطاقات هنا تلقائياً -->
+    </div>
+  </div>
+</section>
 <!-- How It Works -->
 <div class="bg-indigo-50 rounded-xl p-8 mb-16">
 <h2 class="text-2xl font-bold mb-6 text-center">كيف يعمل نيرا؟</h2>
@@ -430,36 +428,37 @@
         });
     </script>
 <script>
-fetch('reliefweb_jobs_syria.json')
-  .then(response => response.json())
-  .then(data => {
-    const container = document.getElementById('jobs-container');
-    container.innerHTML = '';
+  fetch('reliefweb_jobs.json')
+    .then(response => response.json())
+    .then(jobs => {
+      const container = document.getElementById('job-cards-container');
+      container.innerHTML = '';
 
-    data.forEach(job => {
-      const card = document.createElement('div');
-      card.className = 'bg-white rounded-xl shadow overflow-hidden border border-gray-100 p-6 flex flex-col justify-between';
+      const filteredJobs = jobs
+        .filter(job => job.Country === "Syria")
+        .slice(0, 6); // عرض فقط 6 وظائف
 
-      card.innerHTML = `
-        <div>
-          <h3 class="text-xl font-bold text-gray-800 mb-1">${job["Job Title"]}</h3>
-          <p class="text-gray-500 text-sm mb-2">${job["Company"]}</p>
-          <p class="text-sm text-gray-600 mb-2"><i class="fas fa-map-marker-alt text-indigo-500 ml-1"></i>${job["City"]}</p>
-          <p class="text-sm text-gray-700 mb-3">${job["Description"]}</p>
-          <div class="flex justify-between items-center text-sm text-gray-500">
-            <span><i class="fas fa-calendar-alt ml-1"></i>الإغلاق: ${job["Deadline"]}</span>
+      filteredJobs.forEach(job => {
+        const card = document.createElement('div');
+        card.className = 'job-card bg-white rounded-xl shadow-md p-6 border border-gray-100 flex flex-col justify-between hover:shadow-lg transition';
+
+        card.innerHTML = `
+          <div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2">${job["Job Title"]}</h3>
+            <p class="text-sm text-indigo-600 mb-2 font-medium">${job["Company"]}</p>
+            <p class="text-sm text-gray-500 mb-2"><i class="fas fa-map-marker-alt text-gray-400 ml-1"></i> ${job["City"]}</p>
+            <p class="text-sm text-gray-600 mb-4">${job["Description"].slice(0, 100)}...</p>
           </div>
-        </div>
-        <div class="mt-4">
-          <a href="${job["Link"]}" target="_blank" class="inline-block bg-indigo-600 text-white text-sm px-4 py-2 rounded hover:bg-indigo-700 transition">
-            عرض التفاصيل
-          </a>
-        </div>
-      `;
-
-      container.appendChild(card);
+          <div>
+            <a href="${job["Link"]}" target="_blank" class="mt-2 inline-block text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition">عرض التفاصيل</a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(error => {
+      console.error("حدث خطأ أثناء جلب الوظائف:", error);
     });
-  });
 </script>
 
 </body>
