@@ -429,31 +429,39 @@
             }
         });
     </script>
-        <script>
+    <script>
   fetch('reliefweb_jobs.json')
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById('jobs-container');
       container.innerHTML = '';
 
-      data.forEach(job => {
+      data.slice(0, 6).forEach(job => {
         const card = document.createElement('div');
-        card.className = 'job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100';
+        card.className = 'job-card bg-white rounded-xl shadow overflow-hidden border border-gray-100 p-6 flex flex-col justify-between';
 
         card.innerHTML = `
-          <div class="p-5">
-            <h4 class="font-bold text-gray-800 text-lg mb-1">${job["Job Title"]}</h4>
-            <p class="text-gray-600 text-sm mb-2">${job["Company"] || ''}</p>
-            <p class="text-gray-700 text-sm mb-4">${job["Location"] || ''}</p>
-            <div class="flex justify-between text-sm text-gray-500">
-              <span>${job["Date"]}</span>
-              <a href="${job["Link"]}" target="_blank" class="text-blue-500 hover:underline">عرض التفاصيل</a>
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">${job["Job Title"]}</h3>
+            <p class="text-gray-600 text-sm mb-2"><strong>المنظمة:</strong> ${job["Company"] || "غير مذكورة"}</p>
+            <p class="text-gray-600 text-sm mb-2"><strong>الموقع:</strong> ${job["Location"] || "غير مذكور"}</p>
+            ${job["Description"] ? `<p class="text-gray-700 text-sm mb-3 line-clamp-3">${job["Description"]}</p>` : ''}
+            <div class="flex items-center justify-between text-sm text-gray-500 mt-2">
+              <span><i class="far fa-calendar-alt mr-1"></i> <strong>تاريخ النشر:</strong> ${job["Date"] || "غير مذكور"}</span>
+              <span><i class="far fa-clock mr-1"></i> <strong>الموعد النهائي:</strong> ${job["Deadline"] || "غير مذكور"}</span>
             </div>
           </div>
+          <div class="mt-4 text-left">
+            <a href="${job["Link"]}" target="_blank" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm">
+              عرض التفاصيل
+            </a>
+          </div>
         `;
+
         container.appendChild(card);
       });
     });
 </script>
+
 </body>
 </html>
