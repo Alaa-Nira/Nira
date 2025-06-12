@@ -429,7 +429,7 @@
             }
         });
     </script>
-    <script>
+ <script>
   fetch('reliefweb_jobs.json')
     .then(response => response.json())
     .then(data => {
@@ -437,6 +437,8 @@
       container.innerHTML = '';
 
       data.slice(0, 6).forEach(job => {
+        const location = job["Location"] ? job["Location"].split(',')[0].trim() : "غير مذكور"; // استخراج المدينة فقط
+
         const card = document.createElement('div');
         card.className = 'job-card bg-white rounded-xl shadow overflow-hidden border border-gray-100 p-6 flex flex-col justify-between';
 
@@ -444,17 +446,13 @@
           <div>
             <h3 class="text-xl font-bold text-gray-800 mb-2">${job["Job Title"]}</h3>
             <p class="text-gray-600 text-sm mb-2"><strong>المنظمة:</strong> ${job["Company"] || "غير مذكورة"}</p>
-            <p class="text-gray-600 text-sm mb-2"><strong>الموقع:</strong> ${job["Location"] || "غير مذكور"}</p>
+            <p class="text-gray-600 text-sm mb-2"><strong>المدينة:</strong> ${location}</p>
             ${job["Description"] ? `<p class="text-gray-700 text-sm mb-3 line-clamp-3">${job["Description"]}</p>` : ''}
-            <div class="flex items-center justify-between text-sm text-gray-500 mt-2">
-              <span><i class="far fa-calendar-alt mr-1"></i> <strong>تاريخ النشر:</strong> ${job["Date"] || "غير مذكور"}</span>
-              <span><i class="far fa-clock mr-1"></i> <strong>الموعد النهائي:</strong> ${job["Deadline"] || "غير مذكور"}</span>
+            <div class="flex items-center justify-end text-sm mt-4">
+              <a href="${job["Link"]}" target="_blank" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm">
+                عرض التفاصيل
+              </a>
             </div>
-          </div>
-          <div class="mt-4 text-left">
-            <a href="${job["Link"]}" target="_blank" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm">
-              عرض التفاصيل
-            </a>
           </div>
         `;
 
@@ -462,6 +460,7 @@
       });
     });
 </script>
+
 
 </body>
 </html>
