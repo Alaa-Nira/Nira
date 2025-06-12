@@ -1,25 +1,39 @@
 import requests
 import json
 
-url = "https://api.reliefweb.int/v1/jobs?appname=nira-jobs&limit=100"
-response = requests.get(url)
+url = "https://api.reliefweb.int/v1/jobs"
+params = {
+    "appname": "nira-job-fetcher",
+    "filter[field]": "country",
+    "filter[value]": "Syria",
+    "limit": 50,
+    "profile": "full"
+}
+
+response = requests.get(url, params=params)
 data = response.json()
 
 jobs = []
 
 for item in data["data"]:
     fields = item["fields"]
-    job = {
-        "Job Title": fields.get("title", "بدون عنوان"),
-        "Company": fields.get("organization", [{}])[0].get("name", "غير معروف"),
-        "Location": fields.get("city", "") or fields.get("country", [{}])[0].get("name", "غير معروف"),
-        "Tags": [t["name"] for t in fields.get("theme", [])],
-        "Description": fields.get("body", "").split("\n")[0] if fields.get("body") else "",
-        "Link": fields.get("url", "#"),
-        "Deadline": fields.get("deadline", "")[:10] if "deadline" in fields else ""
-    }
-    jobs.append(job)
+    
+    city = ""
+    if fields.get("location"):
+        loc = fields["location"][0]
+        city = loc.get("name", "").split(",")[0].strip()
 
-# حفظ النتيجة إلى reliefweb_jobs.json
+    jobs.append({
+        "Job Title": fields.get("title", ""),
+        "Company": fields.get("organization", {}).get("name", ""),
+        "City": city,
+        "Country": fields.get("country", [{}])[0].get("name", ""),
+        "Deadline": fields.get("date", {}).get("closing", ""),
+        "Link": fields.get("url", ""),
+        "Description": fields.get("description", {}).get("text", "")[:200]
+    })
+
 with open("reliefweb_jobs.json", "w", encoding="utf-8") as f:
     json.dump(jobs, f, ensure_ascii=False, indent=2)
+
+print("تم إنشاء الملف reliefweb_jobs.json بنجاح.")
