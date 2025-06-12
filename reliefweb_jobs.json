@@ -1,142 +1,38 @@
-[
-  {
-    "Job Title": "ADMINISTRATIVE COORDINATOR SYRIA M/F",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4144586"
-  },
-  {
-    "Job Title": "GBV Officer - Damascus Office",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4156602"
-  },
-  {
-    "Job Title": "IT Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4156929"
-  },
-  {
-    "Job Title": "Psychologist",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4156982"
-  },
-  {
-    "Job Title": "Legal Advisor / مستشار قانوني",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4156950"
-  },
-  {
-    "Job Title": "Deputy Country Director - Support (Expat)",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4157050"
-  },
-  {
-    "Job Title": "GBV Case Worker",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4157202"
-  },
-  {
-    "Job Title": "Data Management Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4157194"
-  },
-  {
-    "Job Title": "Finance Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4155694"
-  },
-  {
-    "Job Title": "LOGISTICS COORDINATOR SYRIA M/F",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4137822"
-  },
-  {
-    "Job Title": "Advocacy & Communication Manager",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4156632"
-  },
-  {
-    "Job Title": "Veterinary Expert",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4157878"
-  },
-  {
-    "Job Title": "HR/Safeguarding Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4154371"
-  },
-  {
-    "Job Title": "Program Coordinator, Governance and Resilience",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4155654"
-  },
-  {
-    "Job Title": "Call for Multi-Sectoral Trainers (Turkey, Iraq or Syria) — Focus on SME Support and NGOs",
-    "Company": "Unknown",
-    "Location": "Iraq",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4155728"
-  },
-  {
-    "Job Title": "2 Incubator Coordinator",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4152669"
-  },
-  {
-    "Job Title": "Deputy National Director",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4155840"
-  },
-  {
-    "Job Title": "المنصب: منسق/ة تواصل الموقع: الرقة",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4156524"
-  },
-  {
-    "Job Title": "Program Coordinator - Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4156414"
-  },
-  {
-    "Job Title": "Procurement Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4156927"
-  }
-]
+<script>
+fetch('reliefweb_jobs (1).json')
+  .then(response => response.json())
+  .then(jobs => {
+    const container = document.getElementById('job-cards-container');
+    container.innerHTML = '';
+
+    jobs.slice(0, 12).forEach(job => {
+      const card = document.createElement('div');
+      card.className = 'job-card bg-white rounded-lg shadow overflow-hidden border border-gray-100 p-6 flex flex-col justify-between transition transform hover:-translate-y-1 hover:shadow-lg';
+
+      const title = job["Job Title"] || "بدون عنوان";
+      const company = job["Company"] || "غير معروف";
+      const location = job["Location"] || "غير محدد";
+      const date = job["Date"] || "";
+      const deadline = job["Deadline"] || "";
+      const description = job["Description"] || "";
+      const link = job["Link"] || "#";
+
+      card.innerHTML = `
+        <div class="mb-4">
+          <h3 class="text-lg font-bold text-gray-800 mb-1">${title}</h3>
+          <p class="text-sm text-gray-600 mb-2">${company}</p>
+          <p class="text-sm text-gray-500 mb-2"><i class="fas fa-map-marker-alt mr-1"></i>${location}</p>
+          ${description ? `<p class="text-sm text-gray-500 mb-2">${description.slice(0, 100)}...</p>` : ''}
+          <div class="flex justify-between text-xs text-gray-400 mt-2">
+            ${date ? `<span><i class="fas fa-calendar-alt mr-1"></i>تاريخ النشر: ${date}</span>` : ''}
+            ${deadline ? `<span><i class="fas fa-hourglass-end mr-1"></i>الانتهاء: ${deadline}</span>` : ''}
+          </div>
+        </div>
+        <div>
+          <a href="${link}" target="_blank" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-md text-sm text-center hover:bg-indigo-700 transition">عرض التفاصيل</a>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  });
+</script>
