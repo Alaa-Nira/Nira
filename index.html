@@ -156,15 +156,22 @@
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-center mb-8 rtl-support">
       <div>
-        <h3 class="text-2xl font-bold text-gray-800">أحدث الوظائف في سوريا</h3>
-        <p class="text-gray-600">تعرف على أحدث الفرص المتاحة في مدن سوريا</p>
+        <h3 class="text-2xl font-bold text-gray-800" data-i18n="jobs.title">أحدث الوظائف</h3>
+        <p class="text-gray-600" data-i18n="jobs.subtitle">اكتشف أحدث الفرص الوظيفية المتاحة اليوم</p>
       </div>
+      <a class="text-blue-500 hover:text-blue-600 font-medium flex items-center" data-i18n="jobs.view_all" href="jobs.html">
+        عرض الكل
+        <i class="fas fa-arrow-left mr-2 rtl-mirror"></i>
+      </a>
     </div>
+
+    <!-- ✅ هذا هو السطر المطلوب -->
     <div id="job-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- سيتم إدراج البطاقات هنا تلقائياً -->
     </div>
+
   </div>
 </section>
+
 <!-- How It Works -->
 <div class="bg-indigo-50 rounded-xl p-8 mb-16">
 <h2 class="text-2xl font-bold mb-6 text-center">كيف يعمل نيرا؟</h2>
