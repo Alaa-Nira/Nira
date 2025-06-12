@@ -35,13 +35,6 @@
     "Link": "https://reliefweb.int/node/4156950"
   },
   {
-    "Job Title": "IT Expert",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4157029"
-  },
-  {
     "Job Title": "Finance Officer",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -49,39 +42,11 @@
     "Link": "https://reliefweb.int/node/4155694"
   },
   {
-    "Job Title": "Site Engineer - مهندس موقع",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4156442"
-  },
-  {
-    "Job Title": "HR Assistant - Volunteer (Unpaid) - مساعد موارد بشرية متطوع (غير مأجور)",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4156456"
-  },
-  {
     "Job Title": "GBV Officer - Damascus Office",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
     "Link": "https://reliefweb.int/node/4156602"
-  },
-  {
-    "Job Title": "Media, advocacy and Communications Coordinator - منسق قسم الاعلام والتواصل والمناصرة",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4156523"
-  },
-  {
-    "Job Title": "Project Manager - مدير مشروع",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Link": "https://reliefweb.int/node/4156987"
   },
   {
     "Job Title": "Deputy Country Director - Support (Expat)",
@@ -126,6 +91,13 @@
     "Link": "https://reliefweb.int/node/4151189"
   },
   {
+    "Job Title": "Finance Manager (National Position)",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Link": "https://reliefweb.int/node/4152319"
+  },
+  {
     "Job Title": "Evaluation Specialist/Team Member",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -133,10 +105,38 @@
     "Link": "https://reliefweb.int/node/4152295"
   },
   {
-    "Job Title": "Finance Manager (National Position)",
+    "Job Title": "Evaluation Specialist/ Team Leader",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Link": "https://reliefweb.int/node/4152319"
+    "Link": "https://reliefweb.int/node/4152296"
+  },
+  {
+    "Job Title": "Program Coordinator, Governance and Resilience",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Link": "https://reliefweb.int/node/4155654"
+  },
+  {
+    "Job Title": "Call for Multi-Sectoral Trainers (Turkey, Iraq or Syria) — Focus on SME Support and NGOs",
+    "Company": "Unknown",
+    "Location": "Iraq",
+    "Date": "",
+    "Link": "https://reliefweb.int/node/4155728"
+  },
+  {
+    "Job Title": "HR/Safeguarding Officer",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Link": "https://reliefweb.int/node/4154371"
+  },
+  {
+    "Job Title": "2 Incubator Coordinator",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Link": "https://reliefweb.int/node/4152669"
   }
 ]
