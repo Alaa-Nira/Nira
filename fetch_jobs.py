@@ -26,7 +26,7 @@ data = response.json()
 jobs = []
 for job in data["data"]:
     fields = job["fields"]
-    if "Syria" not in fields["country"][0]["name"]:
+    if "country" not in fields or not fields["country"] or "Syria" not in fields["country"][0].get("name", ""):
         continue  # تخطى الوظائف غير السورية
 
     title = fields.get("title", "")
