@@ -1,43 +1,58 @@
 import requests
 import json
+from bs4 import BeautifulSoup
+import re
 
-url = "https://api.reliefweb.int/v1/jobs"
-params = {
-    "appname": "nira-app",
-    "filter[field]": "country",
-    "filter[value]": "Syria",
-    "sort[]": "date:desc",
-    "limit": 100
-}
+def extract_city(location_str):
+    if not location_str:
+        return "مدينة غير محددة"
+    if "," in location_str:
+        return location_str.split(",")[0].strip()
+    return location_str.strip()
 
-headers = {
-    "Content-Type": "application/json"
-}
+def extract_short_description(html_text):
+    if not html_text:
+        return "لا يوجد وصف متاح."
+    soup = BeautifulSoup(html_text, 'html.parser')
+    text = soup.get_text().strip()
+    # خذ أول 200 حرف أو أول جملة مفيدة
+    match = re.search(r'(.{30,200}[.؟!])', text)
+    return match.group(1).strip() if match else text[:200]
 
-response = requests.get(url, headers=headers, params=params)
+url = "https://api.reliefweb.int/v1/jobs?appname=apidoc&profile=full&limit=100"
+response = requests.get(url)
 data = response.json()
 
 jobs = []
-for item in data["data"]:
-    fields = item.get("fields", {})
+for job in data["data"]:
+    fields = job["fields"]
+    if "Syria" not in fields["country"][0]["name"]:
+        continue  # تخطى الوظائف غير السورية
 
-    job = {
-        "Job Title": fields.get("title", "بدون عنوان"),
-        "Company": fields.get("organization", [{}])[0].get("name", "غير معروف"),
-        "Country": fields.get("country", [{}])[0].get("name", "غير محدد"),
-        "City": fields.get("location", {}).get("name", "مدينة غير محددة"),
-        "Link": fields.get("url", "#"),
-        "Deadline": fields.get("application_deadline", "غير محدد"),
-        "Description": fields.get("description", {}).get("text", "")[:150] or "لا يوجد وصف متاح",
-        "Tags": [t["name"] for t in fields.get("theme", [])],
-        "Date": fields.get("date", {}).get("posted", "")
-    }
+    title = fields.get("title", "")
+    organization = fields["organization"][0]["name"] if fields.get("organization") else "جهة غير معروفة"
+    location_raw = fields["location"][0]["name"] if fields.get("location") else ""
+    city = extract_city(location_raw)
+    description_raw = fields.get("body", "")
+    description = extract_short_description(description_raw)
+    tags = [theme["name"] for theme in fields.get("theme", [])] + \
+           [jobtype["name"] for jobtype in fields.get("job_type", [])]
+    date = fields.get("date", {}).get("posted", "")[:10]
+    deadline = fields.get("date", {}).get("closing", "")[:10]
+    link = fields.get("url", "")
 
-    if job["Country"] == "Syrian Arab Republic":
-        jobs.append(job)
+    jobs.append({
+        "Job Title": title,
+        "Company": organization,
+        "City": city,
+        "Description": description,
+        "Tags": tags,
+        "Date": date,
+        "Deadline": deadline,
+        "Link": link,
+        "Source": "ReliefWeb"
+    })
 
-# حفظ الملف
+# فقط آخر 6 وظائف
 with open("reliefweb_jobs.json", "w", encoding="utf-8") as f:
-    json.dump(jobs, f, ensure_ascii=False, indent=2)
-
-print(f"تم حفظ {len(jobs)} وظيفة من سوريا.")
+    json.dump(jobs[:6], f, ensure_ascii=False, indent=2)
