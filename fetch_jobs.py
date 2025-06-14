@@ -1,58 +1,74 @@
 import requests
-import json
 from bs4 import BeautifulSoup
-import re
+import json
+import time
 
-def extract_city(location_str):
-    if not location_str:
-        return "مدينة غير محددة"
-    if "," in location_str:
-        return location_str.split(",")[0].strip()
-    return location_str.strip()
+def fetch_reliefweb_jobs_with_full_description(limit=6):
+    url = "https://reliefweb.int/updates?search=jobs&appname=jobs&page=1"
+    base = "https://reliefweb.int"
+    headers = {"User-Agent": "Mozilla/5.0"}
 
-def extract_short_description(html_text):
-    if not html_text:
-        return "لا يوجد وصف متاح."
-    soup = BeautifulSoup(html_text, 'html.parser')
-    text = soup.get_text().strip()
-    # خذ أول 200 حرف أو أول جملة مفيدة
-    match = re.search(r'(.{30,200}[.؟!])', text)
-    return match.group(1).strip() if match else text[:200]
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.text, 'html.parser')
 
-url = "https://api.reliefweb.int/v1/jobs?appname=apidoc&profile=full&limit=100"
-response = requests.get(url)
-data = response.json()
+    job_links = [
+        base + a['href']
+        for a in soup.select('.rw-river--title a[href]')
+        if '/job/' in a['href']
+    ]
 
-jobs = []
-for job in data["data"]:
-    fields = job["fields"]
-    if "country" not in fields or not fields["country"] or "Syria" not in fields["country"][0].get("name", ""):
-        continue  # تخطى الوظائف غير السورية
+    jobs = []
 
-    title = fields.get("title", "")
-    organization = fields["organization"][0]["name"] if fields.get("organization") else "جهة غير معروفة"
-    location_raw = fields["location"][0]["name"] if fields.get("location") else ""
-    city = extract_city(location_raw)
-    description_raw = fields.get("body", "")
-    description = extract_short_description(description_raw)
-    tags = [theme["name"] for theme in fields.get("theme", [])] + \
-           [jobtype["name"] for jobtype in fields.get("job_type", [])]
-    date = fields.get("date", {}).get("posted", "")[:10]
-    deadline = fields.get("date", {}).get("closing", "")[:10]
-    link = fields.get("url", "")
+    for link in job_links[:limit]:
+        job_resp = requests.get(link, headers=headers)
+        job_soup = BeautifulSoup(job_resp.text, 'html.parser')
 
-    jobs.append({
-        "Job Title": title,
-        "Company": organization,
-        "City": city,
-        "Description": description,
-        "Tags": tags,
-        "Date": date,
-        "Deadline": deadline,
-        "Link": link,
-        "Source": "ReliefWeb"
-    })
+        title = job_soup.select_one('h1.rw-title')
+        title = title.text.strip() if title else "No Title"
 
-# فقط آخر 6 وظائف
-with open("reliefweb_jobs.json", "w", encoding="utf-8") as f:
-    json.dump(jobs[:6], f, ensure_ascii=False, indent=2)
+        org = job_soup.select_one('.profile--header .profile--name')
+        company = org.text.strip() if org else "Unknown"
+
+        deadline = ""
+        location = ""
+        date = ""
+        description = ""
+
+        meta_info = job_soup.select('.content--meta dd')
+        meta_labels = job_soup.select('.content--meta dt')
+
+        for label, value in zip(meta_labels, meta_info):
+            key = label.text.strip()
+            val = value.text.strip()
+            if "Closing date" in key:
+                deadline = val
+            elif "Location" in key:
+                location = val
+            elif "Published" in key:
+                date = val
+
+        content_section = job_soup.select_one('.content--body')
+        if content_section:
+            full_text = content_section.get_text(separator=' ', strip=True)
+            description = full_text[:200] + "..." if len(full_text) > 200 else full_text
+
+        jobs.append({
+            "Job Title": title,
+            "Company": company,
+            "Location": location,
+            "Date": date,
+            "Deadline": deadline,
+            "Description": description,
+            "Link": link,
+            "Source": "ReliefWeb"
+        })
+
+        time.sleep(1.5)
+
+    return jobs
+
+if __name__ == "__main__":
+    data = fetch_reliefweb_jobs_with_full_description(limit=6)
+    with open("reliefweb_jobs.json", "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print("✅ File reliefweb_jobs.json created with latest jobs.")
