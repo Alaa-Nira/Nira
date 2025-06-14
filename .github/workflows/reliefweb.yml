@@ -3,7 +3,7 @@ name: update-jobs
 on:
   schedule:
     - cron: "0 */6 * * *"  # كل 6 ساعات
-  workflow_dispatch:      # لتشغيله يدويًا من GitHub
+  workflow_dispatch:       # لتشغيله يدويًا من واجهة GitHub
 
 jobs:
   update-jobs:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
@@ -29,4 +29,12 @@ jobs:
       - name: Commit changes
         run: |
           git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@gi
+          git config --global user.email 'github-actions@github.com'
+          git add reliefweb_jobs.json
+          timestamp=$(date)
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update reliefweb_jobs.json - $timestamp"
+            git push
+          fi
