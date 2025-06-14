@@ -1,77 +1,58 @@
 import requests
-from bs4 import BeautifulSoup
 import json
-import time
+from datetime import datetime
+from bs4 import BeautifulSoup
 
-def fetch_jobs(limit=6):
-    base_url = "https://reliefweb.int"
-    search_url = f"{base_url}/jobs?search=syrian&appname=jobs"
-    headers = {"User-Agent": "Mozilla/5.0"}
+# طلب البيانات من ReliefWeb
+url = "https://api.reliefweb.int/v1/jobs?appname=nira&limit=100"
+response = requests.get(url)
+data = response.json()
 
-    jobs = []
+cleaned_jobs = []
 
-    try:
-        response = requests.get(search_url, headers=headers)
-        soup = BeautifulSoup(response.text, "html.parser")
+for job in data["data"]:
+    fields = job["fields"]
 
-        job_links = [a['href'] for a in soup.select(".rw-river--title a[href]") if '/job/' in a['href']]
-        job_links = list(dict.fromkeys(job_links))  # remove duplicates
-    except Exception as e:
-        print("❌ Failed to fetch links:", e)
-        return []
+    # تجاهل الوظائف من خارج سوريا
+    countries = fields.get("country", [])
+    if not any("Syria" in c.get("name", "") for c in countries):
+        continue
 
-    for link in job_links[:limit]:
-        try:
-            job_url = base_url + link
-            res = requests.get(job_url, headers=headers)
-            detail = BeautifulSoup(res.text, "html.parser")
+    # استخراج التفاصيل
+    title = fields.get("title", "بدون عنوان")
+    url = fields.get("url", "#")
+    tags = [t["name"] for t in fields.get("theme", [])] + [t["name"] for t in fields.get("skill", [])]
+    city = fields.get("city", "مدينة غير محددة")
+    date = fields.get("date", {}).get("posted", "")[:10]
+    deadline = fields.get("date", {}).get("closing", "")[:10]
 
-            title = detail.select_one("h1.rw-title")
-            title = title.text.strip() if title else "بدون عنوان"
+    # الوصف القصير الذكي
+    raw_html = fields.get("description", {}).get("content", "")
+    soup = BeautifulSoup(raw_html, "html.parser")
+    plain_text = soup.get_text(separator=" ", strip=True)
+    short_description = plain_text[:220] + ("..." if len(plain_text) > 220 else "")
 
-            company = detail.select_one(".profile--name")
-            company = company.text.strip() if company else "جهة غير معروفة"
+    # الجهة أو المنظمة
+    company = fields.get("organization", [{}])[0].get("name", "جهة غير معروفة")
 
-            date = ""
-            deadline = ""
-            city = "مدينة غير محددة"
+    cleaned_jobs.append({
+        "Job Title": title,
+        "Company": company,
+        "City": city,
+        "Description": short_description or "لا يوجد وصف متاح",
+        "Tags": tags,
+        "Date": date,
+        "Deadline": deadline,
+        "Link": url,
+        "Source": "ReliefWeb"
+    })
 
-            for dt, dd in zip(detail.select(".content--meta dt"), detail.select(".content--meta dd")):
-                key = dt.text.strip()
-                value = dd.text.strip()
-                if "Closing" in key:
-                    deadline = value
-                elif "Location" in key:
-                    city = value
-                elif "Published" in key:
-                    date = value
+# لضمان اختلاف الملف في كل مرة
+if cleaned_jobs:
+    cleaned_jobs.append({"Generated": datetime.utcnow().isoformat()})
 
-            description_div = detail.select_one(".content--body")
-            description = description_div.get_text(separator=' ', strip=True) if description_div else ""
-            short_description = description[:220] + "..." if len(description) > 220 else description
+# حفظ النتائج
+with open("reliefweb_jobs.json", "w", encoding="utf-8") as f:
+    json.dump(cleaned_jobs, f, ensure_ascii=False, indent=2)
 
-            jobs.append({
-                "Job Title": title,
-                "Company": company,
-                "City": city,
-                "Date": date,
-                "Deadline": deadline,
-                "Description": short_description,
-                "Link": job_url,
-                "Source": "ReliefWeb"
-            })
-
-            time.sleep(2)
-
-        except Exception as e:
-            print(f"⚠️ Skipping {link} due to error:", e)
-            continue
-
-    return jobs
-
-
-if __name__ == "__main__":
-    data = fetch_jobs(limit=6)
-    with open("reliefweb_jobs.json", "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"✅ Saved {len(data)} jobs to reliefweb_jobs.json")
+print(f"✅ تم حفظ {len(cleaned_jobs)} وظيفة إلى reliefweb_jobs.json")
