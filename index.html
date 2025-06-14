@@ -435,36 +435,54 @@
         });
     </script>
 <script>
-fetch('reliefweb_jobs.json')
-  .then(response => response.json())
-  .then(jobs => {
-    const container = document.getElementById('job-cards-container');
-    container.innerHTML = '';
+  fetch('reliefweb_jobs.json')
+    .then(response => response.json())
+    .then(jobs => {
+      const container = document.getElementById('job-cards-container');
+      container.innerHTML = "";
 
-    const filteredJobs = jobs.filter(job =>
-      job.Country && job.Country.toLowerCase().includes("syria")
-    ).slice(0, 6);
+      jobs.slice(0, 6).forEach(job => {
+        const tags = (job["Tags"] || []).map(tag => `
+          <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">${tag}</span>
+        `).join('');
 
-    filteredJobs.forEach(job => {
-      const card = document.createElement('div');
-      card.className = 'job-card bg-white rounded-lg shadow-md overflow-hidden border p-4 flex flex-col justify-between';
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-xl shadow overflow-hidden border border-gray-100 p-6 flex flex-col justify-between';
 
-      card.innerHTML = `
-        <div>
-          <h3 class="text-lg font-bold text-gray-800 mb-1">${job["Job Title"]}</h3>
-          <p class="text-sm text-gray-600 mb-1">${job["Company"]}</p>
-          <p class="text-sm text-gray-500 mb-2"><i class="fas fa-map-marker-alt mr-1 text-indigo-500"></i> ${job["City"] || "مدينة غير محددة"}</p>
-          <p class="text-sm text-gray-700 mb-4">${job["Description"]?.substring(0, 100) || "لا يوجد وصف متاح"}...</p>
-        </div>
-        <div class="flex justify-between items-center text-sm text-gray-400">
-          <span><i class="fas fa-calendar-alt mr-1"></i> آخر موعد: ${job["Deadline"] || "غير محدد"}</span>
-          <a href="${job["Link"]}" target="_blank" class="bg-indigo-500 text-white px-3 py-1 rounded hover:bg-indigo-600">عرض التفاصيل</a>
-        </div>
-      `;
-      container.appendChild(card);
+        card.innerHTML = `
+          <div class="flex justify-between items-start mb-2">
+            <div class="flex gap-2 flex-wrap">
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">${job["Source"] || "N/A"}</span>
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">${job["Job Type"] || "دوام كامل"}</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <h3 class="text-xl font-bold text-gray-800 mb-1">${job["Job Title"]}</h3>
+            <p class="text-sm text-gray-600 mb-2">${job["Company"]}</p>
+            <p class="text-sm text-gray-700 mb-3">${job["Description"].slice(0, 120)}...</p>
+            <div class="flex flex-wrap gap-2">${tags}</div>
+          </div>
+
+          <div class="flex justify-between items-center text-sm text-gray-500 mt-auto">
+            <div>
+              <i class="fas fa-map-marker-alt ml-1"></i> ${job["City"]}
+            </div>
+            <div>
+              <i class="fas fa-hourglass-end ml-1"></i> ${job["Deadline"]}
+            </div>
+          </div>
+
+          <div class="mt-4 text-left">
+            <a href="${job["Link"]}" target="_blank" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-sm">
+              عرض التفاصيل
+            </a>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
     });
-  })
-  .catch(error => console.error('خطأ في جلب الوظائف:', error));
 </script>
 
 </body>
