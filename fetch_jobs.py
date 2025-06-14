@@ -1,61 +1,58 @@
 import requests
 import json
+from datetime import datetime
 from bs4 import BeautifulSoup
 
-URL = "https://api.reliefweb.int/v1/jobs"
-PARAMS = {
-    "appname": "nira-jobs",
-    "limit": 100,
-    "profile": "full"
-}
-
-response = requests.get(URL, params=PARAMS)
+# طلب البيانات من ReliefWeb
+url = "https://api.reliefweb.int/v1/jobs?appname=nira&limit=100"
+response = requests.get(url)
 data = response.json()
 
-jobs = []
+cleaned_jobs = []
 
-for item in data["data"]:
-    fields = item["fields"]
+for job in data["data"]:
+    fields = job["fields"]
 
-    # فلترة الوظائف في سوريا فقط
-    country_list = fields.get("country", [])
-    if not any(country.get("name", "") == "Syria" for country in country_list):
+    # تجاهل الوظائف من خارج سوريا
+    countries = fields.get("country", [])
+    if not any("Syria" in c.get("name", "") for c in countries):
         continue
 
+    # استخراج التفاصيل
     title = fields.get("title", "بدون عنوان")
-    org = fields.get("organization", [{}])[0].get("name", "جهة غير معروفة")
-    body_html = fields.get("body", "")
-    link = fields.get("url", "#")
-    tags = [t.get("name") for t in fields.get("theme", [])]
-    deadline = fields.get("closing_date", "")[:10]
-    source = "ReliefWeb"
+    url = fields.get("url", "#")
+    tags = [t["name"] for t in fields.get("theme", [])] + [t["name"] for t in fields.get("skill", [])]
+    city = fields.get("city", "مدينة غير محددة")
+    date = fields.get("date", {}).get("posted", "")[:10]
+    deadline = fields.get("date", {}).get("closing", "")[:10]
 
-    # استخراج المدينة من النص الكامل (body)
-    soup = BeautifulSoup(body_html, "html.parser")
-    text = soup.get_text().strip().replace("\n", " ")
+    # الوصف القصير الذكي
+    raw_html = fields.get("description", {}).get("content", "")
+    soup = BeautifulSoup(raw_html, "html.parser")
+    plain_text = soup.get_text(separator=" ", strip=True)
+    short_description = plain_text[:220] + ("..." if len(plain_text) > 220 else "")
 
-    # استخراج وصف قصير
-    desc = "لا يوجد وصف متاح"
-    for paragraph in soup.find_all("p"):
-        content = paragraph.get_text(strip=True)
-        if 50 < len(content) < 300:
-            desc = content
-            break
+    # الجهة أو المنظمة
+    company = fields.get("organization", [{}])[0].get("name", "جهة غير معروفة")
 
-    # استخراج المدينة إذا ذُكرت
-    location = fields.get("location", [])
-    city = location[0].get("name", "مدينة غير محددة") if location else "مدينة غير محددة"
-
-    jobs.append({
+    cleaned_jobs.append({
         "Job Title": title,
-        "Company": org,
+        "Company": company,
         "City": city,
-        "Description": desc,
+        "Description": short_description or "لا يوجد وصف متاح",
         "Tags": tags,
+        "Date": date,
         "Deadline": deadline,
-        "Link": link,
-        "Source": source
+        "Link": url,
+        "Source": "ReliefWeb"
     })
 
+# لضمان اختلاف الملف في كل مرة وتحفيز GitHub Actions
+if cleaned_jobs:
+    cleaned_jobs.append({"Generated": datetime.utcnow().isoformat()})
+
+# حفظ النتائج
 with open("reliefweb_jobs.json", "w", encoding="utf-8") as f:
-    json.dump(jobs, f, ensure_ascii=False, indent=2)
+    json.dump(cleaned_jobs, f, ensure_ascii=False, indent=2)
+
+print(f"✅ تم حفظ {len(cleaned_jobs)} وظيفة إلى reliefweb_jobs.json")
