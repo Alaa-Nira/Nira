@@ -35,8 +35,12 @@ PAYLOAD = {
     }
 }
 
-resp = requests.post(RW_ENDPOINT, json=PAYLOAD, timeout=30)
-resp.raise_for_status()          # لو حدث HTTP error يرفع استثناء
+resp = requests.post(
+    RW_ENDPOINT,
+    params={"appname": "nira"},   # ← يضيف ?appname=nira إلى الـ URL
+    json=PAYLOAD,
+    timeout=30
+)
 
 rw_data = resp.json()["data"]
 
