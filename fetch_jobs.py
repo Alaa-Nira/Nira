@@ -1,58 +1,106 @@
 import requests
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from bs4 import BeautifulSoup
 
-# طلب البيانات من ReliefWeb
-url = "https://api.reliefweb.int/v1/jobs?appname=nira&limit=100"
-response = requests.get(url)
-data = response.json()
+# ----------------------------- #
+# 1) إعداد طلب ReliefWeb (POST) #
+# ----------------------------- #
+
+RW_ENDPOINT = "https://api.reliefweb.int/v1/jobs"
+PAYLOAD = {
+    "appname": "nira",
+    "limit": 200,                 # يمكن تكبيره لاحقًا إذا احتجت
+    "filter": {
+        "conditions": [
+            {
+                "field": "country",
+                "value": "Syrian Arab Republic"
+            }
+        ]
+    },
+    # الحقول التي نريد إرجاعها فقط (يزيد السرعة)
+    "fields": {
+        "include": [
+            "title",
+            "url",
+            "country",
+            "city",
+            "organization",
+            "theme",
+            "skill",
+            "date",
+            "description"
+        ]
+    }
+}
+
+resp = requests.post(RW_ENDPOINT, json=PAYLOAD, timeout=30)
+resp.raise_for_status()          # لو حدث HTTP error يرفع استثناء
+
+rw_data = resp.json()["data"]
+
+# ----------------------------- #
+# 2) تنظيف وتجهيز البيانات     #
+# ----------------------------- #
 
 cleaned_jobs = []
 
-for job in data["data"]:
-    fields = job["fields"]
+for job in rw_data:
+    f = job["fields"]
 
-    # تجاهل الوظائف من خارج سوريا
-    countries = fields.get("country", [])
-    if not any("Syria" in c.get("name", "") for c in countries):
-        continue
+    # ----------------- العنوان / الرابط -----------------
+    title = f.get("title") or "بدون عنوان"
+    link  = f.get("url")   or "#"
 
-    # استخراج التفاصيل
-    title = fields.get("title", "بدون عنوان")
-    url = fields.get("url", "#")
-    tags = [t["name"] for t in fields.get("theme", [])] + [t["name"] for t in fields.get("skill", [])]
-    city = fields.get("city", "مدينة غير محددة")
-    date = fields.get("date", {}).get("posted", "")[:10]
-    deadline = fields.get("date", {}).get("closing", "")[:10]
+    # ----------------- المدينة -----------------
+    city = f.get("city") or "مدينة غير محددة"
 
-    # الوصف القصير الذكي
-    raw_html = fields.get("description", {}).get("content", "")
-    soup = BeautifulSoup(raw_html, "html.parser")
-    plain_text = soup.get_text(separator=" ", strip=True)
-    short_description = plain_text[:220] + ("..." if len(plain_text) > 220 else "")
+    # ----------------- التواريخ -----------------
+    date_posted  = f.get("date", {}).get("posted",  "")[:10]
+    date_closing = f.get("date", {}).get("closing", "")[:10]
 
-    # الجهة أو المنظمة
-    company = fields.get("organization", [{}])[0].get("name", "جهة غير معروفة")
+    # ----------------- الجهة (المنظمة) -----------------
+    orgs = f.get("organization", [])
+    company = orgs[0]["name"] if orgs else "جهة غير معروفة"
 
+    # ----------------- الوسوم -----------------
+    tags = [t["name"] for t in f.get("theme", [])] + \
+           [t["name"] for t in f.get("skill", [])]
+
+    # ----------------- الوصف المختصر -----------------
+    raw_html = f.get("description", {}).get("content", "")
+    soup     = BeautifulSoup(raw_html, "html.parser")
+    plain    = soup.get_text(" ", strip=True)
+
+    short_description = (plain[:220] + "…") if len(plain) > 220 else plain
+    if not short_description:
+        short_description = "لا يوجد وصف متاح"
+
+    # ----------------- بناء القيد النهائي -----------------
     cleaned_jobs.append({
-        "Job Title": title,
-        "Company": company,
-        "City": city,
-        "Description": short_description or "لا يوجد وصف متاح",
-        "Tags": tags,
-        "Date": date,
-        "Deadline": deadline,
-        "Link": url,
-        "Source": "ReliefWeb"
+        "Job Title":  title,
+        "Company":    company,
+        "City":       city,
+        "Description": short_description,
+        "Tags":        tags,
+        "Date":        date_posted,
+        "Deadline":    date_closing,
+        "Link":        link,
+        "Source":      "ReliefWeb"
     })
 
-# لضمان اختلاف الملف في كل مرة وتحفيز GitHub Actions
-if cleaned_jobs:
-    cleaned_jobs.append({"Generated": datetime.utcnow().isoformat()})
+# ---------------------------------------------- #
+# 3) إضافة بصمة وقت (تحفيز الـ commit دائماً)   #
+# ---------------------------------------------- #
+cleaned_jobs.append({
+    "Generated": datetime.now(timezone.utc).isoformat(timespec="seconds")
+})
 
-# حفظ النتائج
-with open("reliefweb_jobs.json", "w", encoding="utf-8") as f:
-    json.dump(cleaned_jobs, f, ensure_ascii=False, indent=2)
+# ----------------------------- #
+# 4) حفظ الملف بصيغة UTF-8      #
+# ----------------------------- #
+with open("reliefweb_jobs.json", "w", encoding="utf-8") as fp:
+    json.dump(cleaned_jobs, fp, ensure_ascii=False, indent=2)
 
-print(f"✅ تم حفظ {len(cleaned_jobs)} وظيفة إلى reliefweb_jobs.json")
+print(f"✅ تم حفظ {len(cleaned_jobs)-1} وظيفة من سوريا إلى reliefweb_jobs.json")
