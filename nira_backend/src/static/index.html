@@ -181,9 +181,9 @@
                 </div>
                 
                 <div class="hidden md:flex md:items-center md:space-x-4 space-x-reverse">
-                    <a href="#" onclick="showHome()" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
-                    <a href="#" onclick="showAllJobs()" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium" data-ar="جميع الوظائف" data-en="All Jobs">جميع الوظائف</a>
-                    <a href="#" onclick="showAbout()" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium" data-ar="حول نيرا" data-en="About NIRA">حول نيرا</a>
+                    <a href="#" onclick="showHome()" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+                    <a href="#" onclick="showAllJobs()" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium nav-link" data-ar="جميع الوظائف" data-en="All Jobs">جميع الوظائف</a>
+                    <a href="#" onclick="showAbout()" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium nav-link" data-ar="حول نيرا" data-en="About NIRA">حول نيرا</a>
                     
                     <!-- Language Toggle -->
                     <div class="language-toggle px-3 py-2 rounded-md text-sm font-medium" onclick="toggleLanguage()">
@@ -928,8 +928,16 @@
                 document.getElementById('lang-text').textContent = 'English';
             }
             
-            // Update all translatable elements
+            // Update all translatable elements including navigation
             document.querySelectorAll('[data-ar]').forEach(element => {
+                const text = currentLanguage === 'ar' ? element.getAttribute('data-ar') : element.getAttribute('data-en');
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            // Update navigation links specifically
+            document.querySelectorAll('.nav-link[data-ar]').forEach(element => {
                 const text = currentLanguage === 'ar' ? element.getAttribute('data-ar') : element.getAttribute('data-en');
                 if (text) {
                     element.textContent = text;

@@ -70,6 +70,6 @@ if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
     debug = os.getenv('FLASK_ENV') == 'development'
     
-    logger.info("تشغيل خادم NIRA على المنفذ 5001")
-    app.run(host='0.0.0.0', port=5001, debug=False)
+    logger.info("تشغيل خادم NIRA على المنفذ 5002")
+    app.run(host='0.0.0.0', port=5002, debug=False)
 
