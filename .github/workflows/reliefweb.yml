@@ -1,0 +1,49 @@
+name: update-jobs      # الاسم الظاهر في تبويب Actions
+
+on:
+  # تشغيل آلي كل 6 ساعات
+  schedule:
+    - cron: '0 */6 * * *'
+  # تشغيل يدوي من زر “Run workflow”
+  workflow_dispatch:
+
+jobs:
+  update-jobs:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1) جلب ملفات المستودع
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2) تجهيز بايثون
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    # 3) تثبيت الاعتمادات من requirements.txt
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # 4) تشغيل السكربت الذي يجلب الوظائف ويحدث reliefweb_jobs.json
+    - name: Run fetch_jobs.py
+      run: python fetch_jobs.py
+
+    # 5) في حال تغيَّر الملف، نقوم بعمل commit & push تلقائيًا
+    - name: Commit changes
+      run: |
+        git config --global user.name  "actions-user"
+        git config --global user.email "actions@github.com"
+
+        git add reliefweb_jobs.json
+
+        # إذا لم توجد تغيّرات، لا نقوم بعمل commit
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update reliefweb_jobs.json - $(date -u +'%Y-%m-%d %H:%M:%S')"
+          git push
+        fi

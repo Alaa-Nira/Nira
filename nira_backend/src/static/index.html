@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar" id="html-root">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>نيرا - منصة البحث عن وظائف في سوريا</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --secondary: #10B981;
+            --accent: #F59E0B;
+            --danger: #EF4444;
+        }
+        
+        body[dir="rtl"] {
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body[dir="ltr"] {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .job-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .job-source-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 10;
+        }
+        
+        .favorite-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+        
+        .favorite-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .favorite-btn.active {
+            color: #EF4444;
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+        }
+        
+        .active-filter {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .loading {
+            display: none;
+        }
+        
+        .loading.show {
+            display: block;
+        }
+        
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        
+        .auth-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            background: #E5E7EB;
+            color: #374151;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin: 2px;
+        }
+        
+        .pagination-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .pagination-btn:hover:not(:disabled) {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+        
+        .category-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .notification.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        
+        .language-toggle {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .language-toggle:hover {
+            background-color: #F3F4F6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800" dir="rtl">
+    <!-- Notification -->
+    <div id="notification" class="notification bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg">
+        <span id="notification-text"></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a class="flex-shrink-0 flex items-center" href="#" onclick="showHome()">
+                        <img alt="Nira Logo" class="h-12 w-auto" src="wmremove-transformed (1).png"/>
+                        <span class="mr-3 text-xl font-bold text-gray-800">نيرا</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex md:items-center md:space-x-4 space-x-reverse">
+                    <a href="#" onclick="showHome()" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">الرئيسية</a>
+                    <a href="#" onclick="showAllJobs()" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">جميع الوظائف</a>
+                    <a href="#" onclick="showAbout()" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">حول نيرا</a>
+                    
+                    <!-- Language Toggle -->
+                    <div class="language-toggle px-3 py-2 rounded-md text-sm font-medium" onclick="toggleLanguage()">
+                        <i class="fas fa-globe mr-1"></i>
+                        <span id="lang-text">English</span>
+                    </div>
+                    
+                    <!-- User Menu -->
+                    <div id="user-menu" class="hidden">
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <img id="user-avatar" class="h-8 w-8 rounded-full" src="" alt="User Avatar"/>
+                            <span id="user-name" class="text-sm font-medium"></span>
+                            <button onclick="showFavorites()" class="text-gray-700 hover:text-primary px-2 py-1 rounded">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button onclick="logout()" class="text-gray-700 hover:text-danger px-2 py-1 rounded">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Login Button -->
+                    <button id="login-btn" onclick="login()" class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition">
+                        <i class="fas fa-sign-in-alt mr-1"></i>
+                        تسجيل الدخول
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#" onclick="showHome()" class="block px-3 py-2 text-gray-700 hover:text-primary">الرئيسية</a>
+                <a href="#" onclick="showAllJobs()" class="block px-3 py-2 text-gray-700 hover:text-primary">جميع الوظائف</a>
+                <a href="#" onclick="showAbout()" class="block px-3 py-2 text-gray-700 hover:text-primary">حول نيرا</a>
+                <div class="border-t pt-2">
+                    <button id="mobile-login-btn" onclick="login()" class="block w-full text-right px-3 py-2 text-primary font-medium">
+                        تسجيل الدخول
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Page -->
+        <div id="home-page">
+            <!-- Hero Section -->
+            <section class="hero-section py-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6" data-ar="ابحث عن وظيفتك المثالية في سوريا" data-en="Find Your Perfect Job in Syria">
+                        ابحث عن وظيفتك المثالية في سوريا
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 opacity-90" data-ar="منصة نيرا تجمع لك أفضل الوظائف من مختلف المصادر في مكان واحد" data-en="NIRA platform brings you the best jobs from various sources in one place">
+                        منصة نيرا تجمع لك أفضل الوظائف من مختلف المصادر في مكان واحد
+                    </p>
+                    
+                    <!-- Search Bar -->
+                    <div class="max-w-2xl mx-auto">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="flex-1">
+                                <input 
+                                    type="text" 
+                                    id="search-input"
+                                    placeholder="ابحث عن وظيفة، شركة، أو مهارة..."
+                                    class="w-full px-6 py-4 text-lg rounded-lg border-0 shadow-lg search-input focus:outline-none"
+                                    data-ar-placeholder="ابحث عن وظيفة، شركة، أو مهارة..."
+                                    data-en-placeholder="Search for job, company, or skill..."
+                                />
+                            </div>
+                            <button 
+                                onclick="searchJobs()"
+                                class="bg-secondary text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-green-600 transition shadow-lg"
+                                data-ar="بحث"
+                                data-en="Search"
+                            >
+                                <i class="fas fa-search mr-2"></i>
+                                بحث
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="py-16 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div class="stats-card p-6 rounded-lg text-center">
+                            <div class="text-3xl font-bold mb-2" id="total-jobs">0</div>
+                            <div class="text-sm opacity-90" data-ar="إجمالي الوظائف" data-en="Total Jobs">إجمالي الوظائف</div>
+                        </div>
+                        <div class="stats-card p-6 rounded-lg text-center">
+                            <div class="text-3xl font-bold mb-2" id="total-companies">0</div>
+                            <div class="text-sm opacity-90" data-ar="الشركات" data-en="Companies">الشركات</div>
+                        </div>
+                        <div class="stats-card p-6 rounded-lg text-center">
+                            <div class="text-3xl font-bold mb-2" id="total-sources">0</div>
+                            <div class="text-sm opacity-90" data-ar="المصادر" data-en="Sources">المصادر</div>
+                        </div>
+                        <div class="stats-card p-6 rounded-lg text-center">
+                            <div class="text-3xl font-bold mb-2">24/7</div>
+                            <div class="text-sm opacity-90" data-ar="تحديث مستمر" data-en="Continuous Updates">تحديث مستمر</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories Section -->
+            <section class="py-16 bg-gray-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-center mb-12" data-ar="ابحث حسب التخصص" data-en="Search by Category">
+                        ابحث حسب التخصص
+                    </h2>
+                    <div id="categories-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                        <!-- Categories will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Jobs Section -->
+            <section class="py-16 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-center mb-12">
+                        <h2 class="text-3xl font-bold" data-ar="أحدث الوظائف" data-en="Latest Jobs">أحدث الوظائف</h2>
+                        <button onclick="showAllJobs()" class="text-primary hover:text-blue-700 font-medium" data-ar="عرض الكل" data-en="View All">
+                            عرض الكل <i class="fas fa-arrow-left mr-1"></i>
+                        </button>
+                    </div>
+                    <div id="latest-jobs" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Latest jobs will be loaded here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- All Jobs Page -->
+        <div id="jobs-page" class="hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <!-- Search and Filters -->
+                <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+                    <div class="flex flex-col md:flex-row gap-4 mb-4">
+                        <div class="flex-1">
+                            <input 
+                                type="text" 
+                                id="jobs-search-input"
+                                placeholder="ابحث في الوظائف..."
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg search-input focus:outline-none"
+                            />
+                        </div>
+                        <select id="category-filter" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none">
+                            <option value="">جميع التخصصات</option>
+                        </select>
+                        <select id="source-filter" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none">
+                            <option value="">جميع المصادر</option>
+                        </select>
+                        <button onclick="filterJobs()" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+                            <i class="fas fa-filter mr-1"></i>
+                            فلترة
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jobs Grid -->
+                <div id="jobs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <!-- Jobs will be loaded here -->
+                </div>
+
+                <!-- Pagination -->
+                <div id="pagination" class="flex justify-center items-center space-x-2 space-x-reverse">
+                    <!-- Pagination will be loaded here -->
+                </div>
+
+                <!-- Loading -->
+                <div id="jobs-loading" class="loading text-center py-12">
+                    <i class="fas fa-spinner fa-spin text-4xl text-primary mb-4"></i>
+                    <p class="text-gray-600">جاري تحميل الوظائف...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="hidden">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12" data-ar="حول منصة نيرا" data-en="About NIRA Platform">حول منصة نيرا</h1>
+                
+                <div class="prose prose-lg max-w-none">
+                    <div class="bg-white p-8 rounded-lg shadow-sm mb-8">
+                        <h2 class="text-2xl font-bold mb-4" data-ar="ما هي نيرا؟" data-en="What is NIRA?">ما هي نيرا؟</h2>
+                        <p class="text-gray-700 leading-relaxed" data-ar="نيرا هي منصة متطورة لجمع الوظائف من مختلف المصادر في سوريا وعرضها في مكان واحد. نهدف إلى تسهيل عملية البحث عن الوظائف للباحثين عن العمل وتوفير الوقت والجهد." data-en="NIRA is an advanced platform that aggregates jobs from various sources in Syria and displays them in one place. We aim to facilitate job searching for job seekers and save time and effort.">
+                            نيرا هي منصة متطورة لجمع الوظائف من مختلف المصادر في سوريا وعرضها في مكان واحد. نهدف إلى تسهيل عملية البحث عن الوظائف للباحثين عن العمل وتوفير الوقت والجهد.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-sm mb-8">
+                        <h2 class="text-2xl font-bold mb-4" data-ar="كيف تعمل نيرا؟" data-en="How does NIRA work?">كيف تعمل نيرا؟</h2>
+                        <ul class="list-disc list-inside space-y-3 text-gray-700">
+                            <li data-ar="نجمع الوظائف من مصادر موثوقة مثل reliefweb.int و job.sy و nsjobs.net و forsa.sy" data-en="We collect jobs from trusted sources like reliefweb.int, job.sy, nsjobs.net, and forsa.sy">نجمع الوظائف من مصادر موثوقة مثل reliefweb.int و job.sy و nsjobs.net و forsa.sy</li>
+                            <li data-ar="نعرض الوظائف في شكل بطاقات منظمة وسهلة القراءة" data-en="We display jobs in organized and easy-to-read cards">نعرض الوظائف في شكل بطاقات منظمة وسهلة القراءة</li>
+                            <li data-ar="نوفر إمكانية البحث والفلترة حسب التخصص والموقع" data-en="We provide search and filtering capabilities by specialty and location">نوفر إمكانية البحث والفلترة حسب التخصص والموقع</li>
+                            <li data-ar="نتيح للمستخدمين حفظ الوظائف المفضلة لديهم" data-en="We allow users to save their favorite jobs">نتيح للمستخدمين حفظ الوظائف المفضلة لديهم</li>
+                            <li data-ar="نحدث قاعدة البيانات بشكل مستمر لضمان أحدث الوظائف" data-en="We continuously update the database to ensure the latest jobs">نحدث قاعدة البيانات بشكل مستمر لضمان أحدث الوظائف</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h2 class="text-2xl font-bold mb-4" data-ar="ماذا يستفيد المستخدم؟" data-en="What does the user benefit?">ماذا يستفيد المستخدم؟</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex items-start space-x-3 space-x-reverse">
+                                <i class="fas fa-clock text-primary text-xl mt-1"></i>
+                                <div>
+                                    <h3 class="font-semibold mb-1" data-ar="توفير الوقت" data-en="Time Saving">توفير الوقت</h3>
+                                    <p class="text-gray-600 text-sm" data-ar="بدلاً من زيارة مواقع متعددة، كل شيء في مكان واحد" data-en="Instead of visiting multiple sites, everything in one place">بدلاً من زيارة مواقع متعددة، كل شيء في مكان واحد</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 space-x-reverse">
+                                <i class="fas fa-search text-primary text-xl mt-1"></i>
+                                <div>
+                                    <h3 class="font-semibold mb-1" data-ar="بحث متقدم" data-en="Advanced Search">بحث متقدم</h3>
+                                    <p class="text-gray-600 text-sm" data-ar="فلترة دقيقة حسب التخصص والموقع والشركة" data-en="Precise filtering by specialty, location, and company">فلترة دقيقة حسب التخصص والموقع والشركة</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 space-x-reverse">
+                                <i class="fas fa-heart text-primary text-xl mt-1"></i>
+                                <div>
+                                    <h3 class="font-semibold mb-1" data-ar="قائمة المفضلة" data-en="Favorites List">قائمة المفضلة</h3>
+                                    <p class="text-gray-600 text-sm" data-ar="حفظ الوظائف المهمة للمراجعة لاحقاً" data-en="Save important jobs for later review">حفظ الوظائف المهمة للمراجعة لاحقاً</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 space-x-reverse">
+                                <i class="fas fa-sync text-primary text-xl mt-1"></i>
+                                <div>
+                                    <h3 class="font-semibold mb-1" data-ar="تحديث مستمر" data-en="Continuous Updates">تحديث مستمر</h3>
+                                    <p class="text-gray-600 text-sm" data-ar="أحدث الوظائف المتاحة في السوق" data-en="Latest available jobs in the market">أحدث الوظائف المتاحة في السوق</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Favorites Page -->
+        <div id="favorites-page" class="hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <h1 class="text-3xl font-bold mb-8" data-ar="الوظائف المفضلة" data-en="Favorite Jobs">الوظائف المفضلة</h1>
+                <div id="favorites-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Favorites will be loaded here -->
+                </div>
+                <div id="no-favorites" class="hidden text-center py-16">
+                    <i class="fas fa-heart text-6xl text-gray-300 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-600 mb-2" data-ar="لا توجد وظائف مفضلة" data-en="No favorite jobs">لا توجد وظائف مفضلة</h3>
+                    <p class="text-gray-500" data-ar="ابدأ بإضافة وظائف إلى قائمة المفضلة" data-en="Start adding jobs to your favorites list">ابدأ بإضافة وظائف إلى قائمة المفضلة</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4" data-ar="نيرا" data-en="NIRA">نيرا</h3>
+                    <p class="text-gray-300 text-sm" data-ar="منصة البحث عن الوظائف الأولى في سوريا" data-en="The first job search platform in Syria">منصة البحث عن الوظائف الأولى في سوريا</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4" data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" onclick="showHome()" class="text-gray-300 hover:text-white" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                        <li><a href="#" onclick="showAllJobs()" class="text-gray-300 hover:text-white" data-ar="جميع الوظائف" data-en="All Jobs">جميع الوظائف</a></li>
+                        <li><a href="#" onclick="showAbout()" class="text-gray-300 hover:text-white" data-ar="حول نيرا" data-en="About NIRA">حول نيرا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4" data-ar="المصادر" data-en="Sources">المصادر</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://reliefweb.int/jobs" target="_blank" class="text-gray-300 hover:text-white">ReliefWeb</a></li>
+                        <li><a href="https://www.job.sy/" target="_blank" class="text-gray-300 hover:text-white">Job.sy</a></li>
+                        <li><a href="https://www.nsjobs.net/" target="_blank" class="text-gray-300 hover:text-white">NSJobs</a></li>
+                        <li><a href="http://www.forsa.sy/" target="_blank" class="text-gray-300 hover:text-white">Forsa.sy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h3>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300 text-sm" data-ar="© 2025 نيرا. جميع الحقوق محفوظة." data-en="© 2025 NIRA. All rights reserved.">© 2025 نيرا. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Global variables
+        let currentUser = null;
+        let currentLanguage = 'ar';
+        let currentPage = 1;
+        let totalPages = 1;
+        let currentFilters = {};
+
+        // API Base URL
+        const API_BASE = '/api';
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthStatus();
+            loadStats();
+            loadCategories();
+            loadLatestJobs();
+        });
+
+        // Authentication functions
+        async function checkAuthStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/auth/check`, {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                
+                if (data.authenticated) {
+                    currentUser = data.user;
+                    updateUserUI();
+                }
+            } catch (error) {
+                console.error('Error checking auth status:', error);
+            }
+        }
+
+        async function login() {
+            try {
+                const response = await fetch(`${API_BASE}/auth/login`, {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                
+                if (data.auth_url) {
+                    window.location.href = data.auth_url;
+                }
+            } catch (error) {
+                console.error('Error during login:', error);
+                showNotification('حدث خطأ أثناء تسجيل الدخول', 'error');
+            }
+        }
+
+        async function logout() {
+            try {
+                const response = await fetch(`${API_BASE}/auth/logout`, {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+                
+                if (response.ok) {
+                    currentUser = null;
+                    updateUserUI();
+                    showNotification('تم تسجيل الخروج بنجاح', 'success');
+                }
+            } catch (error) {
+                console.error('Error during logout:', error);
+            }
+        }
+
+        function updateUserUI() {
+            const loginBtn = document.getElementById('login-btn');
+            const mobileLoginBtn = document.getElementById('mobile-login-btn');
+            const userMenu = document.getElementById('user-menu');
+            
+            if (currentUser) {
+                loginBtn.style.display = 'none';
+                mobileLoginBtn.style.display = 'none';
+                userMenu.style.display = 'block';
+                
+                document.getElementById('user-name').textContent = currentUser.name;
+                document.getElementById('user-avatar').src = currentUser.picture || '/default-avatar.png';
+            } else {
+                loginBtn.style.display = 'block';
+                mobileLoginBtn.style.display = 'block';
+                userMenu.style.display = 'none';
+            }
+        }
+
+        // Navigation functions
+        function showHome() {
+            hideAllPages();
+            document.getElementById('home-page').style.display = 'block';
+            loadLatestJobs();
+        }
+
+        function showAllJobs() {
+            hideAllPages();
+            document.getElementById('jobs-page').style.display = 'block';
+            loadJobs();
+        }
+
+        function showAbout() {
+            hideAllPages();
+            document.getElementById('about-page').style.display = 'block';
+        }
+
+        function showFavorites() {
+            if (!currentUser) {
+                showNotification('يجب تسجيل الدخول أولاً', 'error');
+                return;
+            }
+            hideAllPages();
+            document.getElementById('favorites-page').style.display = 'block';
+            loadFavorites();
+        }
+
+        function hideAllPages() {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('jobs-page').style.display = 'none';
+            document.getElementById('about-page').style.display = 'none';
+            document.getElementById('favorites-page').style.display = 'none';
+        }
+
+        // Data loading functions
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_BASE}/stats`);
+                const data = await response.json();
+                
+                document.getElementById('total-jobs').textContent = data.total_jobs || 0;
+                document.getElementById('total-companies').textContent = data.total_companies || 0;
+                document.getElementById('total-sources').textContent = data.total_sources || 0;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        async function loadCategories() {
+            try {
+                const response = await fetch(`${API_BASE}/categories`);
+                const data = await response.json();
+                
+                const grid = document.getElementById('categories-grid');
+                const categoryFilter = document.getElementById('category-filter');
+                
+                grid.innerHTML = '';
+                
+                data.categories.forEach(category => {
+                    // Add to grid
+                    const categoryCard = document.createElement('div');
+                    categoryCard.className = 'category-card bg-white p-6 rounded-lg shadow-sm text-center';
+                    categoryCard.onclick = () => searchByCategory(category.name_ar);
+                    
+                    categoryCard.innerHTML = `
+                        <i class="${category.icon} text-3xl text-primary mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">${currentLanguage === 'ar' ? category.name_ar : category.name_en}</h3>
+                    `;
+                    
+                    grid.appendChild(categoryCard);
+                    
+                    // Add to filter
+                    const option = document.createElement('option');
+                    option.value = category.name_ar;
+                    option.textContent = currentLanguage === 'ar' ? category.name_ar : category.name_en;
+                    categoryFilter.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading categories:', error);
+            }
+        }
+
+        async function loadLatestJobs() {
+            try {
+                const response = await fetch(`${API_BASE}/jobs?per_page=12`);
+                const data = await response.json();
+                
+                const container = document.getElementById('latest-jobs');
+                container.innerHTML = '';
+                
+                data.jobs.forEach(job => {
+                    container.appendChild(createJobCard(job));
+                });
+            } catch (error) {
+                console.error('Error loading latest jobs:', error);
+            }
+        }
+
+        async function loadJobs(page = 1) {
+            const loading = document.getElementById('jobs-loading');
+            const grid = document.getElementById('jobs-grid');
+            
+            loading.classList.add('show');
+            
+            try {
+                const params = new URLSearchParams({
+                    page: page,
+                    per_page: 12,
+                    ...currentFilters
+                });
+                
+                const response = await fetch(`${API_BASE}/jobs?${params}`);
+                const data = await response.json();
+                
+                grid.innerHTML = '';
+                
+                data.jobs.forEach(job => {
+                    grid.appendChild(createJobCard(job));
+                });
+                
+                updatePagination(data.pagination);
+                currentPage = page;
+                
+            } catch (error) {
+                console.error('Error loading jobs:', error);
+                showNotification('حدث خطأ في تحميل الوظائف', 'error');
+            } finally {
+                loading.classList.remove('show');
+            }
+        }
+
+        async function loadFavorites() {
+            try {
+                const response = await fetch(`${API_BASE}/favorites`, {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                
+                const grid = document.getElementById('favorites-grid');
+                const noFavorites = document.getElementById('no-favorites');
+                
+                if (data.favorites && data.favorites.length > 0) {
+                    grid.innerHTML = '';
+                    noFavorites.classList.add('hidden');
+                    
+                    data.favorites.forEach(favorite => {
+                        if (favorite.job) {
+                            grid.appendChild(createJobCard(favorite.job));
+                        }
+                    });
+                } else {
+                    grid.innerHTML = '';
+                    noFavorites.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error loading favorites:', error);
+                showNotification('حدث خطأ في تحميل المفضلة', 'error');
+            }
+        }
+
+        // Job card creation
+        function createJobCard(job) {
+            const card = document.createElement('div');
+            card.className = 'job-card bg-white p-6 rounded-lg shadow-sm border border-gray-200 relative';
+            
+            const skills = job.skills ? JSON.parse(job.skills) : [];
+            const skillsHtml = skills.slice(0, 3).map(skill => 
+                `<span class="skill-tag">${skill}</span>`
+            ).join('');
+            
+            card.innerHTML = `
+                <div class="job-source-badge">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">${job.source}</span>
+                </div>
+                
+                ${currentUser ? `
+                <button class="favorite-btn ${job.is_favorite ? 'active' : ''}" onclick="toggleFavorite(${job.id}, this)">
+                    <i class="fas fa-heart text-xl"></i>
+                </button>
+                ` : ''}
+                
+                <div class="mt-4">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">${job.title}</h3>
+                    <p class="text-gray-600 mb-2">${job.company}</p>
+                    <p class="text-sm text-gray-500 mb-4 line-clamp-3">${job.description}</p>
+                    
+                    <div class="mb-4">
+                        ${skillsHtml}
+                    </div>
+                    
+                    <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <span><i class="fas fa-map-marker-alt mr-1"></i>${job.location}</span>
+                        <span><i class="fas fa-clock mr-1"></i>${job.date_posted}</span>
+                    </div>
+                    
+                    <button onclick="viewJobDetails('${job.link}')" class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
+                        <i class="fas fa-external-link-alt mr-1"></i>
+                        عرض التفاصيل
+                    </button>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Job actions
+        function viewJobDetails(link) {
+            if (!currentUser) {
+                showNotification('يجب تسجيل الدخول لعرض التفاصيل', 'error');
+                return;
+            }
+            
+            if (link && link !== '#') {
+                window.open(link, '_blank');
+            } else {
+                showNotification('رابط الوظيفة غير متوفر', 'error');
+            }
+        }
+
+        async function toggleFavorite(jobId, button) {
+            if (!currentUser) {
+                showNotification('يجب تسجيل الدخول أولاً', 'error');
+                return;
+            }
+            
+            try {
+                const isActive = button.classList.contains('active');
+                
+                if (isActive) {
+                    // Remove from favorites
+                    const response = await fetch(`${API_BASE}/favorites/${jobId}`, {
+                        method: 'DELETE',
+                        credentials: 'include'
+                    });
+                    
+                    if (response.ok) {
+                        button.classList.remove('active');
+                        showNotification('تم إزالة الوظيفة من المفضلة', 'success');
+                    }
+                } else {
+                    // Add to favorites
+                    const response = await fetch(`${API_BASE}/favorites`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        credentials: 'include',
+                        body: JSON.stringify({ job_id: jobId })
+                    });
+                    
+                    if (response.ok) {
+                        button.classList.add('active');
+                        showNotification('تم إضافة الوظيفة للمفضلة', 'success');
+                    }
+                }
+            } catch (error) {
+                console.error('Error toggling favorite:', error);
+                showNotification('حدث خطأ في العملية', 'error');
+            }
+        }
+
+        // Search and filter functions
+        function searchJobs() {
+            const searchTerm = document.getElementById('search-input').value;
+            currentFilters = { search: searchTerm };
+            showAllJobs();
+        }
+
+        function searchByCategory(category) {
+            currentFilters = { category: category };
+            showAllJobs();
+        }
+
+        function filterJobs() {
+            const search = document.getElementById('jobs-search-input').value;
+            const category = document.getElementById('category-filter').value;
+            const source = document.getElementById('source-filter').value;
+            
+            currentFilters = {};
+            if (search) currentFilters.search = search;
+            if (category) currentFilters.category = category;
+            if (source) currentFilters.source = source;
+            
+            loadJobs(1);
+        }
+
+        // Pagination
+        function updatePagination(pagination) {
+            const container = document.getElementById('pagination');
+            container.innerHTML = '';
+            
+            totalPages = pagination.pages;
+            
+            // Previous button
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'pagination-btn px-3 py-2 border border-gray-300 rounded-lg';
+            prevBtn.disabled = !pagination.has_prev;
+            prevBtn.onclick = () => loadJobs(pagination.page - 1);
+            prevBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            container.appendChild(prevBtn);
+            
+            // Page numbers
+            for (let i = Math.max(1, pagination.page - 2); i <= Math.min(pagination.pages, pagination.page + 2); i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = `pagination-btn px-3 py-2 border border-gray-300 rounded-lg ${i === pagination.page ? 'bg-primary text-white' : ''}`;
+                pageBtn.textContent = i;
+                pageBtn.onclick = () => loadJobs(i);
+                container.appendChild(pageBtn);
+            }
+            
+            // Next button
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'pagination-btn px-3 py-2 border border-gray-300 rounded-lg';
+            nextBtn.disabled = !pagination.has_next;
+            nextBtn.onclick = () => loadJobs(pagination.page + 1);
+            nextBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            container.appendChild(nextBtn);
+        }
+
+        // Language toggle
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
+            
+            const html = document.getElementById('html-root');
+            const body = document.body;
+            
+            if (currentLanguage === 'en') {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', 'en');
+                body.setAttribute('dir', 'ltr');
+                document.getElementById('lang-text').textContent = 'العربية';
+            } else {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+                body.setAttribute('dir', 'rtl');
+                document.getElementById('lang-text').textContent = 'English';
+            }
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-ar]').forEach(element => {
+                const text = currentLanguage === 'ar' ? element.getAttribute('data-ar') : element.getAttribute('data-en');
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            // Update placeholders
+            document.querySelectorAll('[data-ar-placeholder]').forEach(element => {
+                const placeholder = currentLanguage === 'ar' ? element.getAttribute('data-ar-placeholder') : element.getAttribute('data-en-placeholder');
+                if (placeholder) {
+                    element.setAttribute('placeholder', placeholder);
+                }
+            });
+            
+            // Reload categories with new language
+            loadCategories();
+        }
+
+        // Mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Notifications
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            const text = document.getElementById('notification-text');
+            
+            text.textContent = message;
+            
+            // Set color based on type
+            notification.className = `notification ${type === 'error' ? 'bg-red-500' : type === 'success' ? 'bg-green-500' : 'bg-blue-500'} text-white px-6 py-3 rounded-lg shadow-lg show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && (e.target.id === 'search-input' || e.target.id === 'jobs-search-input')) {
+                if (e.target.id === 'search-input') {
+                    searchJobs();
+                } else {
+                    filterJobs();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
