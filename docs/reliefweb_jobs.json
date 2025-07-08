@@ -1,0 +1,70 @@
+[
+  {
+    "id": "nsjobs_sample_1",
+    "title": "مهندس إعادة تأهيل",
+    "company": "BAHAR NGO",
+    "location": "دير الزور",
+    "description": "مطلوب مهندس إعادة تأهيل للعمل في مشاريع إعادة الإعمار في دير الزور",
+    "url": "https://www.nsjobs.net/",
+    "posted_date": "2025-07-08T06:06:14.790912",
+    "source": "nsjobs.net",
+    "category": "الهندسة",
+    "skills": [
+      "الهندسة المدنية",
+      "إعادة التأهيل",
+      "إدارة المشاريع"
+    ],
+    "employment_type": "دوام كامل"
+  },
+  {
+    "id": "nsjobs_sample_2",
+    "title": "موزع أدوية",
+    "company": "IRC - International Rescue Committee",
+    "location": "الحسكة",
+    "description": "مطلوب موزع أدوية للعمل في المراكز الصحية في الحسكة",
+    "url": "https://www.nsjobs.net/",
+    "posted_date": "2025-07-08T06:06:14.790942",
+    "source": "nsjobs.net",
+    "category": "الصحة والطب",
+    "skills": [
+      "توزيع الأدوية",
+      "الصحة العامة",
+      "العمل الميداني"
+    ],
+    "employment_type": "دوام كامل"
+  },
+  {
+    "id": "nsjobs_sample_3",
+    "title": "مدخل بيانات",
+    "company": "منظمة دولية",
+    "location": "الحسكة",
+    "description": "مطلوب مدخل بيانات للعمل في إدخال ومعالجة البيانات",
+    "url": "https://www.nsjobs.net/",
+    "posted_date": "2025-07-08T06:06:14.790955",
+    "source": "nsjobs.net",
+    "category": "تقنية المعلومات",
+    "skills": [
+      "إدخال البيانات",
+      "Excel",
+      "الحاسوب"
+    ],
+    "employment_type": "دوام كامل"
+  },
+  {
+    "id": "jobsy_sample_1",
+    "title": "Deputy Safety Advisor",
+    "company": "INSO Syria",
+    "location": "Damascus",
+    "description": "مطلوب مستشار أمان نائب للعمل في مشاريع الأمان والحماية",
+    "url": "https://www.job.sy/",
+    "posted_date": "2025-07-08T06:06:19.092166",
+    "source": "job.sy",
+    "category": "العلاقات العامة والأمن والسلامة",
+    "skills": [
+      "الأمان",
+      "الحماية",
+      "إدارة المخاطر"
+    ],
+    "employment_type": "دوام كامل"
+  }
+]
