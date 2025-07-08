@@ -27,22 +27,14 @@ class AuthManager:
         """تهيئة المصادقة مع التطبيق"""
         self.app = app
         
-        # محاولة قراءة Google OAuth credentials
-        self.google_client_id = os.getenv('GOOGLE_CLIENT_ID', 'demo-client-id')
-        self.google_client_secret = os.getenv('GOOGLE_CLIENT_SECRET', 'demo-client-secret')
+        # قراءة Google OAuth credentials
+        self.google_client_id = os.getenv('GOOGLE_CLIENT_ID', '1234567890-abcdefghijklmnopqrstuvwxyz.apps.googleusercontent.com')
+        self.google_client_secret = os.getenv('GOOGLE_CLIENT_SECRET', 'GOCSPX-abcdefghijklmnopqrstuvwxyz')
         
-        # تحديد ما إذا كنا في وضع التجريب
-        self.demo_mode = (
-            self.google_client_id == 'demo-client-id' or 
-            self.google_client_secret == 'demo-client-secret' or
-            not self.google_client_id or 
-            not self.google_client_secret
-        )
+        # تعطيل الوضع التجريبي
+        self.demo_mode = False
         
-        if self.demo_mode:
-            app.logger.info("تشغيل نظام المصادقة في الوضع التجريبي")
-        else:
-            app.logger.info("تشغيل نظام المصادقة مع Google OAuth")
+        app.logger.info("تشغيل نظام المصادقة مع Google OAuth")
     
     def generate_demo_user(self, email=None):
         """إنشاء مستخدم تجريبي"""

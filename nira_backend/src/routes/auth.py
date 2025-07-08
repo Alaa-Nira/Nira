@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, redirect, session, url_for
+from flask import Blueprint, request, jsonify, session, redirect
 from auth_manager import auth_manager
 import logging
 
@@ -9,25 +9,15 @@ logger = logging.getLogger(__name__)
 def login():
     """بدء عملية تسجيل الدخول"""
     try:
-        if auth_manager.demo_mode:
-            # في الوضع التجريبي، إنشاء مستخدم تجريبي مباشرة
-            user = auth_manager.demo_login()
-            return jsonify({
-                'success': True,
-                'message': 'تم تسجيل الدخول بنجاح (وضع تجريبي)',
-                'user': user,
-                'demo_mode': True
-            })
+        # إعادة توجيه إلى Google OAuth
+        google_url = auth_manager.google_login_url()
+        if google_url:
+            return redirect(google_url)
         else:
-            # إعادة توجيه إلى Google OAuth
-            google_url = auth_manager.google_login_url()
-            if google_url:
-                return redirect(google_url)
-            else:
-                return jsonify({
-                    'error': 'OAuth configuration error',
-                    'message': 'خطأ في إعدادات Google OAuth'
-                }), 500
+            return jsonify({
+                'error': 'OAuth configuration error',
+                'message': 'خطأ في إعدادات Google OAuth'
+            }), 500
                 
     except Exception as e:
         logger.error(f"خطأ في تسجيل الدخول: {e}")
