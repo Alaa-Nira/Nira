@@ -5,6 +5,8 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>تصفح الوظائف - نيرا</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&amp;family=Poppins:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <style>
@@ -57,9 +59,9 @@
 <a class="text-gray-700 hover:text-indigo-500 px-3 py-2 text-sm font-medium" href="index.html">الرئيسية</a>
 <a class="text-indigo-600 px-3 py-2 text-sm font-medium" href="search.html">تصفح الوظائف</a>
 <a class="text-gray-700 hover:text-indigo-500 px-3 py-2 text-sm font-medium" href="about.html">عن نيرا</a>
-<button class="ml-3 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700" id="authButton">
-                        تسجيل الدخول
-                    </button>
+                <button class="ml-3 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700" id="authButton">
+                    <span id="authButtonText">تسجيل الدخول</span>
+                </button>
 </div>
 <div class="-mr-2 flex items-center md:hidden">
 <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="mobileMenuButton" type="button">
@@ -75,8 +77,8 @@
 <a class="text-gray-700 hover:text-indigo-500 block px-3 py-2 text-base font-medium" href="index.html">الرئيسية</a>
 <a class="text-indigo-600 block px-3 py-2 text-base font-medium" href="search.html">تصفح الوظائف</a>
 <a class="text-gray-700 hover:text-indigo-500 block px-3 py-2 text-base font-medium" href="about.html">عن نيرا</a>
-<button class="w-full text-left bg-indigo-600 text-white px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-700" id="authButtonMobile">
-                    تسجيل الدخول
+                <button class="w-full text-left bg-indigo-600 text-white px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-700" id="authButtonMobile">
+                    <span id="authButtonTextMobile">تسجيل الدخول</span>
                 </button>
 </div>
 </div>
@@ -244,27 +246,217 @@
 <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 sm:mx-0 sm:h-10 sm:w-10">
 <i class="fas fa-user text-indigo-600"></i>
 </div>
-<div class="mt-3 text-center sm:mt-0 sm:mr-4 sm:text-right">
-<h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">تسجيل الدخول إلى نيرا</h3>
+<div class="mt-3 text-center sm:mt-0 sm:mr-4 sm:text-right w-full">
+<h3 class="text-lg leading-6 font-medium text-gray-900 mb-4" id="modal-headline">تسجيل الدخول إلى نيرا</h3>
 <div class="mt-2">
-<p class="text-sm text-gray-500">سجل الدخول باستخدام حساب غوغل للوصول إلى جميع ميزات نيرا.</p>
+<p class="text-sm text-gray-500 mb-6">سجل الدخول للوصول إلى جميع ميزات نيرا وحفظ الوظائف المفضلة</p>
+</div>
+
+<!-- Google Sign In Button -->
+<div class="mb-4">
+<button class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="googleSignIn" type="button">
+<svg class="w-5 h-5 mr-2" viewBox="0 0 24 24">
+<path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+<path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+<path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+<path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+</svg>
+تسجيل الدخول بـ Google
+</button>
+</div>
+
+<!-- Facebook Sign In Button -->
+<div class="mb-4">
+<button class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-blue-600 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" id="facebookSignIn" type="button">
+<i class="fab fa-facebook-f mr-2"></i>
+تسجيل الدخول بـ Facebook
+</button>
+</div>
+
+<div class="text-center">
+<p class="text-xs text-gray-500">
+بالتسجيل، أنت توافق على 
+<a href="#" class="text-indigo-600 hover:text-indigo-500">شروط الخدمة</a>
+و
+<a href="#" class="text-indigo-600 hover:text-indigo-500">سياسة الخصوصية</a>
+</p>
 </div>
 </div>
 </div>
 </div>
 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-<button class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm" id="googleSignIn" type="button">
-<i class="fab fa-google mr-2"></i> تسجيل الدخول بغوغل
-                    </button>
 <button class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" id="closeAuthModal" type="button">
-                        إلغاء
-                    </button>
+إلغاء
+</button>
 </div>
 </div>
 </div>
 </div>
 
 <script>
+// Authentication System
+let currentUser = null;
+
+// Initialize Facebook SDK
+window.fbAsyncInit = function() {
+  FB.init({
+    appId: '1234567890123456', // Replace with your Facebook App ID
+    cookie: true,
+    xfbml: true,
+    version: 'v18.0'
+  });
+};
+
+// Initialize Google OAuth
+function initializeGoogleAuth() {
+  google.accounts.id.initialize({
+    client_id: "your-google-client-id.apps.googleusercontent.com", // Replace with your Google Client ID
+    callback: handleGoogleSignIn
+  });
+}
+
+// Handle Google Sign In
+function handleGoogleSignIn(response) {
+  const credential = response.credential;
+  const payload = JSON.parse(atob(credential.split('.')[1]));
+  
+  currentUser = {
+    id: payload.sub,
+    name: payload.name,
+    email: payload.email,
+    picture: payload.picture,
+    provider: 'google'
+  };
+  
+  saveUserSession();
+  updateAuthUI();
+  closeAuthModal();
+  showWelcomeMessage();
+}
+
+// Handle Facebook Sign In
+function handleFacebookSignIn() {
+  FB.login(function(response) {
+    if (response.authResponse) {
+      FB.api('/me', {fields: 'name,email,picture'}, function(response) {
+        currentUser = {
+          id: response.id,
+          name: response.name,
+          email: response.email,
+          picture: response.picture.data.url,
+          provider: 'facebook'
+        };
+        
+        saveUserSession();
+        updateAuthUI();
+        closeAuthModal();
+        showWelcomeMessage();
+      });
+    }
+  }, {scope: 'email'});
+}
+
+// Save user session
+function saveUserSession() {
+  localStorage.setItem('nira_user', JSON.stringify(currentUser));
+}
+
+// Load user session
+function loadUserSession() {
+  const savedUser = localStorage.getItem('nira_user');
+  if (savedUser) {
+    currentUser = JSON.parse(savedUser);
+    updateAuthUI();
+  }
+}
+
+// Update authentication UI
+function updateAuthUI() {
+  const authButton = document.getElementById('authButtonText');
+  const authButtonMobile = document.getElementById('authButtonTextMobile');
+  
+  if (currentUser) {
+    authButton.textContent = `مرحباً ${currentUser.name.split(' ')[0]}`;
+    authButtonMobile.textContent = `مرحباً ${currentUser.name.split(' ')[0]}`;
+    
+    // Change button click behavior to logout
+    document.getElementById('authButton').onclick = logout;
+    document.getElementById('authButtonMobile').onclick = logout;
+  } else {
+    authButton.textContent = 'تسجيل الدخول';
+    authButtonMobile.textContent = 'تسجيل الدخول';
+    
+    // Change button click behavior to show login modal
+    document.getElementById('authButton').onclick = showAuthModal;
+    document.getElementById('authButtonMobile').onclick = showAuthModal;
+  }
+}
+
+// Show authentication modal
+function showAuthModal() {
+  document.getElementById('authModal').classList.remove('hidden');
+}
+
+// Close authentication modal
+function closeAuthModal() {
+  document.getElementById('authModal').classList.add('hidden');
+}
+
+// Logout function
+function logout() {
+  if (currentUser && currentUser.provider === 'facebook') {
+    FB.logout();
+  }
+  
+  currentUser = null;
+  localStorage.removeItem('nira_user');
+  updateAuthUI();
+  showLogoutMessage();
+}
+
+// Show welcome message
+function showWelcomeMessage() {
+  const toast = document.createElement('div');
+  toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+  toast.innerHTML = `
+    <div class="flex items-center">
+      <i class="fas fa-check-circle mr-2"></i>
+      <span>مرحباً بك ${currentUser.name}! تم تسجيل الدخول بنجاح</span>
+    </div>
+  `;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+
+// Show logout message
+function showLogoutMessage() {
+  const toast = document.createElement('div');
+  toast.className = 'fixed top-4 right-4 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+  toast.innerHTML = `
+    <div class="flex items-center">
+      <i class="fas fa-sign-out-alt mr-2"></i>
+      <span>تم تسجيل الخروج بنجاح</span>
+    </div>
+  `;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+
+// Check if user is logged in before allowing actions
+function requireAuth(action) {
+  if (!currentUser) {
+    showAuthModal();
+    return false;
+  }
+  return true;
+}
+
 let allJobs = [];
 let filteredJobs = [];
 let currentFilter = 'all';
@@ -316,9 +508,9 @@ function createJobCard(job) {
             <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
                 ${getJobSource(job["Link"])}
             </span>
-            <a href="${job["Link"]}" target="_blank" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm transition">
+            <button class="job-details-btn inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm transition" data-link="${job["Link"]}">
                 عرض التفاصيل
-            </a>
+            </button>
         </div>
     `;
     
@@ -482,23 +674,32 @@ document.getElementById('mobileMenuButton').addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
 });
 
-// Auth modal
-document.getElementById('authButton').addEventListener('click', () => {
-    document.getElementById('authModal').classList.remove('hidden');
+// Initialize authentication
+loadUserSession();
+initializeGoogleAuth();
+
+// Event listeners for auth buttons
+document.getElementById('googleSignIn').addEventListener('click', () => {
+    google.accounts.id.prompt();
 });
 
-document.getElementById('authButtonMobile').addEventListener('click', () => {
-    document.getElementById('authModal').classList.remove('hidden');
-});
-
-document.getElementById('closeAuthModal').addEventListener('click', () => {
-    document.getElementById('authModal').classList.add('hidden');
-});
+document.getElementById('facebookSignIn').addEventListener('click', handleFacebookSignIn);
+document.getElementById('closeAuthModal').addEventListener('click', closeAuthModal);
 
 // Close modal when clicking outside
 document.getElementById('authModal').addEventListener('click', (e) => {
     if (e.target.id === 'authModal') {
-        document.getElementById('authModal').classList.add('hidden');
+        closeAuthModal();
+    }
+});
+
+// Add authentication protection to job detail buttons
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('job-details-btn')) {
+        e.preventDefault();
+        if (requireAuth()) {
+            window.open(e.target.dataset.link, '_blank');
+        }
     }
 });
 </script>
