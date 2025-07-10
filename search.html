@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>تصفح الوظائف - نيرا</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&amp;family=Poppins:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        :root {
+            --primary: #4F46E5;
+            --secondary: #10B981;
+        }
+        body[dir="rtl"] {
+            font-family: 'Tajawal', sans-serif;
+        }
+        body[dir="ltr"] {
+            font-family: 'Poppins', sans-serif;
+        }
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .job-source-badge {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+        }
+        .active-filter {
+            background-color: #4F46E5;
+            color: white;
+        }
+        .filter-btn {
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover {
+            background-color: #4F46E5;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800" dir="rtl">
+<!-- Navigation -->
+<nav class="bg-white shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center">
+<a class="flex-shrink-0 flex items-center" href="index.html">
+<img alt="Nira Logo واضح" class="h-8 w-auto" src="wmremove-transformed (1).png" style="height: 60px; max-height: 60px;"/>
+</a>
+</div>
+<div class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
+<a class="text-gray-700 hover:text-indigo-500 px-3 py-2 text-sm font-medium" href="index.html">الرئيسية</a>
+<a class="text-indigo-600 px-3 py-2 text-sm font-medium" href="search.html">تصفح الوظائف</a>
+<a class="text-gray-700 hover:text-indigo-500 px-3 py-2 text-sm font-medium" href="about.html">عن نيرا</a>
+<button class="ml-3 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700" id="authButton">
+                        تسجيل الدخول
+                    </button>
+</div>
+<div class="-mr-2 flex items-center md:hidden">
+<button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="mobileMenuButton" type="button">
+<span class="sr-only">Open main menu</span>
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile menu -->
+<div class="hidden md:hidden" id="mobileMenu">
+<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+<a class="text-gray-700 hover:text-indigo-500 block px-3 py-2 text-base font-medium" href="index.html">الرئيسية</a>
+<a class="text-indigo-600 block px-3 py-2 text-base font-medium" href="search.html">تصفح الوظائف</a>
+<a class="text-gray-700 hover:text-indigo-500 block px-3 py-2 text-base font-medium" href="about.html">عن نيرا</a>
+<button class="w-full text-left bg-indigo-600 text-white px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-700" id="authButtonMobile">
+                    تسجيل الدخول
+                </button>
+</div>
+</div>
+</nav>
+
+<!-- Main Content -->
+<main>
+    <!-- Search Header -->
+    <section class="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4">تصفح جميع الوظائف</h1>
+                <p class="text-lg mb-6">اكتشف أحدث الفرص الوظيفية المتاحة من مختلف المصادر</p>
+            </div>
+            
+            <!-- Search Box -->
+            <div class="max-w-2xl mx-auto mb-6">
+                <div class="relative">
+                    <input type="text" id="searchInput" placeholder="ابحث بكلمات مفتاحية، تخصص، أو اسم شركة..." 
+                           class="w-full py-3 px-4 pr-12 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300 search-input">
+                    <button class="absolute left-3 top-3 text-blue-500" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-wrap justify-center gap-2 mb-4">
+                    <button class="filter-btn px-4 py-2 rounded-full text-sm bg-white bg-opacity-20 hover:bg-white hover:text-blue-600 transition" data-filter="all">
+                        جميع الوظائف
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-full text-sm bg-white bg-opacity-20 hover:bg-white hover:text-blue-600 transition" data-filter="تكنولوجيا المعلومات">
+                        تكنولوجيا المعلومات
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-full text-sm bg-white bg-opacity-20 hover:bg-white hover:text-blue-600 transition" data-filter="الصحة">
+                        الصحة
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-full text-sm bg-white bg-opacity-20 hover:bg-white hover:text-blue-600 transition" data-filter="التعليم">
+                        التعليم
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-full text-sm bg-white bg-opacity-20 hover:bg-white hover:text-blue-600 transition" data-filter="الهندسة">
+                        الهندسة
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-full text-sm bg-white bg-opacity-20 hover:bg-white hover:text-blue-600 transition" data-filter="المنظمات">
+                        المنظمات
+                    </button>
+                </div>
+                
+                <!-- Source Filter -->
+                <div class="flex flex-wrap justify-center gap-2">
+                    <button class="filter-btn px-3 py-1 rounded-full text-xs bg-white bg-opacity-20 hover:bg-white hover:text-blue-600 transition" data-source="all">
+                        جميع المصادر
+                    </button>
+                    <button class="filter-btn px-3 py-1 rounded-full text-xs bg-white bg-opacity-20 hover:bg-white hover:text-blue-600 transition" data-source="reliefweb">
+                        ReliefWeb
+                    </button>
+                    <button class="filter-btn px-3 py-1 rounded-full text-xs bg-white bg-opacity-20 hover:bg-white hover:text-blue-600 transition" data-source="job.sy">
+                        Job.sy
+                    </button>
+                    <button class="filter-btn px-3 py-1 rounded-full text-xs bg-white bg-opacity-20 hover:bg-white hover:text-blue-600 transition" data-source="nsjobs">
+                        شبكة شمال شرق سوريا
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <!-- Results Info -->
+            <div class="flex justify-between items-center mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800">نتائج البحث</h2>
+                    <p class="text-gray-600" id="resultsCount">عرض جميع الوظائف المتاحة</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <select id="sortSelect" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        <option value="newest">الأحدث</option>
+                        <option value="oldest">الأقدم</option>
+                        <option value="title">حسب العنوان</option>
+                        <option value="company">حسب الشركة</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Jobs Grid -->
+            <div id="jobsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Jobs will be loaded here -->
+            </div>
+            
+            <!-- No Results Message -->
+            <div id="noResults" class="hidden text-center py-12">
+                <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+                <h3 class="text-xl font-bold text-gray-600 mb-2">لا توجد نتائج</h3>
+                <p class="text-gray-500">جرب تغيير كلمات البحث أو الفلاتر</p>
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-8">
+                <button id="loadMoreBtn" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition">
+                    تحميل المزيد
+                </button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-lg font-semibold mb-4">عن نيرا</h3>
+<p class="text-gray-300">منصة بحث عن الوظائف في سوريا، تجمع الفرص من مختلف المنصات في مكان واحد.</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">روابط سريعة</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white" href="index.html">الرئيسية</a></li>
+<li><a class="text-gray-300 hover:text-white" href="search.html">تصفح الوظائف</a></li>
+<li><a class="text-gray-300 hover:text-white" href="about.html">عن نيرا</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">المصادر</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white" href="https://reliefweb.int" target="_blank">Relief Web</a></li>
+<li><a class="text-gray-300 hover:text-white" href="https://job.sy" target="_blank">Job.sy</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">شبكة شمال شرق سوريا</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">اشترك في النشرة البريدية</h3>
+<div class="flex">
+<input class="px-4 py-2 w-full rounded-r-md focus:outline-none text-gray-800" placeholder="بريدك الإلكتروني" type="email"/>
+<button class="bg-indigo-600 text-white px-4 py-2 rounded-l-md hover:bg-indigo-700 focus:outline-none">
+<i class="fas fa-paper-plane"></i>
+</button>
+</div>
+<div class="mt-4 flex space-x-4 space-x-reverse">
+<a class="text-gray-300 hover:text-white text-xl" href="#"><i class="fab fa-facebook"></i></a>
+<a class="text-gray-300 hover:text-white text-xl" href="#"><i class="fab fa-twitter"></i></a>
+<a class="text-gray-300 hover:text-white text-xl" href="#"><i class="fab fa-linkedin"></i></a>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
+<p>© 2025 نيرا. جميع الحقوق محفوظة.</p>
+</div>
+</div>
+</footer>
+
+<!-- Google Sign In Modal -->
+<div class="fixed inset-0 z-50 hidden overflow-y-auto" id="authModal">
+<div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+<div aria-hidden="true" class="fixed inset-0 transition-opacity">
+<div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+</div>
+<span aria-hidden="true" class="hidden sm:inline-block sm:align-middle sm:h-screen">​</span>
+<div aria-labelledby="modal-headline" aria-modal="true" class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog">
+<div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+<div class="sm:flex sm:items-start">
+<div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 sm:mx-0 sm:h-10 sm:w-10">
+<i class="fas fa-user text-indigo-600"></i>
+</div>
+<div class="mt-3 text-center sm:mt-0 sm:mr-4 sm:text-right">
+<h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">تسجيل الدخول إلى نيرا</h3>
+<div class="mt-2">
+<p class="text-sm text-gray-500">سجل الدخول باستخدام حساب غوغل للوصول إلى جميع ميزات نيرا.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+<button class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm" id="googleSignIn" type="button">
+<i class="fab fa-google mr-2"></i> تسجيل الدخول بغوغل
+                    </button>
+<button class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" id="closeAuthModal" type="button">
+                        إلغاء
+                    </button>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+let allJobs = [];
+let filteredJobs = [];
+let currentFilter = 'all';
+let currentSource = 'all';
+let currentSearch = '';
+let displayedJobs = 0;
+const jobsPerPage = 9;
+
+// Load jobs data
+fetch('reliefweb_jobs.json')
+    .then(response => response.json())
+    .then(data => {
+        allJobs = data;
+        filteredJobs = [...allJobs];
+        displayJobs();
+        updateResultsCount();
+    })
+    .catch(error => {
+        console.error('Error loading jobs:', error);
+        document.getElementById('noResults').classList.remove('hidden');
+    });
+
+// Create job card
+function createJobCard(job) {
+    const card = document.createElement('div');
+    card.className = 'job-card bg-white rounded-xl shadow overflow-hidden border border-gray-100 p-6 flex flex-col justify-between transition-all duration-300';
+    
+    card.innerHTML = `
+        <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">${job["Job Title"] || 'عنوان غير متوفر'}</h3>
+            <p class="text-gray-600 text-sm mb-2">
+                <i class="fas fa-building mr-1"></i>
+                <strong>المنظمة:</strong> ${job["Company"] || "غير مذكورة"}
+            </p>
+            <p class="text-gray-600 text-sm mb-2">
+                <i class="fas fa-map-marker-alt mr-1"></i>
+                <strong>الموقع:</strong> ${job["Location"] || "غير مذكور"}
+            </p>
+            ${job["Description"] ? `<p class="text-gray-700 text-sm mb-3 line-clamp-3">${job["Description"].substring(0, 150)}...</p>` : ''}
+            <div class="flex items-center justify-between text-sm text-gray-500 mt-2">
+                <span>
+                    <i class="far fa-calendar-alt mr-1"></i>
+                    <strong>تاريخ النشر:</strong> ${job["Date"] || "غير مذكور"}
+                </span>
+                ${job["Deadline"] ? `<span><i class="far fa-clock mr-1"></i> <strong>الموعد النهائي:</strong> ${job["Deadline"]}</span>` : ''}
+            </div>
+        </div>
+        <div class="mt-4 flex justify-between items-center">
+            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                ${getJobSource(job["Link"])}
+            </span>
+            <a href="${job["Link"]}" target="_blank" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm transition">
+                عرض التفاصيل
+            </a>
+        </div>
+    `;
+    
+    return card;
+}
+
+// Get job source from URL
+function getJobSource(url) {
+    if (!url) return 'مصدر غير معروف';
+    if (url.includes('reliefweb')) return 'ReliefWeb';
+    if (url.includes('job.sy')) return 'Job.sy';
+    if (url.includes('nsjobs')) return 'NSJobs';
+    if (url.includes('forsa')) return 'Forsa.sy';
+    return 'مصدر آخر';
+}
+
+// Display jobs
+function displayJobs() {
+    const container = document.getElementById('jobsGrid');
+    const noResults = document.getElementById('noResults');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    
+    if (filteredJobs.length === 0) {
+        container.innerHTML = '';
+        noResults.classList.remove('hidden');
+        loadMoreBtn.style.display = 'none';
+        return;
+    }
+    
+    noResults.classList.add('hidden');
+    
+    // Show jobs for current page
+    const jobsToShow = filteredJobs.slice(0, displayedJobs + jobsPerPage);
+    container.innerHTML = '';
+    
+    jobsToShow.forEach(job => {
+        container.appendChild(createJobCard(job));
+    });
+    
+    displayedJobs = jobsToShow.length;
+    
+    // Show/hide load more button
+    if (displayedJobs >= filteredJobs.length) {
+        loadMoreBtn.style.display = 'none';
+    } else {
+        loadMoreBtn.style.display = 'block';
+    }
+}
+
+// Filter jobs
+function filterJobs() {
+    filteredJobs = allJobs.filter(job => {
+        const matchesSearch = currentSearch === '' || 
+            (job["Job Title"] && job["Job Title"].toLowerCase().includes(currentSearch.toLowerCase())) ||
+            (job["Company"] && job["Company"].toLowerCase().includes(currentSearch.toLowerCase())) ||
+            (job["Description"] && job["Description"].toLowerCase().includes(currentSearch.toLowerCase()));
+        
+        const matchesCategory = currentFilter === 'all' || 
+            (job["Job Title"] && job["Job Title"].includes(currentFilter));
+        
+        const matchesSource = currentSource === 'all' || 
+            (job["Link"] && job["Link"].includes(currentSource));
+        
+        return matchesSearch && matchesCategory && matchesSource;
+    });
+    
+    displayedJobs = 0;
+    displayJobs();
+    updateResultsCount();
+}
+
+// Update results count
+function updateResultsCount() {
+    const count = filteredJobs.length;
+    const resultsCount = document.getElementById('resultsCount');
+    
+    if (currentSearch || currentFilter !== 'all' || currentSource !== 'all') {
+        resultsCount.textContent = `تم العثور على ${count} وظيفة`;
+    } else {
+        resultsCount.textContent = `عرض جميع الوظائف المتاحة (${count} وظيفة)`;
+    }
+}
+
+// Event listeners
+document.getElementById('searchInput').addEventListener('input', (e) => {
+    currentSearch = e.target.value;
+    filterJobs();
+});
+
+document.getElementById('searchBtn').addEventListener('click', () => {
+    filterJobs();
+});
+
+// Filter buttons
+document.querySelectorAll('[data-filter]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        // Remove active class from all filter buttons
+        document.querySelectorAll('[data-filter]').forEach(b => {
+            b.classList.remove('active-filter', 'bg-white', 'text-blue-600');
+            b.classList.add('bg-white', 'bg-opacity-20');
+        });
+        
+        // Add active class to clicked button
+        e.target.classList.add('active-filter', 'bg-white', 'text-blue-600');
+        e.target.classList.remove('bg-opacity-20');
+        
+        currentFilter = e.target.dataset.filter;
+        filterJobs();
+    });
+});
+
+// Source filter buttons
+document.querySelectorAll('[data-source]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        // Remove active class from all source buttons
+        document.querySelectorAll('[data-source]').forEach(b => {
+            b.classList.remove('active-filter', 'bg-white', 'text-blue-600');
+            b.classList.add('bg-white', 'bg-opacity-20');
+        });
+        
+        // Add active class to clicked button
+        e.target.classList.add('active-filter', 'bg-white', 'text-blue-600');
+        e.target.classList.remove('bg-opacity-20');
+        
+        currentSource = e.target.dataset.source;
+        filterJobs();
+    });
+});
+
+// Load more button
+document.getElementById('loadMoreBtn').addEventListener('click', () => {
+    displayJobs();
+});
+
+// Sort functionality
+document.getElementById('sortSelect').addEventListener('change', (e) => {
+    const sortBy = e.target.value;
+    
+    switch(sortBy) {
+        case 'newest':
+            filteredJobs.sort((a, b) => new Date(b["Date"] || 0) - new Date(a["Date"] || 0));
+            break;
+        case 'oldest':
+            filteredJobs.sort((a, b) => new Date(a["Date"] || 0) - new Date(b["Date"] || 0));
+            break;
+        case 'title':
+            filteredJobs.sort((a, b) => (a["Job Title"] || '').localeCompare(b["Job Title"] || ''));
+            break;
+        case 'company':
+            filteredJobs.sort((a, b) => (a["Company"] || '').localeCompare(b["Company"] || ''));
+            break;
+    }
+    
+    displayedJobs = 0;
+    displayJobs();
+});
+
+// Mobile menu toggle
+document.getElementById('mobileMenuButton').addEventListener('click', () => {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('hidden');
+});
+
+// Auth modal
+document.getElementById('authButton').addEventListener('click', () => {
+    document.getElementById('authModal').classList.remove('hidden');
+});
+
+document.getElementById('authButtonMobile').addEventListener('click', () => {
+    document.getElementById('authModal').classList.remove('hidden');
+});
+
+document.getElementById('closeAuthModal').addEventListener('click', () => {
+    document.getElementById('authModal').classList.add('hidden');
+});
+
+// Close modal when clicking outside
+document.getElementById('authModal').addEventListener('click', (e) => {
+    if (e.target.id === 'authModal') {
+        document.getElementById('authModal').classList.add('hidden');
+    }
+});
+</script>
+
+</body>
+</html>
+
