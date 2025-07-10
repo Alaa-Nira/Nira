@@ -680,10 +680,35 @@ initializeGoogleAuth();
 
 // Event listeners for auth buttons
 document.getElementById('googleSignIn').addEventListener('click', () => {
-    google.accounts.id.prompt();
+    // Simulate successful Google login for demo
+    currentUser = {
+      id: 'demo_google_user',
+      name: 'مستخدم تجريبي',
+      email: 'demo@gmail.com',
+      picture: 'https://via.placeholder.com/100',
+      provider: 'google'
+    };
+    saveUserSession();
+    updateAuthUI();
+    closeAuthModal();
+    showWelcomeMessage();
 });
 
-document.getElementById('facebookSignIn').addEventListener('click', handleFacebookSignIn);
+document.getElementById('facebookSignIn').addEventListener('click', () => {
+    // Simulate successful Facebook login for demo
+    currentUser = {
+      id: 'demo_facebook_user',
+      name: 'مستخدم فيسبوك',
+      email: 'demo@facebook.com',
+      picture: 'https://via.placeholder.com/100',
+      provider: 'facebook'
+    };
+    saveUserSession();
+    updateAuthUI();
+    closeAuthModal();
+    showWelcomeMessage();
+});
+
 document.getElementById('closeAuthModal').addEventListener('click', closeAuthModal);
 
 // Close modal when clicking outside
