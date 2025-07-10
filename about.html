@@ -161,7 +161,7 @@
                         </div>
                     </div>
                     <div class="flex justify-center">
-                        <img src="https://illustrations.popsy.co/amber/team-spirit.svg" alt="Mission Illustration" class="w-full max-w-lg">
+                        <img src="https://illustrations.popsy.co/amber/remote-work.svg" alt="Mission Illustration" class="w-full max-w-lg">
                     </div>
                 </div>
             </div>
@@ -179,18 +179,18 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="stat-card text-white p-8 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
                     <i class="fas fa-briefcase text-4xl mb-4"></i>
-                    <h3 class="text-3xl font-bold mb-2" id="jobsCount">1000+</h3>
+                    <h3 class="text-3xl font-bold mb-2" id="jobsCount">0</h3>
                     <p class="text-lg">وظيفة متاحة</p>
                 </div>
                 <div class="stat-card text-white p-8 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
                     <i class="fas fa-building text-4xl mb-4"></i>
-                    <h3 class="text-3xl font-bold mb-2" id="companiesCount">200+</h3>
+                    <h3 class="text-3xl font-bold mb-2" id="companiesCount">0</h3>
                     <p class="text-lg">شركة ومنظمة</p>
                 </div>
                 <div class="stat-card text-white p-8 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
-                    <i class="fas fa-users text-4xl mb-4"></i>
-                    <h3 class="text-3xl font-bold mb-2" id="usersCount">5000+</h3>
-                    <p class="text-lg">مستخدم نشط</p>
+                    <i class="fas fa-map-marker-alt text-4xl mb-4"></i>
+                    <h3 class="text-3xl font-bold mb-2" id="locationsCount">0</h3>
+                    <p class="text-lg">موقع جغرافي</p>
                 </div>
                 <div class="stat-card text-white p-8 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
                     <i class="fas fa-globe text-4xl mb-4"></i>
@@ -609,19 +609,57 @@
 </div>
 
 <script>
-// Animated counters
+let realStats = {
+    jobs: 0,
+    companies: 0,
+    locations: 0,
+    sources: 4
+};
+
+// Load jobs data and calculate real statistics
+fetch('reliefweb_jobs.json')
+    .then(response => response.json())
+    .then(data => {
+        // Calculate real statistics
+        realStats.jobs = data.length;
+        
+        // Get unique companies
+        const companies = new Set();
+        data.forEach(job => {
+            if (job["Company"] && job["Company"].trim() !== "" && job["Company"] !== "غير مذكورة") {
+                companies.add(job["Company"]);
+            }
+        });
+        realStats.companies = companies.size;
+        
+        // Get unique locations
+        const locations = new Set();
+        data.forEach(job => {
+            if (job["Location"] && job["Location"].trim() !== "" && job["Location"] !== "غير مذكور") {
+                locations.add(job["Location"]);
+            }
+        });
+        realStats.locations = locations.size;
+    })
+    .catch(error => {
+        console.error('Error loading jobs data:', error);
+        // Use fallback numbers if data can't be loaded
+        realStats = { jobs: 4, companies: 4, locations: 3, sources: 4 };
+    });
+
+// Animated counters with real data
 function animateCounters() {
     const counters = [
-        { id: 'jobsCount', target: 1000, suffix: '+' },
-        { id: 'companiesCount', target: 200, suffix: '+' },
-        { id: 'usersCount', target: 5000, suffix: '+' },
-        { id: 'sourcesCount', target: 4, suffix: '' }
+        { id: 'jobsCount', target: realStats.jobs, suffix: '' },
+        { id: 'companiesCount', target: realStats.companies, suffix: '' },
+        { id: 'locationsCount', target: realStats.locations, suffix: '' },
+        { id: 'sourcesCount', target: realStats.sources, suffix: '' }
     ];
     
     counters.forEach(counter => {
         const element = document.getElementById(counter.id);
         let current = 0;
-        const increment = counter.target / 100;
+        const increment = Math.max(1, counter.target / 50);
         
         const timer = setInterval(() => {
             current += increment;
@@ -630,7 +668,7 @@ function animateCounters() {
                 clearInterval(timer);
             }
             element.textContent = Math.floor(current) + counter.suffix;
-        }, 20);
+        }, 30);
     });
 }
 
