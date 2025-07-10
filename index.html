@@ -85,7 +85,7 @@
                     <h2 class="text-3xl md:text-4xl font-bold mb-4" data-i18n="hero.title">ابحث عن الوظيفة المثالية في سوريا</h2>
                     <p class="text-lg mb-6" data-i18n="hero.subtitle">Nira يجمع لك أحدث الفرص الوظيفية من مختلف المواقع في مكان واحد</p>
                     <div class="relative w-full max-w-lg">
-                        <input type="text" placeholder="ابحث بكلمات مفتاحية، تخصص، أو اسم شركة..." 
+                        <input type="text" id="mainSearchInput" placeholder="ابحث بكلمات مفتاحية، تخصص، أو اسم شركة..." 
                                class="w-full py-3 px-4 pr-12 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300" data-i18n="search.placeholder">
                         <button class="absolute left-3 top-3 text-blue-500" id="searchBtn">
                             <i class="fas fa-search"></i>
@@ -111,8 +111,8 @@
                     <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="categories.subtitle">اختر مجال عملك المفضل وابحث عن أحدث الفرص المتاحة</p>
                 </div>
                 
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="categoriesGrid">
+                    <div class="category-card bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100" data-category="تكنولوجيا">
                         <div class="bg-blue-100 text-blue-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
                             <i class="fas fa-laptop-code text-xl"></i>
                         </div>
@@ -142,11 +142,49 @@
                         </div>
                         <h4 class="font-medium text-gray-800" data-i18n="categories.ngo">المنظمات</h4>
                     </div>
-                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+                    <div class="category-card bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100" id="moreCategories">
                         <div class="bg-indigo-100 text-indigo-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
                             <i class="fas fa-ellipsis-h text-xl"></i>
                         </div>
                         <h4 class="font-medium text-gray-800" data-i18n="categories.more">المزيد</h4>
+                    </div>
+                    
+                    <!-- Additional categories (hidden initially) -->
+                    <div class="category-card bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100 hidden additional-category" data-category="محاسبة">
+                        <div class="bg-teal-100 text-teal-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-calculator text-xl"></i>
+                        </div>
+                        <h4 class="font-medium text-gray-800">المحاسبة والمالية</h4>
+                    </div>
+                    <div class="category-card bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100 hidden additional-category" data-category="تسويق">
+                        <div class="bg-pink-100 text-pink-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-bullhorn text-xl"></i>
+                        </div>
+                        <h4 class="font-medium text-gray-800">التسويق والمبيعات</h4>
+                    </div>
+                    <div class="category-card bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100 hidden additional-category" data-category="موارد">
+                        <div class="bg-orange-100 text-orange-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-users text-xl"></i>
+                        </div>
+                        <h4 class="font-medium text-gray-800">الموارد البشرية</h4>
+                    </div>
+                    <div class="category-card bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100 hidden additional-category" data-category="قانون">
+                        <div class="bg-gray-100 text-gray-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-balance-scale text-xl"></i>
+                        </div>
+                        <h4 class="font-medium text-gray-800">القانون والاستشارات</h4>
+                    </div>
+                    <div class="category-card bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100 hidden additional-category" data-category="ترجمة">
+                        <div class="bg-cyan-100 text-cyan-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-language text-xl"></i>
+                        </div>
+                        <h4 class="font-medium text-gray-800">الترجمة واللغات</h4>
+                    </div>
+                    <div class="category-card bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100 hidden additional-category" data-category="إعلام">
+                        <div class="bg-violet-100 text-violet-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-newspaper text-xl"></i>
+                        </div>
+                        <h4 class="font-medium text-gray-800">الإعلام والصحافة</h4>
                     </div>
                 </div>
             </div>
@@ -865,6 +903,169 @@ function showToast(message, type = 'info') {
       // Update favorite buttons state
       updateFavoriteButtons();
     });
+
+  // Search and filter functionality
+  let allJobsData = [];
+  let currentFilter = '';
+  
+  // Load jobs data for search and filter
+  fetch('reliefweb_jobs.json')
+    .then(response => response.json())
+    .then(data => {
+      allJobsData = data;
+    });
+
+  // Search functionality
+  const searchInput = document.getElementById('mainSearchInput');
+  const searchBtn = document.getElementById('searchBtn');
+  
+  function performSearch(query = '') {
+    const filteredJobs = allJobsData.filter(job => {
+      const searchText = query.toLowerCase();
+      const jobText = `${job["Job Title"]} ${job["Company"]} ${job["Location"]} ${job["Description"]}`.toLowerCase();
+      
+      let matchesSearch = !query || jobText.includes(searchText);
+      let matchesCategory = !currentFilter || jobText.includes(currentFilter.toLowerCase());
+      
+      return matchesSearch && matchesCategory;
+    });
+    
+    displayFilteredJobs(filteredJobs);
+  }
+  
+  function displayFilteredJobs(jobs) {
+    const container = document.getElementById('dynamic-jobs');
+    container.innerHTML = '';
+    
+    if (jobs.length === 0) {
+      container.innerHTML = `
+        <div class="col-span-full text-center py-12">
+          <i class="fas fa-search text-gray-300 text-6xl mb-4"></i>
+          <h3 class="text-xl font-semibold text-gray-600 mb-2">لا توجد نتائج</h3>
+          <p class="text-gray-500">جرب البحث بكلمات مختلفة أو اختر تصنيف آخر</p>
+        </div>
+      `;
+      return;
+    }
+    
+    jobs.slice(0, 6).forEach((job, index) => {
+      const card = document.createElement('div');
+      card.className = 'job-card bg-white rounded-xl shadow overflow-hidden border border-gray-100 p-6 flex flex-col justify-between';
+      const jobId = `filtered_job_${index}_${job["Job Title"]?.replace(/\s+/g, '_')}`;
+
+      card.innerHTML = `
+        <div>
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="text-xl font-bold text-gray-800 flex-1">${job["Job Title"]}</h3>
+            <button class="favorite-btn ml-2 p-2 rounded-full hover:bg-gray-100 transition-colors" 
+                    data-job-id="${jobId}" 
+                    onclick="requireAuth() && toggleFavorite('${jobId}', ${JSON.stringify(job).replace(/"/g, '&quot;')})"
+                    title="إضافة للمفضلة">
+              <i class="far fa-heart text-gray-400"></i>
+            </button>
+          </div>
+          <p class="text-gray-600 text-sm mb-2"><strong>المنظمة:</strong> ${job["Company"] || "غير مذكورة"}</p>
+          <p class="text-gray-600 text-sm mb-2"><strong>الموقع:</strong> ${job["Location"] || "غير مذكور"}</p>
+          ${job["Description"] ? `<p class="text-gray-700 text-sm mb-3 line-clamp-3">${job["Description"]}</p>` : ''}
+          <div class="flex items-center justify-between text-sm text-gray-500 mt-2">
+            <span><i class="far fa-calendar-alt mr-1"></i> <strong>تاريخ النشر:</strong> ${job["Date"] || "غير مذكور"}</span>
+            <span><i class="far fa-clock mr-1"></i> <strong>الموعد النهائي:</strong> ${job["Deadline"] || "غير مذكور"}</span>
+          </div>
+        </div>
+        <div class="mt-4 text-left">
+          <button class="job-details-btn inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm" data-link="${job["Link"]}">
+            عرض التفاصيل
+          </button>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+    
+    // Re-attach event listeners
+    document.querySelectorAll('.job-details-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (requireAuth()) {
+          window.open(this.dataset.link, '_blank');
+        }
+      });
+    });
+    
+    updateFavoriteButtons();
+  }
+  
+  // Search input event listeners
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      performSearch(e.target.value);
+    });
+    
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        performSearch(e.target.value);
+      }
+    });
+  }
+  
+  if (searchBtn) {
+    searchBtn.addEventListener('click', () => {
+      performSearch(searchInput.value);
+    });
+  }
+  
+  // Category filter functionality
+  document.querySelectorAll('.category-card[data-category]').forEach(card => {
+    card.addEventListener('click', function() {
+      const category = this.dataset.category;
+      
+      // Remove active state from all cards
+      document.querySelectorAll('.category-card').forEach(c => {
+        c.classList.remove('ring-2', 'ring-blue-500', 'bg-blue-50');
+      });
+      
+      // Toggle filter
+      if (currentFilter === category) {
+        currentFilter = '';
+        performSearch(searchInput?.value || '');
+      } else {
+        currentFilter = category;
+        this.classList.add('ring-2', 'ring-blue-500', 'bg-blue-50');
+        performSearch(searchInput?.value || '');
+      }
+    });
+  });
+  
+  // More categories toggle
+  const moreBtn = document.getElementById('moreCategories');
+  const additionalCategories = document.querySelectorAll('.additional-category');
+  let categoriesExpanded = false;
+  
+  if (moreBtn) {
+    moreBtn.addEventListener('click', function() {
+      categoriesExpanded = !categoriesExpanded;
+      
+      additionalCategories.forEach(cat => {
+        if (categoriesExpanded) {
+          cat.classList.remove('hidden');
+        } else {
+          cat.classList.add('hidden');
+        }
+      });
+      
+      // Update button text and icon
+      const icon = this.querySelector('i');
+      const text = this.querySelector('h4');
+      
+      if (categoriesExpanded) {
+        icon.className = 'fas fa-times text-xl';
+        text.textContent = 'أقل';
+      } else {
+        icon.className = 'fas fa-ellipsis-h text-xl';
+        text.textContent = 'المزيد';
+      }
+    });
+  }
 </script>
 
 
