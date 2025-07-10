@@ -204,11 +204,10 @@
       </a>
     </div>
 
-    <!-- ✅ هذا هو السطر المطلوب -->
-   <div id="dynamic-jobs"
-     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  <!-- سيُملأ تلقائيًّا -->
-</div>
+    <!-- Jobs Container -->
+    <div id="jobs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Jobs will be loaded here -->
+    </div>
   </div>
 </section>
 
@@ -853,35 +852,52 @@ function showToast(message, type = 'info') {
   fetch('reliefweb_jobs.json')
     .then(response => response.json())
     .then(data => {
-      const container = document.getElementById('dynamic-jobs');
+      const container = document.getElementById('jobs-container');
+      if (!container) return;
+      
       container.innerHTML = '';
 
       data.slice(0, 6).forEach((job, index) => {
         const card = document.createElement('div');
-        card.className = 'job-card bg-white rounded-xl shadow overflow-hidden border border-gray-100 p-6 flex flex-col justify-between';
+        card.className = 'job-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 p-6 flex flex-col justify-between transform hover:-translate-y-1';
         const jobId = `job_${index}_${job["Job Title"]?.replace(/\s+/g, '_')}`;
 
         card.innerHTML = `
           <div>
-            <div class="flex items-start justify-between mb-2">
-              <h3 class="text-xl font-bold text-gray-800 flex-1">${job["Job Title"]}</h3>
-              <button class="favorite-btn ml-2 p-2 rounded-full hover:bg-gray-100 transition-colors" 
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex-1">
+                <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2 leading-tight">${job["Job Title"]}</h3>
+                <div class="flex items-center text-sm text-gray-600 mb-1">
+                  <i class="fas fa-building text-blue-500 mr-2"></i>
+                  <span class="font-medium">${job["Company"] || "غير مذكورة"}</span>
+                </div>
+                <div class="flex items-center text-sm text-gray-600">
+                  <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
+                  <span>${job["Location"] || "غير مذكور"}</span>
+                </div>
+              </div>
+              <button class="favorite-btn p-2 rounded-full hover:bg-red-50 transition-all duration-200 group" 
                       data-job-id="${jobId}" 
                       onclick="requireAuth() && toggleFavorite('${jobId}', ${JSON.stringify(job).replace(/"/g, '&quot;')})"
                       title="إضافة للمفضلة">
-                <i class="far fa-heart text-gray-400"></i>
+                <i class="far fa-heart text-gray-400 group-hover:text-red-500 text-lg transition-colors"></i>
               </button>
             </div>
-            <p class="text-gray-600 text-sm mb-2"><strong>المنظمة:</strong> ${job["Company"] || "غير مذكورة"}</p>
-            <p class="text-gray-600 text-sm mb-2"><strong>الموقع:</strong> ${job["Location"] || "غير مذكور"}</p>
-            ${job["Description"] ? `<p class="text-gray-700 text-sm mb-3 line-clamp-3">${job["Description"]}</p>` : ''}
-            <div class="flex items-center justify-between text-sm text-gray-500 mt-2">
-              <span><i class="far fa-calendar-alt mr-1"></i> <strong>تاريخ النشر:</strong> ${job["Date"] || "غير مذكور"}</span>
-              <span><i class="far fa-clock mr-1"></i> <strong>الموعد النهائي:</strong> ${job["Deadline"] || "غير مذكور"}</span>
+            ${job["Description"] ? `<p class="text-gray-700 text-sm mb-4 line-clamp-2 leading-relaxed">${job["Description"]}</p>` : ''}
+            <div class="flex items-center justify-between text-xs text-gray-500 bg-gray-50 rounded-lg p-3">
+              <div class="flex items-center">
+                <i class="far fa-calendar-alt text-blue-500 mr-1"></i>
+                <span>${job["Date"] || "غير مذكور"}</span>
+              </div>
+              <div class="flex items-center">
+                <i class="far fa-clock text-orange-500 mr-1"></i>
+                <span>${job["Deadline"] || "غير مذكور"}</span>
+              </div>
             </div>
           </div>
-          <div class="mt-4 text-left">
-            <button class="job-details-btn inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm" data-link="${job["Link"]}">
+          <div class="mt-6">
+            <button class="job-details-btn w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md" data-link="${job["Link"]}">
+              <i class="fas fa-external-link-alt mr-2"></i>
               عرض التفاصيل
             </button>
           </div>
@@ -934,7 +950,9 @@ function showToast(message, type = 'info') {
   }
   
   function displayFilteredJobs(jobs) {
-    const container = document.getElementById('dynamic-jobs');
+    const container = document.getElementById('jobs-container');
+    if (!container) return;
+    
     container.innerHTML = '';
     
     if (jobs.length === 0) {
