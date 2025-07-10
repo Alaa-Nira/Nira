@@ -1,636 +1,413 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar" id="html-root">
+<html dir="rtl" lang="ar">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>نيرا - منصة البحث عن وظائف في سوريا</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>نيرا - منصة البحث عن وظائف في سوريا</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&amp;family=Poppins:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
         :root {
             --primary: #4F46E5;
             --secondary: #10B981;
-            --accent: #F59E0B;
-            --danger: #EF4444;
         }
-        
         body[dir="rtl"] {
             font-family: 'Tajawal', sans-serif;
         }
-        
         body[dir="ltr"] {
             font-family: 'Poppins', sans-serif;
         }
-        
-        .job-card {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
         .job-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
-        
-        .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .job-source-badge {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+        }
+        .active-filter {
+            background-color: #4F46E5;
             color: white;
-        }
-        
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            display: none;
-        }
-        
-        .notification.show {
-            display: block;
-            animation: slideIn 0.3s ease;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateX(100%); }
-            to { transform: translateX(0); }
-        }
-        
-        .language-toggle {
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .language-toggle:hover {
-            background-color: #F3F4F6;
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800" dir="rtl">
-    <!-- Notification -->
-    <div id="notification" class="notification bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg">
-        <span id="notification-text"></span>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a class="flex-shrink-0 flex items-center" href="#" onclick="showHome()">
-                        <img alt="Nira Logo" class="h-12 w-auto" src="https://raw.githubusercontent.com/Alaa-Nira/Nira/main/wmremove-transformed%20(1).png"/>
-                        <span class="mr-3 text-xl font-bold text-gray-800">نيرا</span>
-                    </a>
-                </div>
-                
-                <div class="hidden md:flex md:items-center md:space-x-4 space-x-reverse">
-                    <a href="#" onclick="showHome()" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
-                    <a href="#" onclick="showAllJobs()" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium nav-link" data-ar="جميع الوظائف" data-en="All Jobs">جميع الوظائف</a>
-                    <a href="#" onclick="showAbout()" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium nav-link" data-ar="حول نيرا" data-en="About NIRA">حول نيرا</a>
-                    
-                    <!-- Language Toggle -->
-                    <div class="language-toggle px-3 py-2 rounded-md text-sm font-medium" onclick="toggleLanguage()">
-                        <i class="fas fa-globe mr-1"></i>
-                        <span id="lang-text">English</span>
-                    </div>
-                    
-                    <!-- Auth Button -->
-                    <button onclick="showAuthModal()" class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-dark" data-ar="تسجيل الدخول" data-en="Login">
+<!-- Navigation -->
+<nav class="bg-white shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center">
+<a class="flex-shrink-0 flex items-center" href="index.html">
+<img alt="Nira Logo واضح" class="h-8 w-auto" src="wmremove-transformed (1).png" style="height: 60px; max-height: 60px;"/>
+</a>
+</div>
+<div class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
+<a class="text-indigo-600 px-3 py-2 text-sm font-medium" href="index.html">الرئيسية</a>
+<a class="text-gray-700 hover:text-indigo-500 px-3 py-2 text-sm font-medium" href="search.html">تصفح الوظائف</a>
+<a class="text-gray-700 hover:text-indigo-500 px-3 py-2 text-sm font-medium" href="about.html">عن نيرا</a>
+<button class="ml-3 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700" id="authButton">
                         تسجيل الدخول
                     </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Home Section -->
-        <section id="home-section" class="hero-section py-16">
-            <div class="container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-5xl font-bold mb-6" data-ar="ابحث عن وظيفتك المثالية في سوريا" data-en="Find Your Perfect Job in Syria">ابحث عن وظيفتك المثالية في سوريا</h1>
-                <p class="text-xl mb-8" data-ar="منصة نيرا تجمع لك أفضل الوظائف من مختلف المصادر في مكان واحد" data-en="NIRA platform brings you the best jobs from various sources in one place">منصة نيرا تجمع لك أفضل الوظائف من مختلف المصادر في مكان واحد</p>
-                
-                <div class="max-w-2xl mx-auto mb-8">
-                    <div class="flex">
-                        <input type="text" id="search-input" placeholder="ابحث عن وظيفة، شركة، أو مهارة..." 
-                               class="flex-1 py-3 px-4 rounded-r-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                               data-ar-placeholder="ابحث عن وظيفة، شركة، أو مهارة..." 
-                               data-en-placeholder="Search for job, company, or skill...">
-                        <button onclick="searchJobs()" class="bg-white text-primary px-6 py-3 rounded-l-lg font-medium hover:bg-gray-100" data-ar="بحث" data-en="Search">
-                            بحث
+</div>
+<div class="-mr-2 flex items-center md:hidden">
+<button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="mobileMenuButton" type="button">
+<span class="sr-only">Open main menu</span>
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile menu -->
+<div class="hidden md:hidden" id="mobileMenu">
+<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+<a class="text-indigo-600 block px-3 py-2 text-base font-medium" href="index.html">الرئيسية</a>
+<a class="text-gray-700 hover:text-indigo-500 block px-3 py-2 text-base font-medium" href="search.html">تصفح الوظائف</a>
+<a class="text-gray-700 hover:text-indigo-500 block px-3 py-2 text-base font-medium" href="about.html">عن نيرا</a>
+<button class="w-full text-left bg-indigo-600 text-white px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-700" id="authButtonMobile">
+                    تسجيل الدخول
+                </button>
+</div>
+</div>
+</nav>
+ <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-blue-500 to-blue-600 text-white py-16">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 rtl-support">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4" data-i18n="hero.title">ابحث عن الوظيفة المثالية في سوريا</h2>
+                    <p class="text-lg mb-6" data-i18n="hero.subtitle">Nira يجمع لك أحدث الفرص الوظيفية من مختلف المواقع في مكان واحد</p>
+                    <div class="relative w-full max-w-lg">
+                        <input type="text" placeholder="ابحث بكلمات مفتاحية، تخصص، أو اسم شركة..." 
+                               class="w-full py-3 px-4 pr-12 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300" data-i18n="search.placeholder">
+                        <button class="absolute left-3 top-3 text-blue-500" id="searchBtn">
+                            <i class="fas fa-search"></i>
                         </button>
                     </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full" data-i18n="tags.reliefweb">ReliefWeb</span>
+                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full" data-i18n="tags.jobsy">Job.sy</span>
+                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full" data-i18n="tags.nes">شبكة شمال شرق سوريا</span>
+                    </div>
                 </div>
-
-                <!-- Stats -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                    <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                        <div class="text-2xl font-bold" id="total-jobs">4</div>
-                        <div class="text-sm" data-ar="إجمالي الوظائف" data-en="Total Jobs">إجمالي الوظائف</div>
-                    </div>
-                    <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                        <div class="text-2xl font-bold">2</div>
-                        <div class="text-sm" data-ar="الشركات" data-en="Companies">الشركات</div>
-                    </div>
-                    <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                        <div class="text-2xl font-bold">4</div>
-                        <div class="text-sm" data-ar="المصادر" data-en="Sources">المصادر</div>
-                    </div>
-                    <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                        <div class="text-2xl font-bold">24/7</div>
-                        <div class="text-sm" data-ar="تحديث مستمر" data-en="Continuous Updates">تحديث مستمر</div>
-                    </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://illustrations.popsy.co/amber/digital-nomad.svg" alt="Job Search Illustration" class="w-full max-w-md">
                 </div>
             </div>
         </section>
-
-        <!-- Categories -->
+<!-- Hero Section -->
+ <!-- Job Categories -->
         <section class="py-12 bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-8" data-ar="ابحث حسب التخصص" data-en="Search by Category">ابحث حسب التخصص</h2>
+                <div class="text-center mb-10 rtl-support">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2" data-i18n="categories.title">تصفح حسب التخصص</h3>
+                    <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="categories.subtitle">اختر مجال عملك المفضل وابحث عن أحدث الفرص المتاحة</p>
+                </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4" id="categories-grid">
-                    <!-- Categories will be loaded here -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+                        <div class="bg-blue-100 text-blue-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-laptop-code text-xl"></i>
+                        </div>
+                        <h4 class="font-medium text-gray-800" data-i18n="categories.it">تكنولوجيا المعلومات</h4>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+                        <div class="bg-green-100 text-green-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-heartbeat text-xl"></i>
+                        </div>
+                        <h4 class="font-medium text-gray-800" data-i18n="categories.health">الصحة</h4>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+                        <div class="bg-yellow-100 text-yellow-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-graduation-cap text-xl"></i>
+                        </div>
+                        <h4 class="font-medium text-gray-800" data-i18n="categories.education">التعليم</h4>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+                        <div class="bg-purple-100 text-purple-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-building text-xl"></i>
+                        </div>
+                        <h4 class="font-medium text-gray-800" data-i18n="categories.engineering">الهندسة</h4>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+                        <div class="bg-red-100 text-red-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-hands-helping text-xl"></i>
+                        </div>
+                        <h4 class="font-medium text-gray-800" data-i18n="categories.ngo">المنظمات</h4>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer border border-gray-100">
+                        <div class="bg-indigo-100 text-indigo-500 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-ellipsis-h text-xl"></i>
+                        </div>
+                        <h4 class="font-medium text-gray-800" data-i18n="categories.more">المزيد</h4>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Latest Jobs -->
-        <section class="py-12 bg-gray-50">
-            <div class="container mx-auto px-4">
-                <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-3xl font-bold" data-ar="أحدث الوظائف" data-en="Latest Jobs">أحدث الوظائف</h2>
-                    <button onclick="showAllJobs()" class="text-primary hover:text-primary-dark font-medium" data-ar="عرض الكل" data-en="View All">
-                        عرض الكل
+        <!-- Featured Jobs -->
+       <section id="jobs" class="py-12 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center mb-8 rtl-support">
+      <div>
+        <h3 class="text-2xl font-bold text-gray-800" data-i18n="jobs.title">أحدث الوظائف</h3>
+        <p class="text-gray-600" data-i18n="jobs.subtitle">اكتشف أحدث الفرص الوظيفية المتاحة اليوم</p>
+      </div>
+      <a class="text-blue-500 hover:text-blue-600 font-medium flex items-center" data-i18n="jobs.view_all" href="jobs.html">
+        عرض الكل
+        <i class="fas fa-arrow-left mr-2 rtl-mirror"></i>
+      </a>
+    </div>
+
+    <!-- ✅ هذا هو السطر المطلوب -->
+   <div id="dynamic-jobs"
+     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- سيُملأ تلقائيًّا -->
+</div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<div class="bg-indigo-50 rounded-xl p-8 mb-16">
+<h2 class="text-2xl font-bold mb-6 text-center">كيف يعمل نيرا؟</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="text-center">
+<div class="bg-white rounded-full p-4 inline-flex items-center justify-center mb-4">
+<i class="fas fa-search text-indigo-600 text-2xl"></i>
+</div>
+<h3 class="font-bold text-lg mb-2">ابحث عن الوظائف</h3>
+<p class="text-gray-700">ابحث عن الوظائف المناسبة لك بناءً على تخصصك، موقعك أو كلمة مفتاحية</p>
+</div>
+<div class="text-center">
+<div class="bg-white rounded-full p-4 inline-flex items-center justify-center mb-4">
+<i class="fas fa-briefcase text-indigo-600 text-2xl"></i>
+</div>
+<h3 class="font-bold text-lg mb-2">تصفح الفرص</h3>
+<p class="text-gray-700">تصفح أفضل الفرص الوظيفية من مختلف المنصات في مكان واحد</p>
+</div>
+<div class="text-center">
+<div class="bg-white rounded-full p-4 inline-flex items-center justify-center mb-4">
+<i class="fas fa-external-link-alt text-indigo-600 text-2xl"></i>
+</div>
+<h3 class="font-bold text-lg mb-2">تقدم مباشرة</h3>
+<p class="text-gray-700">تقدم مباشرة من خلال الموقع الأصلي لنشر الوظيفة</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Search Results Page (Hidden by default) -->
+<div class="page hidden" id="searchPage">
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="mb-8">
+<div class="flex items-center mb-6">
+<h1 class="text-2xl font-bold">نتائج البحث عن "مهندس"</h1>
+<span class="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full mr-3">43 نتيجة</span>
+</div>
+<!-- Search Filters -->
+<div class="bg-white p-4 rounded-lg shadow-sm mb-6">
+<div class="flex flex-wrap gap-2">
+<button class="filter-btn px-4 py-2 rounded-full text-sm border border-gray-300 hover:bg-gray-50">الكل</button>
+<button class="filter-btn px-4 py-2 rounded-full text-sm border border-gray-300 hover:bg-gray-50">دوام كامل</button>
+<button class="filter-btn px-4 py-2 rounded-full text-sm border border-gray-300 hover:bg-gray-50">دوام جزئي</button>
+<button class="filter-btn px-4 py-2 rounded-full text-sm border border-gray-300 hover:bg-gray-50">عن بعد</button>
+<button class="filter-btn px-4 py-2 rounded-full text-sm border border-gray-300 hover:bg-gray-50">دمشق</button>
+<button class="filter-btn px-4 py-2 rounded-full text-sm border border-gray-300 hover:bg-gray-50">حلب</button>
+<button class="filter-btn px-4 py-2 rounded-full text-sm border border-gray-300 hover:bg-gray-50">اخرى</button>
+</div>
+</div>
+<!-- Search Results -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Repeat this job card for each result -->
+<div class="job-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 relative">
+<!-- Include job card content similar to home page -->
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center mt-8">
+<nav class="inline-flex rounded-md shadow">
+<a class="px-3 py-2 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50" href="#">
+<span>السابق</span>
+</a>
+<a class="px-3 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50" href="#">1</a>
+<a class="px-3 py-2 border-t border-b border-gray-300 bg-white text-indigo-600 font-medium hover:bg-gray-50" href="#">2</a>
+<a class="px-3 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50" href="#">3</a>
+<a class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50" href="#">
+<span>التالي</span>
+</a>
+</nav>
+</div>
+</div>
+</main>
+</div>
+<!-- About Page (Hidden by default) -->
+<div class="page hidden" id="aboutPage">
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="p-8">
+<h1 class="text-3xl font-bold mb-6">عن نيرا</h1>
+<div class="prose max-w-none">
+<p class="mb-4">نيرا هو منصة ذكية للبحث عن الوظائف في سوريا، تم تطويره لتسهيل عملية البحث عن فرص العمل من خلال تجميع الوظائف من مختلف المنصات في مكان واحد.</p>
+<p class="mb-4">هدفنا هو توفير الوقت والجهد على الباحثين عن عمل من خلال تقديم حل مركزي للبحث عن الوظائف من أهم المواقع مثل Relief Web و Job.sy وشبكة شمال شرق سوريا وغيرها.</p>
+<h2 class="text-2xl font-bold mt-8 mb-4">مميزات نيرا</h2>
+<ul class="list-disc pl-5 mb-6 space-y-2">
+<li>بحث سريع وسهل عبر عدة منصات</li>
+<li>واجهة مستخدم حديثة وسهلة الاستخدام</li>
+<li>تصفية النتائج حسب الموقع، نوع الوظيفة، والتخصص</li>
+<li>إشعارات بالوظائف الجديدة حسب تفضيلاتك</li>
+<li>لا حاجة لإنشاء حساب - يمكنك الدخول باستخدام حساب غوغل فقط</li>
+</ul>
+<h2 class="text-2xl font-bold mt-8 mb-4">الأسئلة الشائعة</h2>
+<div class="space-y-4 mb-6">
+<div>
+<h3 class="font-bold text-lg">هل يمكن التقديم للوظائف من خلال نيرا؟</h3>
+<p class="text-gray-700">لا، نيرا يوفر معلومات عن الوظائف مع روابط للموقع الأصلي حيث يمكنك التقديم مباشرة.</p>
+</div>
+<div>
+<h3 class="font-bold text-lg">كيف يتم تحديث الوظائف؟</h3>
+<p class="text-gray-700">نقوم بتحديث قاعدة البيانات الخاصة بنا بشكل يومي للتأكد من أن جميع الوظائف حديثة ومتاحة.</p>
+</div>
+<div>
+<h3 class="font-bold text-lg">هل توجد رسوم لاستخدام نيرا؟</h3>
+<p class="text-gray-700">لا، نيرا خدمة مجانية بالكامل للباحثين عن عمل.</p>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-gray-200">
+<h2 class="text-xl font-bold mb-4">تواصل معنا</h2>
+<p class="mb-4">إذا كان لديك أي استفسار أو اقتراح، يمكنك التواصل معنا عبر:</p>
+<div class="flex items-center space-x-4 space-x-reverse">
+<a class="text-indigo-600 hover:text-indigo-800" href="mailto:info@nira.com">
+<i class="fas fa-envelope mr-2"></i> info@nira.com
+                                </a>
+<a class="text-indigo-600 hover:text-indigo-800" href="#">
+<i class="fab fa-facebook mr-2"></i> Facebook
+                                </a>
+<a class="text-indigo-600 hover:text-indigo-800" href="#">
+<i class="fab fa-linkedin mr-2"></i> LinkedIn
+                                </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-gray-800 text-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-lg font-semibold mb-4">عن نيرا</h3>
+<p class="text-gray-300">منصة بحث عن الوظائف في سوريا، تجمع الفرص من مختلف المنصات في مكان واحد.</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">روابط سريعة</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white" href="index.html">الرئيسية</a></li>
+<li><a class="text-gray-300 hover:text-white" href="search.html">تصفح الوظائف</a></li>
+<li><a class="text-gray-300 hover:text-white" href="about.html">عن نيرا</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">المصادر</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white" href="https://reliefweb.int" target="_blank">Relief Web</a></li>
+<li><a class="text-gray-300 hover:text-white" href="https://job.sy" target="_blank">Job.sy</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">شبكة شمال شرق سوريا</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">اشترك في النشرة البريدية</h3>
+<div class="flex">
+<input class="px-4 py-2 w-full rounded-r-md focus:outline-none text-gray-800" placeholder="بريدك الإلكتروني" type="email"/>
+<button class="bg-indigo-600 text-white px-4 py-2 rounded-l-md hover:bg-indigo-700 focus:outline-none">
+<i class="fas fa-paper-plane"></i>
+</button>
+</div>
+<div class="mt-4 flex space-x-4 space-x-reverse">
+<a class="text-gray-300 hover:text-white text-xl" href="#"><i class="fab fa-facebook"></i></a>
+<a class="text-gray-300 hover:text-white text-xl" href="#"><i class="fab fa-twitter"></i></a>
+<a class="text-gray-300 hover:text-white text-xl" href="#"><i class="fab fa-linkedin"></i></a>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
+<p>© 2025 نيرا. جميع الحقوق محفوظة.</p>
+</div>
+</div>
+</footer>
+<!-- Google Sign In Modal -->
+<div class="fixed inset-0 z-50 hidden overflow-y-auto" id="authModal">
+<div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+<div aria-hidden="true" class="fixed inset-0 transition-opacity">
+<div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+</div>
+<span aria-hidden="true" class="hidden sm:inline-block sm:align-middle sm:h-screen">​</span>
+<div aria-labelledby="modal-headline" aria-modal="true" class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog">
+<div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+<div class="sm:flex sm:items-start">
+<div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 sm:mx-0 sm:h-10 sm:w-10">
+<i class="fas fa-user text-indigo-600"></i>
+</div>
+<div class="mt-3 text-center sm:mt-0 sm:mr-4 sm:text-right">
+<h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">تسجيل الدخول إلى نيرا</h3>
+<div class="mt-2">
+<p class="text-sm text-gray-500">سجل الدخول باستخدام حساب غوغل للوصول إلى جميع ميزات نيرا.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+<button class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm" id="googleSignIn" type="button">
+<i class="fab fa-google mr-2"></i> تسجيل الدخول بغوغل
                     </button>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="latest-jobs">
-                    <!-- Jobs will be loaded here -->
-                </div>
+<button class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" id="closeAuthModal" type="button">
+                        إلغاء
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  fetch('reliefweb_jobs.json')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('dynamic-jobs');
+      container.innerHTML = '';
+
+      data.slice(0, 6).forEach(job => {
+        const card = document.createElement('div');
+        card.className = 'job-card bg-white rounded-xl shadow overflow-hidden border border-gray-100 p-6 flex flex-col justify-between';
+
+        card.innerHTML = `
+          <div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">${job["Job Title"]}</h3>
+            <p class="text-gray-600 text-sm mb-2"><strong>المنظمة:</strong> ${job["Company"] || "غير مذكورة"}</p>
+            <p class="text-gray-600 text-sm mb-2"><strong>الموقع:</strong> ${job["Location"] || "غير مذكور"}</p>
+            ${job["Description"] ? `<p class="text-gray-700 text-sm mb-3 line-clamp-3">${job["Description"]}</p>` : ''}
+            <div class="flex items-center justify-between text-sm text-gray-500 mt-2">
+              <span><i class="far fa-calendar-alt mr-1"></i> <strong>تاريخ النشر:</strong> ${job["Date"] || "غير مذكور"}</span>
+              <span><i class="far fa-clock mr-1"></i> <strong>الموعد النهائي:</strong> ${job["Deadline"] || "غير مذكور"}</span>
             </div>
-        </section>
-    </main>
+          </div>
+          <div class="mt-4 text-left">
+            <a href="${job["Link"]}" target="_blank" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm">
+              عرض التفاصيل
+            </a>
+          </div>
+        `;
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-lg font-bold mb-4" data-ar="نيرا" data-en="NIRA">نيرا</h3>
-                    <p class="text-gray-300" data-ar="منصة البحث عن الوظائف الأولى في سوريا" data-en="The first job search platform in Syria">منصة البحث عن الوظائف الأولى في سوريا</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold mb-4" data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" onclick="showHome()" class="text-gray-300 hover:text-white" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
-                        <li><a href="#" onclick="showAllJobs()" class="text-gray-300 hover:text-white" data-ar="جميع الوظائف" data-en="All Jobs">جميع الوظائف</a></li>
-                        <li><a href="#" onclick="showAbout()" class="text-gray-300 hover:text-white" data-ar="حول نيرا" data-en="About NIRA">حول نيرا</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold mb-4" data-ar="المصادر" data-en="Sources">المصادر</h3>
-                    <ul class="space-y-2">
-                        <li><a href="https://reliefweb.int" target="_blank" class="text-gray-300 hover:text-white">ReliefWeb</a></li>
-                        <li><a href="https://job.sy" target="_blank" class="text-gray-300 hover:text-white">Job.sy</a></li>
-                        <li><a href="https://www.nsjobs.net" target="_blank" class="text-gray-300 hover:text-white">NSJobs</a></li>
-                        <li><a href="http://www.forsa.sy" target="_blank" class="text-gray-300 hover:text-white">Forsa.sy</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold mb-4" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h3>
-                    <div class="flex space-x-4 space-x-reverse">
-                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook text-xl"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-linkedin text-xl"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white"><i class="fas fa-envelope text-xl"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                <p class="text-gray-400">© 2025 نيرا. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
-    </footer>
+        container.appendChild(card);
+      });
+    });
+</script>
 
-    <script>
-        let currentLanguage = 'ar';
-        let currentUser = null;
-        let jobs = [];
 
-        // Sample jobs data
-        const sampleJobs = [
-            {
-                id: 1,
-                title: "مهندس إعادة تأهيل",
-                company: "BAHAR NGO",
-                location: "دير الزور",
-                description: "مطلوب مهندس إعادة تأهيل للعمل في مشاريع إعادة الإعمار",
-                url: "https://www.nsjobs.net/",
-                posted_date: "2025-07-08",
-                source: "nsjobs.net",
-                category: "الهندسة",
-                skills: ["الهندسة المدنية", "إعادة التأهيل", "إدارة المشاريع"]
-            },
-            {
-                id: 2,
-                title: "موزع أدوية",
-                company: "IRC - International Rescue Committee",
-                location: "الحسكة",
-                description: "مطلوب موزع أدوية للعمل في المراكز الصحية",
-                url: "https://www.nsjobs.net/",
-                posted_date: "2025-07-08",
-                source: "nsjobs.net",
-                category: "الصحة والطب",
-                skills: ["توزيع الأدوية", "الصحة العامة", "العمل الميداني"]
-            },
-            {
-                id: 3,
-                title: "مدخل بيانات",
-                company: "منظمة دولية",
-                location: "الحسكة",
-                description: "مطلوب مدخل بيانات للعمل في إدخال ومعالجة البيانات",
-                url: "https://www.nsjobs.net/",
-                posted_date: "2025-07-08",
-                source: "nsjobs.net",
-                category: "تقنية المعلومات",
-                skills: ["إدخال البيانات", "Excel", "الحاسوب"]
-            },
-            {
-                id: 4,
-                title: "مسؤول أمن وسلامة",
-                company: "منظمة إنسانية",
-                location: "حلب",
-                description: "مطلوب مسؤول أمن وسلامة للعمل في المشاريع الإنسانية",
-                url: "https://job.sy/",
-                posted_date: "2025-07-08",
-                source: "job.sy",
-                category: "العلاقات العامة والأمن والسلامة",
-                skills: ["الأمن والسلامة", "إدارة المخاطر", "التدريب"]
-            }
-        ];
-
-        const categories = [
-            { name_ar: "تقنية المعلومات", name_en: "Information Technology", icon: "fas fa-laptop-code" },
-            { name_ar: "الصحة والطب", name_en: "Health & Medicine", icon: "fas fa-heartbeat" },
-            { name_ar: "التعليم", name_en: "Education", icon: "fas fa-graduation-cap" },
-            { name_ar: "الهندسة", name_en: "Engineering", icon: "fas fa-building" },
-            { name_ar: "المنظمات الإنسانية", name_en: "NGOs", icon: "fas fa-hands-helping" },
-            { name_ar: "العلاقات العامة والأمن والسلامة", name_en: "Public Relations & Security", icon: "fas fa-shield-alt" }
-        ];
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            jobs = sampleJobs;
-            loadCategories();
-            loadLatestJobs();
-            showHome();
-        });
-
-        function loadCategories() {
-            const grid = document.getElementById('categories-grid');
-            grid.innerHTML = '';
-            
-            categories.forEach(category => {
-                const categoryCard = document.createElement('div');
-                categoryCard.className = 'bg-white p-6 rounded-lg shadow-sm text-center cursor-pointer hover:shadow-md transition';
-                categoryCard.onclick = () => searchByCategory(category.name_ar);
-                
-                categoryCard.innerHTML = `
-                    <i class="${category.icon} text-3xl text-primary mb-3"></i>
-                    <h3 class="font-semibold text-gray-800">${currentLanguage === 'ar' ? category.name_ar : category.name_en}</h3>
-                `;
-                
-                grid.appendChild(categoryCard);
-            });
-        }
-
-        function loadLatestJobs() {
-            const container = document.getElementById('latest-jobs');
-            container.innerHTML = '';
-            
-            jobs.slice(0, 6).forEach(job => {
-                container.appendChild(createJobCard(job));
-            });
-        }
-
-        function createJobCard(job) {
-            const card = document.createElement('div');
-            card.className = 'job-card bg-white rounded-lg shadow-sm p-6 border border-gray-100';
-            
-            card.innerHTML = `
-                <div class="mb-4">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">${job.title}</h3>
-                    <p class="text-gray-600 mb-1"><i class="fas fa-building mr-2"></i>${job.company}</p>
-                    <p class="text-gray-600 mb-1"><i class="fas fa-map-marker-alt mr-2"></i>${job.location}</p>
-                    <p class="text-gray-600 mb-3"><i class="fas fa-calendar mr-2"></i>${job.posted_date}</p>
-                    <p class="text-gray-700 text-sm mb-3">${job.description}</p>
-                    
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        ${job.skills.map(skill => `<span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">${skill}</span>`).join('')}
-                    </div>
-                </div>
-                
-                <div class="flex justify-between items-center">
-                    <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">${job.source}</span>
-                    <a href="${job.url}" target="_blank" class="bg-primary text-white px-4 py-2 rounded text-sm hover:bg-primary-dark">
-                        ${currentLanguage === 'ar' ? 'عرض التفاصيل' : 'View Details'}
-                    </a>
-                </div>
-            `;
-            
-            return card;
-        }
-
-        function showHome() {
-            document.getElementById('main-content').innerHTML = `
-                <!-- Home Section -->
-                <section id="home-section" class="hero-section py-16">
-                    <div class="container mx-auto px-4 text-center">
-                        <h1 class="text-4xl md:text-5xl font-bold mb-6" data-ar="ابحث عن وظيفتك المثالية في سوريا" data-en="Find Your Perfect Job in Syria">ابحث عن وظيفتك المثالية في سوريا</h1>
-                        <p class="text-xl mb-8" data-ar="منصة نيرا تجمع لك أفضل الوظائف من مختلف المصادر في مكان واحد" data-en="NIRA platform brings you the best jobs from various sources in one place">منصة نيرا تجمع لك أفضل الوظائف من مختلف المصادر في مكان واحد</p>
-                        
-                        <div class="max-w-2xl mx-auto mb-8">
-                            <div class="flex">
-                                <input type="text" id="search-input" placeholder="ابحث عن وظيفة، شركة، أو مهارة..." 
-                                       class="flex-1 py-3 px-4 rounded-r-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                                       data-ar-placeholder="ابحث عن وظيفة، شركة، أو مهارة..." 
-                                       data-en-placeholder="Search for job, company, or skill...">
-                                <button onclick="searchJobs()" class="bg-white text-primary px-6 py-3 rounded-l-lg font-medium hover:bg-gray-100" data-ar="بحث" data-en="Search">
-                                    بحث
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Stats -->
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                                <div class="text-2xl font-bold">${jobs.length}</div>
-                                <div class="text-sm" data-ar="إجمالي الوظائف" data-en="Total Jobs">إجمالي الوظائف</div>
-                            </div>
-                            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                                <div class="text-2xl font-bold">4</div>
-                                <div class="text-sm" data-ar="الشركات" data-en="Companies">الشركات</div>
-                            </div>
-                            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                                <div class="text-2xl font-bold">4</div>
-                                <div class="text-sm" data-ar="المصادر" data-en="Sources">المصادر</div>
-                            </div>
-                            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-                                <div class="text-2xl font-bold">24/7</div>
-                                <div class="text-sm" data-ar="تحديث مستمر" data-en="Continuous Updates">تحديث مستمر</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Categories -->
-                <section class="py-12 bg-white">
-                    <div class="container mx-auto px-4">
-                        <h2 class="text-3xl font-bold text-center mb-8" data-ar="ابحث حسب التخصص" data-en="Search by Category">ابحث حسب التخصص</h2>
-                        
-                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4" id="categories-grid">
-                            <!-- Categories will be loaded here -->
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Latest Jobs -->
-                <section class="py-12 bg-gray-50">
-                    <div class="container mx-auto px-4">
-                        <div class="flex justify-between items-center mb-8">
-                            <h2 class="text-3xl font-bold" data-ar="أحدث الوظائف" data-en="Latest Jobs">أحدث الوظائف</h2>
-                            <button onclick="showAllJobs()" class="text-primary hover:text-primary-dark font-medium" data-ar="عرض الكل" data-en="View All">
-                                عرض الكل
-                            </button>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="latest-jobs">
-                            <!-- Jobs will be loaded here -->
-                        </div>
-                    </div>
-                </section>
-            `;
-            
-            loadCategories();
-            loadLatestJobs();
-            updateLanguage();
-        }
-
-        function showAllJobs() {
-            document.getElementById('main-content').innerHTML = `
-                <section class="py-12">
-                    <div class="container mx-auto px-4">
-                        <h1 class="text-3xl font-bold mb-8" data-ar="جميع الوظائف" data-en="All Jobs">جميع الوظائف</h1>
-                        
-                        <!-- Filters -->
-                        <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <input type="text" id="jobs-search-input" placeholder="ابحث في الوظائف..." 
-                                       class="w-full py-2 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                                       data-ar-placeholder="ابحث في الوظائف..." 
-                                       data-en-placeholder="Search jobs...">
-                                <select id="category-filter" class="w-full py-2 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                                    <option value="" data-ar="جميع التخصصات" data-en="All Categories">جميع التخصصات</option>
-                                </select>
-                                <button onclick="filterJobs()" class="bg-primary text-white py-2 px-6 rounded-lg hover:bg-primary-dark" data-ar="فلترة" data-en="Filter">
-                                    فلترة
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Jobs Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="all-jobs-grid">
-                            <!-- Jobs will be loaded here -->
-                        </div>
-                    </div>
-                </section>
-            `;
-            
-            loadAllJobs();
-            updateLanguage();
-        }
-
-        function showAbout() {
-            document.getElementById('main-content').innerHTML = `
-                <section class="py-12">
-                    <div class="container mx-auto px-4 max-w-4xl">
-                        <h1 class="text-4xl font-bold text-center mb-8" data-ar="حول منصة نيرا" data-en="About NIRA Platform">حول منصة نيرا</h1>
-                        
-                        <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
-                            <h2 class="text-2xl font-bold mb-4" data-ar="ما هي نيرا؟" data-en="What is NIRA?">ما هي نيرا؟</h2>
-                            <p class="text-gray-700 mb-6" data-ar="نيرا هي منصة متطورة لجمع الوظائف من مختلف المصادر في سوريا وعرضها في مكان واحد. نهدف إلى تسهيل عملية البحث عن الوظائف للباحثين عن العمل وتوفير الوقت والجهد." data-en="NIRA is an advanced platform for collecting jobs from various sources in Syria and displaying them in one place. We aim to facilitate the job search process for job seekers and save time and effort.">
-                                نيرا هي منصة متطورة لجمع الوظائف من مختلف المصادر في سوريا وعرضها في مكان واحد. نهدف إلى تسهيل عملية البحث عن الوظائف للباحثين عن العمل وتوفير الوقت والجهد.
-                            </p>
-                        </div>
-
-                        <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
-                            <h2 class="text-2xl font-bold mb-4" data-ar="كيف تعمل نيرا؟" data-en="How does NIRA work?">كيف تعمل نيرا؟</h2>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2">
-                                <li data-ar="نجمع الوظائف من مصادر موثوقة مثل reliefweb.int و job.sy و nsjobs.net و forsa.sy" data-en="We collect jobs from reliable sources like reliefweb.int, job.sy, nsjobs.net, and forsa.sy">نجمع الوظائف من مصادر موثوقة مثل reliefweb.int و job.sy و nsjobs.net و forsa.sy</li>
-                                <li data-ar="نعرض الوظائف في شكل بطاقات منظمة وسهلة القراءة" data-en="We display jobs in organized and easy-to-read cards">نعرض الوظائف في شكل بطاقات منظمة وسهلة القراءة</li>
-                                <li data-ar="نوفر إمكانية البحث والفلترة حسب التخصص والموقع" data-en="We provide search and filtering capabilities by specialty and location">نوفر إمكانية البحث والفلترة حسب التخصص والموقع</li>
-                                <li data-ar="نتيح للمستخدمين حفظ الوظائف المفضلة لديهم" data-en="We allow users to save their favorite jobs">نتيح للمستخدمين حفظ الوظائف المفضلة لديهم</li>
-                                <li data-ar="نحدث قاعدة البيانات بشكل مستمر لضمان أحدث الوظائف" data-en="We continuously update the database to ensure the latest jobs">نحدث قاعدة البيانات بشكل مستمر لضمان أحدث الوظائف</li>
-                            </ul>
-                        </div>
-
-                        <div class="bg-white rounded-lg shadow-sm p-8">
-                            <h2 class="text-2xl font-bold mb-4" data-ar="ماذا يستفيد المستخدم؟" data-en="What does the user benefit?">ماذا يستفيد المستخدم؟</h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="text-center">
-                                    <i class="fas fa-clock text-4xl text-primary mb-4"></i>
-                                    <h3 class="font-bold text-lg mb-2" data-ar="توفير الوقت" data-en="Save Time">توفير الوقت</h3>
-                                    <p class="text-gray-700" data-ar="بدلاً من زيارة مواقع متعددة، كل شيء في مكان واحد" data-en="Instead of visiting multiple sites, everything in one place">بدلاً من زيارة مواقع متعددة، كل شيء في مكان واحد</p>
-                                </div>
-                                <div class="text-center">
-                                    <i class="fas fa-search text-4xl text-primary mb-4"></i>
-                                    <h3 class="font-bold text-lg mb-2" data-ar="بحث متقدم" data-en="Advanced Search">بحث متقدم</h3>
-                                    <p class="text-gray-700" data-ar="فلترة دقيقة حسب التخصص والموقع والشركة" data-en="Precise filtering by specialty, location and company">فلترة دقيقة حسب التخصص والموقع والشركة</p>
-                                </div>
-                                <div class="text-center">
-                                    <i class="fas fa-heart text-4xl text-primary mb-4"></i>
-                                    <h3 class="font-bold text-lg mb-2" data-ar="قائمة المفضلة" data-en="Favorites List">قائمة المفضلة</h3>
-                                    <p class="text-gray-700" data-ar="حفظ الوظائف المهمة للمراجعة لاحقاً" data-en="Save important jobs for later review">حفظ الوظائف المهمة للمراجعة لاحقاً</p>
-                                </div>
-                                <div class="text-center">
-                                    <i class="fas fa-sync text-4xl text-primary mb-4"></i>
-                                    <h3 class="font-bold text-lg mb-2" data-ar="تحديث مستمر" data-en="Continuous Updates">تحديث مستمر</h3>
-                                    <p class="text-gray-700" data-ar="أحدث الوظائف المتاحة في السوق" data-en="Latest jobs available in the market">أحدث الوظائف المتاحة في السوق</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            `;
-            
-            updateLanguage();
-        }
-
-        function loadAllJobs() {
-            const grid = document.getElementById('all-jobs-grid');
-            const categoryFilter = document.getElementById('category-filter');
-            
-            // Load category options
-            categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category.name_ar;
-                option.textContent = currentLanguage === 'ar' ? category.name_ar : category.name_en;
-                categoryFilter.appendChild(option);
-            });
-            
-            // Load all jobs
-            grid.innerHTML = '';
-            jobs.forEach(job => {
-                grid.appendChild(createJobCard(job));
-            });
-        }
-
-        function searchJobs() {
-            const searchTerm = document.getElementById('search-input').value;
-            showAllJobs();
-            // Filter jobs based on search term
-            if (searchTerm) {
-                document.getElementById('jobs-search-input').value = searchTerm;
-                filterJobs();
-            }
-        }
-
-        function searchByCategory(category) {
-            showAllJobs();
-            document.getElementById('category-filter').value = category;
-            filterJobs();
-        }
-
-        function filterJobs() {
-            const search = document.getElementById('jobs-search-input').value.toLowerCase();
-            const category = document.getElementById('category-filter').value;
-            
-            let filteredJobs = jobs;
-            
-            if (search) {
-                filteredJobs = filteredJobs.filter(job => 
-                    job.title.toLowerCase().includes(search) ||
-                    job.company.toLowerCase().includes(search) ||
-                    job.description.toLowerCase().includes(search)
-                );
-            }
-            
-            if (category) {
-                filteredJobs = filteredJobs.filter(job => job.category === category);
-            }
-            
-            const grid = document.getElementById('all-jobs-grid');
-            grid.innerHTML = '';
-            
-            if (filteredJobs.length === 0) {
-                grid.innerHTML = '<div class="col-span-full text-center py-8 text-gray-500">لا توجد وظائف تطابق البحث</div>';
-            } else {
-                filteredJobs.forEach(job => {
-                    grid.appendChild(createJobCard(job));
-                });
-            }
-        }
-
-        function toggleLanguage() {
-            currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
-            
-            const html = document.getElementById('html-root');
-            const body = document.body;
-            
-            if (currentLanguage === 'en') {
-                html.setAttribute('dir', 'ltr');
-                html.setAttribute('lang', 'en');
-                body.setAttribute('dir', 'ltr');
-                document.getElementById('lang-text').textContent = 'العربية';
-            } else {
-                html.setAttribute('dir', 'rtl');
-                html.setAttribute('lang', 'ar');
-                body.setAttribute('dir', 'rtl');
-                document.getElementById('lang-text').textContent = 'English';
-            }
-            
-            updateLanguage();
-            loadCategories();
-        }
-
-        function updateLanguage() {
-            // Update all translatable elements
-            document.querySelectorAll('[data-ar]').forEach(element => {
-                const text = currentLanguage === 'ar' ? element.getAttribute('data-ar') : element.getAttribute('data-en');
-                if (text) {
-                    element.textContent = text;
-                }
-            });
-            
-            // Update placeholders
-            document.querySelectorAll('[data-ar-placeholder]').forEach(element => {
-                const placeholder = currentLanguage === 'ar' ? element.getAttribute('data-ar-placeholder') : element.getAttribute('data-en-placeholder');
-                if (placeholder) {
-                    element.setAttribute('placeholder', placeholder);
-                }
-            });
-        }
-
-        function showAuthModal() {
-            showNotification(currentLanguage === 'ar' ? 'ميزة تسجيل الدخول قيد التطوير' : 'Login feature under development', 'info');
-        }
-
-        function showNotification(message, type = 'info') {
-            const notification = document.getElementById('notification');
-            const text = document.getElementById('notification-text');
-            
-            text.textContent = message;
-            
-            notification.className = `notification ${type === 'error' ? 'bg-red-500' : type === 'success' ? 'bg-green-500' : 'bg-blue-500'} text-white px-6 py-3 rounded-lg shadow-lg show`;
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-    </script>
 </body>
 </html>
 
