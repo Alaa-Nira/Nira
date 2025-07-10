@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>عن نيرا - منصة البحث عن وظائف في سوريا</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&amp;family=Poppins:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        :root {
+            --primary: #4F46E5;
+            --secondary: #10B981;
+        }
+        body[dir="rtl"] {
+            font-family: 'Tajawal', sans-serif;
+        }
+        body[dir="ltr"] {
+            font-family: 'Poppins', sans-serif;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .step-card {
+            position: relative;
+        }
+        .step-number {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: -50px;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #4F46E5, #7C3AED);
+        }
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        .faq-item.active {
+            background-color: #f8fafc;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .wave-divider {
+            position: relative;
+            background: white;
+        }
+        .wave-divider::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23667eea'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800" dir="rtl">
+<!-- Navigation -->
+<nav class="bg-white shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center">
+<a class="flex-shrink-0 flex items-center" href="index.html">
+<img alt="Nira Logo واضح" class="h-8 w-auto" src="wmremove-transformed (1).png" style="height: 60px; max-height: 60px;"/>
+</a>
+</div>
+<div class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
+<a class="text-gray-700 hover:text-indigo-500 px-3 py-2 text-sm font-medium" href="index.html">الرئيسية</a>
+<a class="text-gray-700 hover:text-indigo-500 px-3 py-2 text-sm font-medium" href="search.html">تصفح الوظائف</a>
+<a class="text-indigo-600 px-3 py-2 text-sm font-medium" href="about.html">عن نيرا</a>
+<button class="ml-3 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700" id="authButton">
+                        تسجيل الدخول
+                    </button>
+</div>
+<div class="-mr-2 flex items-center md:hidden">
+<button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="mobileMenuButton" type="button">
+<span class="sr-only">Open main menu</span>
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile menu -->
+<div class="hidden md:hidden" id="mobileMenu">
+<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+<a class="text-gray-700 hover:text-indigo-500 block px-3 py-2 text-base font-medium" href="index.html">الرئيسية</a>
+<a class="text-gray-700 hover:text-indigo-500 block px-3 py-2 text-base font-medium" href="search.html">تصفح الوظائف</a>
+<a class="text-indigo-600 block px-3 py-2 text-base font-medium" href="about.html">عن نيرا</a>
+<button class="w-full text-left bg-indigo-600 text-white px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-700" id="authButtonMobile">
+                    تسجيل الدخول
+                </button>
+</div>
+</div>
+</nav>
+
+<!-- Main Content -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">عن منصة نيرا</h1>
+                <p class="text-xl md:text-2xl mb-8 leading-relaxed">
+                    منصة ذكية ومبتكرة للبحث عن الوظائف في سوريا، تجمع أفضل الفرص من مختلف المصادر في مكان واحد
+                </p>
+                <div class="flex justify-center">
+                    <img src="https://illustrations.popsy.co/amber/work-from-home.svg" alt="About Nira Illustration" class="w-full max-w-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="wave-divider py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">مهمتنا</h2>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            نسعى في نيرا إلى تسهيل عملية البحث عن الوظائف للباحثين عن عمل في سوريا من خلال توفير منصة موحدة تجمع أفضل الفرص الوظيفية من مختلف المصادر الموثوقة.
+                        </p>
+                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                            هدفنا هو توفير الوقت والجهد على المستخدمين وتمكينهم من العثور على الوظيفة المناسبة بسهولة وسرعة، مع ضمان الحصول على أحدث الفرص المتاحة في السوق.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 text-xl mr-2"></i>
+                                <span class="text-gray-700 font-medium">سهولة الاستخدام</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 text-xl mr-2"></i>
+                                <span class="text-gray-700 font-medium">تحديث مستمر</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 text-xl mr-2"></i>
+                                <span class="text-gray-700 font-medium">مصادر موثوقة</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://illustrations.popsy.co/amber/team-spirit.svg" alt="Mission Illustration" class="w-full max-w-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">نيرا بالأرقام</h2>
+                <p class="text-lg text-gray-600">إحصائيات تعكس نجاح منصتنا في خدمة المجتمع</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="stat-card text-white p-8 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-briefcase text-4xl mb-4"></i>
+                    <h3 class="text-3xl font-bold mb-2" id="jobsCount">1000+</h3>
+                    <p class="text-lg">وظيفة متاحة</p>
+                </div>
+                <div class="stat-card text-white p-8 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-building text-4xl mb-4"></i>
+                    <h3 class="text-3xl font-bold mb-2" id="companiesCount">200+</h3>
+                    <p class="text-lg">شركة ومنظمة</p>
+                </div>
+                <div class="stat-card text-white p-8 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-users text-4xl mb-4"></i>
+                    <h3 class="text-3xl font-bold mb-2" id="usersCount">5000+</h3>
+                    <p class="text-lg">مستخدم نشط</p>
+                </div>
+                <div class="stat-card text-white p-8 rounded-xl text-center transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-globe text-4xl mb-4"></i>
+                    <h3 class="text-3xl font-bold mb-2" id="sourcesCount">4</h3>
+                    <p class="text-lg">مصادر موثوقة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">كيف تعمل نيرا؟</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    عملية بسيطة وسهلة للعثور على وظيفتك المثالية في خطوات قليلة
+                </p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="step-card bg-white rounded-xl shadow-lg p-8 text-center relative">
+                        <div class="step-number">1</div>
+                        <div class="bg-blue-100 text-blue-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-search text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">ابحث عن الوظائف</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            استخدم مربع البحث للعثور على الوظائف المناسبة لك حسب التخصص، الموقع، أو الكلمات المفتاحية
+                        </p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="step-card bg-white rounded-xl shadow-lg p-8 text-center relative">
+                        <div class="step-number">2</div>
+                        <div class="timeline-line hidden md:block"></div>
+                        <div class="bg-green-100 text-green-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-filter text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">فلتر النتائج</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            استخدم الفلاتر المتقدمة لتضييق نطاق البحث حسب التخصص، المصدر، أو معايير أخرى
+                        </p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="step-card bg-white rounded-xl shadow-lg p-8 text-center relative">
+                        <div class="step-number">3</div>
+                        <div class="timeline-line hidden md:block"></div>
+                        <div class="bg-purple-100 text-purple-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-external-link-alt text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">تقدم للوظيفة</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            اضغط على "عرض التفاصيل" للانتقال إلى الموقع الأصلي والتقدم للوظيفة مباشرة
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">مميزات نيرا</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    نوفر لك أفضل تجربة للبحث عن الوظائف مع مجموعة من الميزات المتقدمة
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-300">
+                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-rocket text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">بحث سريع وذكي</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        محرك بحث متطور يساعدك في العثور على الوظائف المناسبة بسرعة وكفاءة عالية
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-300">
+                    <div class="bg-green-100 text-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-sync-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">تحديث مستمر</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        نحدث قاعدة البيانات بشكل يومي لضمان حصولك على أحدث الفرص الوظيفية المتاحة
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-300">
+                    <div class="bg-purple-100 text-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">متجاوب مع الأجهزة</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        تصميم متجاوب يعمل بسلاسة على جميع الأجهزة من الهاتف المحمول إلى الحاسوب
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-300">
+                    <div class="bg-yellow-100 text-yellow-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">مصادر موثوقة</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        نجمع الوظائف من مصادر موثوقة ومعتمدة مثل ReliefWeb و Job.sy وغيرها
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-300">
+                    <div class="bg-red-100 text-red-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-heart text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">مجاني بالكامل</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        جميع خدماتنا مجانية تماماً للباحثين عن عمل، بدون أي رسوم أو اشتراكات
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-300">
+                    <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-language text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">دعم متعدد اللغات</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        واجهة باللغتين العربية والإنجليزية لتناسب جميع المستخدمين
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sources Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">مصادرنا الموثوقة</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    نتعاون مع أفضل المنصات والمواقع لجلب أحدث الفرص الوظيفية
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-globe text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">ReliefWeb</h3>
+                    <p class="text-gray-600 text-sm">منصة الأمم المتحدة للوظائف الإنسانية</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all duration-300">
+                    <div class="bg-green-100 text-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-briefcase text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Job.sy</h3>
+                    <p class="text-gray-600 text-sm">أكبر منصة للوظائف في سوريا</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all duration-300">
+                    <div class="bg-purple-100 text-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-network-wired text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">NSJobs</h3>
+                    <p class="text-gray-600 text-sm">شبكة شمال شرق سوريا للوظائف</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all duration-300">
+                    <div class="bg-yellow-100 text-yellow-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-plus text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">المزيد قريباً</h3>
+                    <p class="text-gray-600 text-sm">نعمل على إضافة مصادر جديدة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">الأسئلة الشائعة</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    إجابات على أكثر الأسئلة شيوعاً حول منصة نيرا
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <button class="faq-question w-full text-right p-6 focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-semibold text-gray-800">هل يمكنني التقديم للوظائف مباشرة من خلال نيرا؟</span>
+                                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0">
+                            <p class="text-gray-600 leading-relaxed">
+                                لا، نيرا هي منصة تجميع للوظائف وليست منصة تقديم. نحن نوفر لك معلومات مفصلة عن الوظائف مع روابط مباشرة للمواقع الأصلية حيث يمكنك التقديم مباشرة للوظيفة.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <button class="faq-question w-full text-right p-6 focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-semibold text-gray-800">كم مرة يتم تحديث الوظائف؟</span>
+                                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0">
+                            <p class="text-gray-600 leading-relaxed">
+                                نقوم بتحديث قاعدة البيانات الخاصة بنا بشكل يومي للتأكد من أن جميع الوظائف المعروضة حديثة ومتاحة. كما نقوم بإزالة الوظائف المنتهية الصلاحية تلقائياً.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <button class="faq-question w-full text-right p-6 focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-semibold text-gray-800">هل توجد رسوم لاستخدام نيرا؟</span>
+                                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0">
+                            <p class="text-gray-600 leading-relaxed">
+                                لا، نيرا خدمة مجانية بالكامل للباحثين عن عمل. لا توجد أي رسوم أو اشتراكات مطلوبة لاستخدام المنصة والوصول إلى جميع الميزات المتاحة.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <button class="faq-question w-full text-right p-6 focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-semibold text-gray-800">هل أحتاج لإنشاء حساب للبحث عن الوظائف؟</span>
+                                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0">
+                            <p class="text-gray-600 leading-relaxed">
+                                لا، يمكنك البحث عن الوظائف وتصفحها بدون إنشاء حساب. ولكن إنشاء حساب (عبر Google) يتيح لك ميزات إضافية مثل حفظ الوظائف المفضلة والحصول على إشعارات بالوظائف الجديدة.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <button class="faq-question w-full text-right p-6 focus:outline-none hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-semibold text-gray-800">كيف يمكنني الإبلاغ عن وظيفة غير صحيحة؟</span>
+                                <i class="fas fa-chevron-down text-gray-500 transform transition-transform"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0">
+                            <p class="text-gray-600 leading-relaxed">
+                                يمكنك التواصل معنا عبر البريد الإلكتروني أو وسائل التواصل الاجتماعي للإبلاغ عن أي وظيفة غير صحيحة أو منتهية الصلاحية. نحن نقدر ملاحظاتكم ونعمل على تحسين جودة المحتوى باستمرار.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">تواصل معنا</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    لديك استفسار أو اقتراح؟ نحن هنا لمساعدتك
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center p-6">
+                        <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">البريد الإلكتروني</h3>
+                        <p class="text-gray-600">info@nira-platform.com</p>
+                    </div>
+                    
+                    <div class="text-center p-6">
+                        <div class="bg-green-100 text-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">واتساب</h3>
+                        <p class="text-gray-600">+963 XXX XXX XXX</p>
+                    </div>
+                    
+                    <div class="text-center p-6">
+                        <div class="bg-purple-100 text-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-telegram text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">تليجرام</h3>
+                        <p class="text-gray-600">@nira_platform</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <div class="flex justify-center space-x-6 space-x-reverse">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 text-2xl transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-600 text-2xl transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-blue-700 hover:text-blue-900 text-2xl transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-pink-600 hover:text-pink-800 text-2xl transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-lg font-semibold mb-4">عن نيرا</h3>
+<p class="text-gray-300">منصة بحث عن الوظائف في سوريا، تجمع الفرص من مختلف المنصات في مكان واحد.</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">روابط سريعة</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white" href="index.html">الرئيسية</a></li>
+<li><a class="text-gray-300 hover:text-white" href="search.html">تصفح الوظائف</a></li>
+<li><a class="text-gray-300 hover:text-white" href="about.html">عن نيرا</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">المصادر</h3>
+<ul class="space-y-2">
+<li><a class="text-gray-300 hover:text-white" href="https://reliefweb.int" target="_blank">Relief Web</a></li>
+<li><a class="text-gray-300 hover:text-white" href="https://job.sy" target="_blank">Job.sy</a></li>
+<li><a class="text-gray-300 hover:text-white" href="#">شبكة شمال شرق سوريا</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">اشترك في النشرة البريدية</h3>
+<div class="flex">
+<input class="px-4 py-2 w-full rounded-r-md focus:outline-none text-gray-800" placeholder="بريدك الإلكتروني" type="email"/>
+<button class="bg-indigo-600 text-white px-4 py-2 rounded-l-md hover:bg-indigo-700 focus:outline-none">
+<i class="fas fa-paper-plane"></i>
+</button>
+</div>
+<div class="mt-4 flex space-x-4 space-x-reverse">
+<a class="text-gray-300 hover:text-white text-xl" href="#"><i class="fab fa-facebook"></i></a>
+<a class="text-gray-300 hover:text-white text-xl" href="#"><i class="fab fa-twitter"></i></a>
+<a class="text-gray-300 hover:text-white text-xl" href="#"><i class="fab fa-linkedin"></i></a>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
+<p>© 2025 نيرا. جميع الحقوق محفوظة.</p>
+</div>
+</div>
+</footer>
+
+<!-- Google Sign In Modal -->
+<div class="fixed inset-0 z-50 hidden overflow-y-auto" id="authModal">
+<div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+<div aria-hidden="true" class="fixed inset-0 transition-opacity">
+<div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+</div>
+<span aria-hidden="true" class="hidden sm:inline-block sm:align-middle sm:h-screen">​</span>
+<div aria-labelledby="modal-headline" aria-modal="true" class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog">
+<div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+<div class="sm:flex sm:items-start">
+<div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 sm:mx-0 sm:h-10 sm:w-10">
+<i class="fas fa-user text-indigo-600"></i>
+</div>
+<div class="mt-3 text-center sm:mt-0 sm:mr-4 sm:text-right">
+<h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">تسجيل الدخول إلى نيرا</h3>
+<div class="mt-2">
+<p class="text-sm text-gray-500">سجل الدخول باستخدام حساب غوغل للوصول إلى جميع ميزات نيرا.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+<button class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm" id="googleSignIn" type="button">
+<i class="fab fa-google mr-2"></i> تسجيل الدخول بغوغل
+                    </button>
+<button class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" id="closeAuthModal" type="button">
+                        إلغاء
+                    </button>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+// Animated counters
+function animateCounters() {
+    const counters = [
+        { id: 'jobsCount', target: 1000, suffix: '+' },
+        { id: 'companiesCount', target: 200, suffix: '+' },
+        { id: 'usersCount', target: 5000, suffix: '+' },
+        { id: 'sourcesCount', target: 4, suffix: '' }
+    ];
+    
+    counters.forEach(counter => {
+        const element = document.getElementById(counter.id);
+        let current = 0;
+        const increment = counter.target / 100;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= counter.target) {
+                current = counter.target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current) + counter.suffix;
+        }, 20);
+    });
+}
+
+// FAQ Toggle
+function toggleFAQ(button) {
+    const faqItem = button.parentElement;
+    const answer = faqItem.querySelector('.faq-answer');
+    const icon = button.querySelector('i');
+    
+    // Close all other FAQ items
+    document.querySelectorAll('.faq-item').forEach(item => {
+        if (item !== faqItem) {
+            item.classList.remove('active');
+            item.querySelector('.faq-answer').classList.add('hidden');
+            item.querySelector('i').classList.remove('rotate-180');
+        }
+    });
+    
+    // Toggle current FAQ item
+    faqItem.classList.toggle('active');
+    answer.classList.toggle('hidden');
+    icon.classList.toggle('rotate-180');
+}
+
+// Mobile menu toggle
+document.getElementById('mobileMenuButton').addEventListener('click', () => {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('hidden');
+});
+
+// Auth modal
+document.getElementById('authButton').addEventListener('click', () => {
+    document.getElementById('authModal').classList.remove('hidden');
+});
+
+document.getElementById('authButtonMobile').addEventListener('click', () => {
+    document.getElementById('authModal').classList.remove('hidden');
+});
+
+document.getElementById('closeAuthModal').addEventListener('click', () => {
+    document.getElementById('authModal').classList.add('hidden');
+});
+
+// Close modal when clicking outside
+document.getElementById('authModal').addEventListener('click', (e) => {
+    if (e.target.id === 'authModal') {
+        document.getElementById('authModal').classList.add('hidden');
+    }
+});
+
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            if (entry.target.id === 'jobsCount') {
+                animateCounters();
+                observer.unobserve(entry.target);
+            }
+        }
+    });
+}, observerOptions);
+
+// Start observing the stats section
+document.addEventListener('DOMContentLoaded', () => {
+    const statsSection = document.getElementById('jobsCount');
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
+});
+</script>
+
+</body>
+</html>
+
