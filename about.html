@@ -5,6 +5,8 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>عن نيرا - منصة البحث عن وظائف في سوريا</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&amp;family=Poppins:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <style>
@@ -90,9 +92,9 @@
 <a class="text-gray-700 hover:text-indigo-500 px-3 py-2 text-sm font-medium" href="index.html">الرئيسية</a>
 <a class="text-gray-700 hover:text-indigo-500 px-3 py-2 text-sm font-medium" href="search.html">تصفح الوظائف</a>
 <a class="text-indigo-600 px-3 py-2 text-sm font-medium" href="about.html">عن نيرا</a>
-<button class="ml-3 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700" id="authButton">
-                        تسجيل الدخول
-                    </button>
+                <button class="ml-3 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700" id="authButton">
+                    <span id="authButtonText">تسجيل الدخول</span>
+                </button>
 </div>
 <div class="-mr-2 flex items-center md:hidden">
 <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="mobileMenuButton" type="button">
@@ -108,8 +110,8 @@
 <a class="text-gray-700 hover:text-indigo-500 block px-3 py-2 text-base font-medium" href="index.html">الرئيسية</a>
 <a class="text-gray-700 hover:text-indigo-500 block px-3 py-2 text-base font-medium" href="search.html">تصفح الوظائف</a>
 <a class="text-indigo-600 block px-3 py-2 text-base font-medium" href="about.html">عن نيرا</a>
-<button class="w-full text-left bg-indigo-600 text-white px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-700" id="authButtonMobile">
-                    تسجيل الدخول
+                <button class="w-full text-left bg-indigo-600 text-white px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-700" id="authButtonMobile">
+                    <span id="authButtonTextMobile">تسجيل الدخول</span>
                 </button>
 </div>
 </div>
@@ -693,29 +695,191 @@ function toggleFAQ(button) {
     icon.classList.toggle('rotate-180');
 }
 
+// Authentication System
+let currentUser = null;
+
+// Initialize Facebook SDK
+window.fbAsyncInit = function() {
+  FB.init({
+    appId: '1234567890123456', // Replace with your Facebook App ID
+    cookie: true,
+    xfbml: true,
+    version: 'v18.0'
+  });
+};
+
+// Initialize Google OAuth
+function initializeGoogleAuth() {
+  google.accounts.id.initialize({
+    client_id: "your-google-client-id.apps.googleusercontent.com", // Replace with your Google Client ID
+    callback: handleGoogleSignIn
+  });
+}
+
+// Handle Google Sign In
+function handleGoogleSignIn(response) {
+  const credential = response.credential;
+  const payload = JSON.parse(atob(credential.split('.')[1]));
+  
+  currentUser = {
+    id: payload.sub,
+    name: payload.name,
+    email: payload.email,
+    picture: payload.picture,
+    provider: 'google'
+  };
+  
+  saveUserSession();
+  updateAuthUI();
+  closeAuthModal();
+  showWelcomeMessage();
+}
+
+// Handle Facebook Sign In
+function handleFacebookSignIn() {
+  FB.login(function(response) {
+    if (response.authResponse) {
+      FB.api('/me', {fields: 'name,email,picture'}, function(response) {
+        currentUser = {
+          id: response.id,
+          name: response.name,
+          email: response.email,
+          picture: response.picture.data.url,
+          provider: 'facebook'
+        };
+        
+        saveUserSession();
+        updateAuthUI();
+        closeAuthModal();
+        showWelcomeMessage();
+      });
+    }
+  }, {scope: 'email'});
+}
+
+// Save user session
+function saveUserSession() {
+  localStorage.setItem('nira_user', JSON.stringify(currentUser));
+}
+
+// Load user session
+function loadUserSession() {
+  const savedUser = localStorage.getItem('nira_user');
+  if (savedUser) {
+    currentUser = JSON.parse(savedUser);
+    updateAuthUI();
+  }
+}
+
+// Update authentication UI
+function updateAuthUI() {
+  const authButton = document.getElementById('authButtonText');
+  const authButtonMobile = document.getElementById('authButtonTextMobile');
+  
+  if (currentUser) {
+    authButton.textContent = `مرحباً ${currentUser.name.split(' ')[0]}`;
+    authButtonMobile.textContent = `مرحباً ${currentUser.name.split(' ')[0]}`;
+    
+    // Change button click behavior to logout
+    document.getElementById('authButton').onclick = logout;
+    document.getElementById('authButtonMobile').onclick = logout;
+  } else {
+    authButton.textContent = 'تسجيل الدخول';
+    authButtonMobile.textContent = 'تسجيل الدخول';
+    
+    // Change button click behavior to show login modal
+    document.getElementById('authButton').onclick = showAuthModal;
+    document.getElementById('authButtonMobile').onclick = showAuthModal;
+  }
+}
+
+// Show authentication modal
+function showAuthModal() {
+  document.getElementById('authModal').classList.remove('hidden');
+}
+
+// Close authentication modal
+function closeAuthModal() {
+  document.getElementById('authModal').classList.add('hidden');
+}
+
+// Logout function
+function logout() {
+  if (currentUser && currentUser.provider === 'facebook') {
+    FB.logout();
+  }
+  
+  currentUser = null;
+  localStorage.removeItem('nira_user');
+  updateAuthUI();
+  showLogoutMessage();
+}
+
+// Show welcome message
+function showWelcomeMessage() {
+  const toast = document.createElement('div');
+  toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+  toast.innerHTML = `
+    <div class="flex items-center">
+      <i class="fas fa-check-circle mr-2"></i>
+      <span>مرحباً بك ${currentUser.name}! تم تسجيل الدخول بنجاح</span>
+    </div>
+  `;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+
+// Show logout message
+function showLogoutMessage() {
+  const toast = document.createElement('div');
+  toast.className = 'fixed top-4 right-4 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+  toast.innerHTML = `
+    <div class="flex items-center">
+      <i class="fas fa-sign-out-alt mr-2"></i>
+      <span>تم تسجيل الخروج بنجاح</span>
+    </div>
+  `;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+
+// Check if user is logged in before allowing actions
+function requireAuth(action) {
+  if (!currentUser) {
+    showAuthModal();
+    return false;
+  }
+  return true;
+}
+
 // Mobile menu toggle
 document.getElementById('mobileMenuButton').addEventListener('click', () => {
     const mobileMenu = document.getElementById('mobileMenu');
     mobileMenu.classList.toggle('hidden');
 });
 
-// Auth modal
-document.getElementById('authButton').addEventListener('click', () => {
-    document.getElementById('authModal').classList.remove('hidden');
+// Initialize authentication
+loadUserSession();
+initializeGoogleAuth();
+
+// Event listeners for auth buttons
+document.getElementById('googleSignIn').addEventListener('click', () => {
+    google.accounts.id.prompt();
 });
 
-document.getElementById('authButtonMobile').addEventListener('click', () => {
-    document.getElementById('authModal').classList.remove('hidden');
-});
-
-document.getElementById('closeAuthModal').addEventListener('click', () => {
-    document.getElementById('authModal').classList.add('hidden');
-});
+document.getElementById('facebookSignIn').addEventListener('click', handleFacebookSignIn);
+document.getElementById('closeAuthModal').addEventListener('click', closeAuthModal);
 
 // Close modal when clicking outside
 document.getElementById('authModal').addEventListener('click', (e) => {
     if (e.target.id === 'authModal') {
-        document.getElementById('authModal').classList.add('hidden');
+        closeAuthModal();
     }
 });
 
