@@ -9,15 +9,6 @@
     "Link": "https://reliefweb.int/node/4155257"
   },
   {
-    "Job Title": "Head of Support Services Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-07-11",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4161633"
-  },
-  {
     "Job Title": "Finance Manager",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -34,6 +25,33 @@
     "Deadline": "2025-07-31",
     "Description": "",
     "Link": "https://reliefweb.int/node/4161783"
+  },
+  {
+    "Job Title": "Project Manager",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-07-13",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4162103"
+  },
+  {
+    "Job Title": "Monitoring Evaluation Accountability and Learning (MEAL) Coordinator",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-07-15",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4162936"
+  },
+  {
+    "Job Title": "Call for Concept Notes – Nabni B4P Facility",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-08-10",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4162053"
   },
   {
     "Job Title": "On-the-job Training Coach",
@@ -54,24 +72,6 @@
     "Link": "https://reliefweb.int/node/4162588"
   },
   {
-    "Job Title": "GRANT & REPORTING OFFICER SYRIA M/F",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-30",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4163204"
-  },
-  {
-    "Job Title": "Monitoring Evaluation Accountability and Learning (MEAL) Coordinator",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-07-15",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4162936"
-  },
-  {
     "Job Title": "Deputy Country Coordinator –NORTHEAST SYRIA (NES)",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -81,22 +81,13 @@
     "Link": "https://reliefweb.int/node/4163023"
   },
   {
-    "Job Title": "Project Manager",
+    "Job Title": "GRANT & REPORTING OFFICER SYRIA M/F",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-07-13",
+    "Deadline": "2025-09-30",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4162103"
-  },
-  {
-    "Job Title": "Call for Concept Notes – Nabni B4P Facility",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-08-10",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4162053"
+    "Link": "https://reliefweb.int/node/4163204"
   },
   {
     "Job Title": "National Program Director Development (NPDD)",
@@ -117,24 +108,6 @@
     "Link": "https://reliefweb.int/node/4163792"
   },
   {
-    "Job Title": "Nutrition Cluster Co-Coordinator- National- Damascus",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-07-24",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4164383"
-  },
-  {
-    "Job Title": "HR/Safeguarding Officer-Idlib - Aleppo",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-07-20",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4164060"
-  },
-  {
     "Job Title": "Protection Program Manager",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -153,13 +126,13 @@
     "Link": "https://reliefweb.int/node/4164065"
   },
   {
-    "Job Title": "Protection Monitoring Assistant",
+    "Job Title": "Nutrition Cluster Co-Coordinator- National- Damascus",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-07-20",
+    "Deadline": "2025-07-24",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4164212"
+    "Link": "https://reliefweb.int/node/4164383"
   },
   {
     "Job Title": "Senior Research and Analysis Lead",
@@ -171,6 +144,24 @@
     "Link": "https://reliefweb.int/node/4163840"
   },
   {
+    "Job Title": "HR/Safeguarding Officer-Idlib - Aleppo",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-07-20",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4164060"
+  },
+  {
+    "Job Title": "Protection Monitoring Assistant",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-07-20",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4164212"
+  },
+  {
     "Job Title": "Team Leader",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -178,5 +169,14 @@
     "Deadline": "2025-07-15",
     "Description": "",
     "Link": "https://reliefweb.int/node/4163839"
+  },
+  {
+    "Job Title": "Manager, Grants and Compliance",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-07-15",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4163843"
   }
 ]
