@@ -9,24 +9,6 @@
     "Link": "https://reliefweb.int/node/4155257"
   },
   {
-    "Job Title": "Operation Manager SYRIA based in Damascus",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-15",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4164555"
-  },
-  {
-    "Job Title": "Area Manager Aleppo - SYRIA",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-15",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4164553"
-  },
-  {
     "Job Title": "Call for Concept Notes – Nabni B4P Facility",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -36,24 +18,6 @@
     "Link": "https://reliefweb.int/node/4162053"
   },
   {
-    "Job Title": "GRANT & REPORTING OFFICER SYRIA M/F",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-30",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4163204"
-  },
-  {
-    "Job Title": "زميل(ة) قانوني(ة)",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-08-17",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4165753"
-  },
-  {
     "Job Title": "Deputy Country Coordinator –NORTHEAST SYRIA (NES)",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -61,6 +25,15 @@
     "Deadline": "2025-08-15",
     "Description": "",
     "Link": "https://reliefweb.int/node/4163023"
+  },
+  {
+    "Job Title": "GRANT & REPORTING OFFICER SYRIA M/F",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-30",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4163204"
   },
   {
     "Job Title": "HR Coordinator (Recruitment & Onboarding) - National",
@@ -81,6 +54,15 @@
     "Link": "https://reliefweb.int/node/4166924"
   },
   {
+    "Job Title": "REACH Senior Assessment Officer",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-08-07",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4166684"
+  },
+  {
     "Job Title": "MEAL Coordinator",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -97,24 +79,6 @@
     "Deadline": "2025-08-18",
     "Description": "",
     "Link": "https://reliefweb.int/node/4166278"
-  },
-  {
-    "Job Title": "REACH Senior Assessment Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-08-07",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4166684"
-  },
-  {
-    "Job Title": "Compliance and Risk Mitigation Coordinator",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-08-25",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4167233"
   },
   {
     "Job Title": "Project Manager (Syria Based)",
@@ -144,13 +108,40 @@
     "Link": "https://reliefweb.int/node/4167278"
   },
   {
-    "Job Title": "Grants Officer (National staff Only) (Rapid recruitment )",
+    "Job Title": "Operation Manager SYRIA based in Damascus",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-08-02",
+    "Deadline": "2025-09-15",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4167458"
+    "Link": "https://reliefweb.int/node/4164555"
+  },
+  {
+    "Job Title": "Area Manager Aleppo - SYRIA",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-15",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4164553"
+  },
+  {
+    "Job Title": "زميل(ة) قانوني(ة)",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-08-17",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4165753"
+  },
+  {
+    "Job Title": "Compliance and Risk Mitigation Coordinator",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-08-25",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4167233"
   },
   {
     "Job Title": "Office Manager - Damascus / Re-advertisement",
@@ -162,6 +153,15 @@
     "Link": "https://reliefweb.int/node/4167465"
   },
   {
+    "Job Title": "Grants Officer (National staff Only) (Rapid recruitment )",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-08-02",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4167458"
+  },
+  {
     "Job Title": "Safety and Security Officer",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -171,12 +171,12 @@
     "Link": "https://reliefweb.int/node/4167725"
   },
   {
-    "Job Title": "Project Officer / Central Syria (Homs/Hama)",
+    "Job Title": "FSL Project Assistant/ Jablah",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-08-15",
+    "Deadline": "2025-08-10",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4167709"
+    "Link": "https://reliefweb.int/node/4168004"
   }
 ]
