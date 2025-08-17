@@ -18,6 +18,15 @@
     "Link": "https://reliefweb.int/node/4163204"
   },
   {
+    "Job Title": "Human Resources Officer",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-08-20",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4166924"
+  },
+  {
     "Job Title": "Country Representative for Syria, based in Damascus",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -25,6 +34,15 @@
     "Deadline": "2025-08-18",
     "Description": "",
     "Link": "https://reliefweb.int/node/4166278"
+  },
+  {
+    "Job Title": "Project Manager (Syria Based)",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-08-17",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4167255"
   },
   {
     "Job Title": "Operation Manager SYRIA based in Damascus",
@@ -45,60 +63,6 @@
     "Link": "https://reliefweb.int/node/4164553"
   },
   {
-    "Job Title": "Human Resources Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-08-20",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4166924"
-  },
-  {
-    "Job Title": "Project Development and Partnership Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-08-16",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4168937"
-  },
-  {
-    "Job Title": "Deputy Head of Mission for Programs – based in Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-30",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4168790"
-  },
-  {
-    "Job Title": "ADVOCACY, MEDIA AND COMMUNICATIONS MANAGER- Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-08-19",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4169448"
-  },
-  {
-    "Job Title": "Project Manager (Syria Based)",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-08-17",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4167255"
-  },
-  {
-    "Job Title": "HR Officer - Idleb Syria - SYNAT",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-08-19",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4168984"
-  },
-  {
     "Job Title": "Compliance and Risk Mitigation Coordinator",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -115,6 +79,24 @@
     "Deadline": "2025-08-18",
     "Description": "",
     "Link": "https://reliefweb.int/node/4168733"
+  },
+  {
+    "Job Title": "ADVOCACY, MEDIA AND COMMUNICATIONS MANAGER- Syria",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-08-19",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4169448"
+  },
+  {
+    "Job Title": "HR Officer - Idleb Syria - SYNAT",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-08-19",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4168984"
   },
   {
     "Job Title": "Readvertisement - WASH Mechanical Engineer (Technical) - Internal & External - Syria/Idleb",
@@ -135,22 +117,22 @@
     "Link": "https://reliefweb.int/node/4169421"
   },
   {
-    "Job Title": "Mechanical Generator Handyman Assistant",
+    "Job Title": "Project Development and Partnership Officer",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-08-18",
+    "Deadline": "2025-08-16",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4170058"
+    "Link": "https://reliefweb.int/node/4168937"
   },
   {
-    "Job Title": "Admin Assistant",
+    "Job Title": "Deputy Head of Mission for Programs – based in Syria",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-08-18",
+    "Deadline": "2025-09-30",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4170054"
+    "Link": "https://reliefweb.int/node/4168790"
   },
   {
     "Job Title": "Mechanical Engineer - Idleb Office",
@@ -162,13 +144,22 @@
     "Link": "https://reliefweb.int/node/4170053"
   },
   {
-    "Job Title": "Program Assistant",
+    "Job Title": "Admin Assistant",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-08-31",
+    "Deadline": "2025-08-18",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4169952"
+    "Link": "https://reliefweb.int/node/4170054"
+  },
+  {
+    "Job Title": "Mechanical Generator Handyman Assistant",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-08-18",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4170058"
   },
   {
     "Job Title": "Project Manager - Media program – Syria, Damascus",
@@ -178,5 +169,14 @@
     "Deadline": "2025-08-19",
     "Description": "",
     "Link": "https://reliefweb.int/node/4170229"
+  },
+  {
+    "Job Title": "Deputy Procurement Manager - Idleb / Nationals Only",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-08-24",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4169857"
   }
 ]
