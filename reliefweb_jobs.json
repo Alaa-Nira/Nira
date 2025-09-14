@@ -1,23 +1,5 @@
 [
   {
-    "Job Title": "Mine Action and Risk Education Officer",
-    "Company": "Unknown",
-    "Location": "Afghanistan",
-    "Date": "",
-    "Deadline": "2025-12-31",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4155257"
-  },
-  {
-    "Job Title": "Deputy Head of Mission for Programs – based in Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-30",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4168790"
-  },
-  {
     "Job Title": "Operation Manager SYRIA based in Damascus",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -36,13 +18,22 @@
     "Link": "https://reliefweb.int/node/4164553"
   },
   {
-    "Job Title": "External evaluation – solarizing & rehabilitating water systems",
+    "Job Title": "Mine Action and Risk Education Officer",
+    "Company": "Unknown",
+    "Location": "Afghanistan",
+    "Date": "",
+    "Deadline": "2025-12-31",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4155257"
+  },
+  {
+    "Job Title": "Deputy Head of Mission for Programs – based in Syria",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-10-01",
+    "Deadline": "2025-09-30",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4173300"
+    "Link": "https://reliefweb.int/node/4168790"
   },
   {
     "Job Title": "Local Trainer/Mentor/Editor – Syria Media Literacy Lab",
@@ -54,13 +45,13 @@
     "Link": "https://reliefweb.int/node/4173062"
   },
   {
-    "Job Title": "Senior Grants Manager | Damascus, Syria | Long-term",
+    "Job Title": "External evaluation – solarizing & rehabilitating water systems",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-09-15",
+    "Deadline": "2025-10-01",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4174197"
+    "Link": "https://reliefweb.int/node/4173300"
   },
   {
     "Job Title": "Guard",
@@ -70,6 +61,15 @@
     "Deadline": "2025-09-21",
     "Description": "",
     "Link": "https://reliefweb.int/node/4173841"
+  },
+  {
+    "Job Title": "Country Representative for Syria, based in Damascus - Re-advertisement",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-18",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4173922"
   },
   {
     "Job Title": "GRANT & REPORTING OFFICER SYRIA M/F",
@@ -90,40 +90,13 @@
     "Link": "https://reliefweb.int/node/4137822"
   },
   {
-    "Job Title": "Country Representative for Syria, based in Damascus - Re-advertisement",
+    "Job Title": "Senior Grants Manager | Damascus, Syria | Long-term",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-09-18",
+    "Deadline": "2025-09-15",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4173922"
-  },
-  {
-    "Job Title": "Media Manager",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-30",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4174627"
-  },
-  {
-    "Job Title": "SYR - Finance Support",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-29",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4174835"
-  },
-  {
-    "Job Title": "SYR - Finance Support",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-30",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4174765"
+    "Link": "https://reliefweb.int/node/4174197"
   },
   {
     "Job Title": "FINANCIAL COORDINATOR SYRIA M/F",
@@ -135,6 +108,51 @@
     "Link": "https://reliefweb.int/node/4144586"
   },
   {
+    "Job Title": "SYR - Finance Support",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-30",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4174765"
+  },
+  {
+    "Job Title": "SYR - Finance Support",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-29",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4174835"
+  },
+  {
+    "Job Title": "Media Manager",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-30",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4174627"
+  },
+  {
+    "Job Title": "Protection and GBV Assistant (3 positions: Damascus, Latakia, Deir ez-Zor)",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-27",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4174783"
+  },
+  {
+    "Job Title": "Legal Assistant (3 positions: Damascus, Latakia, Deir ez-Zor)",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-27",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4174777"
+  },
+  {
     "Job Title": "Program Manager - SNFI and CCCM Program",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -142,24 +160,6 @@
     "Deadline": "2025-09-16",
     "Description": "",
     "Link": "https://reliefweb.int/node/4174491"
-  },
-  {
-    "Job Title": "Program Coordinator – FS",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-16",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4174492"
-  },
-  {
-    "Job Title": "Safety and Security Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-16",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4174493"
   },
   {
     "Job Title": "External Endline Evaluation Syria",
@@ -171,12 +171,12 @@
     "Link": "https://reliefweb.int/node/4174798"
   },
   {
-    "Job Title": "Partnerships & Programs Development Senior Officer",
+    "Job Title": "Program Coordinator – FS",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-09-30",
+    "Deadline": "2025-09-16",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4174805"
+    "Link": "https://reliefweb.int/node/4174492"
   }
 ]
