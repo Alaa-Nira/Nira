@@ -18,42 +18,6 @@
     "Link": "https://reliefweb.int/node/4168790"
   },
   {
-    "Job Title": "Media Manager",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-30",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4174627"
-  },
-  {
-    "Job Title": "SYR - Finance Support",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-30",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4174765"
-  },
-  {
-    "Job Title": "SYR - Finance Support",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-29",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4174835"
-  },
-  {
-    "Job Title": "Case Management Supervisor - مشرف إدارة حالة",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-22",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4175738"
-  },
-  {
     "Job Title": "External evaluation – solarizing & rehabilitating water systems",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -72,42 +36,6 @@
     "Link": "https://reliefweb.int/node/4144586"
   },
   {
-    "Job Title": "External Endline Evaluation Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-23",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4174798"
-  },
-  {
-    "Job Title": "Partnerships & Programs Development Senior Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-30",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4174805"
-  },
-  {
-    "Job Title": "Protection and GBV Assistant (3 positions: Damascus, Latakia, Deir ez-Zor)",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-27",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4174783"
-  },
-  {
-    "Job Title": "Legal Assistant (3 positions: Damascus, Latakia, Deir ez-Zor)",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-27",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4174777"
-  },
-  {
     "Job Title": "Nutrition Field Officer -Idleb/Syria",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -115,6 +43,51 @@
     "Deadline": "2025-09-28",
     "Description": "",
     "Link": "https://reliefweb.int/node/4175572"
+  },
+  {
+    "Job Title": "Senior Reproductive Health Officer",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-22",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4176003"
+  },
+  {
+    "Job Title": "HAS Assistant",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-22",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4176001"
+  },
+  {
+    "Job Title": "Senior Security and Risk Adviser",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-28",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4175809"
+  },
+  {
+    "Job Title": "Operations Assistant",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-30",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4176233"
+  },
+  {
+    "Job Title": "Program Coordinator - Syria",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-08",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4176321"
   },
   {
     "Job Title": "Guard",
@@ -144,39 +117,66 @@
     "Link": "https://reliefweb.int/node/4137822"
   },
   {
-    "Job Title": "Media and Communication Senior Officer",
+    "Job Title": "Case Management Supervisor - مشرف إدارة حالة",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-09-24",
+    "Deadline": "2025-09-22",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4175699"
+    "Link": "https://reliefweb.int/node/4175738"
   },
   {
-    "Job Title": "X-Ray Doctor",
+    "Job Title": "SYR - Finance Support",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-30",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4174765"
+  },
+  {
+    "Job Title": "SYR - Finance Support",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-29",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4174835"
+  },
+  {
+    "Job Title": "Media Manager",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-30",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4174627"
+  },
+  {
+    "Job Title": "Protection and GBV Assistant (3 positions: Damascus, Latakia, Deir ez-Zor)",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-27",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4174783"
+  },
+  {
+    "Job Title": "Legal Assistant (3 positions: Damascus, Latakia, Deir ez-Zor)",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-27",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4174777"
+  },
+  {
+    "Job Title": "External Endline Evaluation Syria",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
     "Deadline": "2025-09-23",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4175672"
-  },
-  {
-    "Job Title": "Senior Reproductive Health Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-22",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4176003"
-  },
-  {
-    "Job Title": "HAS Assistant",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-22",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4176001"
+    "Link": "https://reliefweb.int/node/4174798"
   }
 ]
