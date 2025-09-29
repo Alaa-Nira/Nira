@@ -36,24 +36,6 @@
     "Link": "https://reliefweb.int/node/4144586"
   },
   {
-    "Job Title": "Nutrition Field Officer -Idleb/Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-28",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4175572"
-  },
-  {
-    "Job Title": "Senior Security and Risk Adviser",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-09-28",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4175809"
-  },
-  {
     "Job Title": "Operations Assistant",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -178,5 +160,23 @@
     "Deadline": "2025-09-30",
     "Description": "",
     "Link": "https://reliefweb.int/node/4176248"
+  },
+  {
+    "Job Title": "Social Assistant - Idlib - Ehsem",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-30",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4176468"
+  },
+  {
+    "Job Title": "Social Assistant - Aleppo",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-09-30",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4176467"
   }
 ]
