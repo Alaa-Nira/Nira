@@ -9,15 +9,6 @@
     "Link": "https://reliefweb.int/node/4155257"
   },
   {
-    "Job Title": "FINANCIAL COORDINATOR SYRIA M/F",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-12-31",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4144586"
-  },
-  {
     "Job Title": "GRANT & REPORTING OFFICER SYRIA M/F",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -63,6 +54,24 @@
     "Link": "https://reliefweb.int/node/4176442"
   },
   {
+    "Job Title": "FINANCIAL COORDINATOR SYRIA M/F",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-12-31",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4144586"
+  },
+  {
+    "Job Title": "Country Logistics Manager - Syria",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-08",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4177492"
+  },
+  {
     "Job Title": "Translator (Arabic/English)",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -79,15 +88,6 @@
     "Deadline": "2025-10-06",
     "Description": "",
     "Link": "https://reliefweb.int/node/4176883"
-  },
-  {
-    "Job Title": "Country Logistics Manager - Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-08",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4177492"
   },
   {
     "Job Title": "External evaluation – solarizing & rehabilitating water systems",
@@ -108,15 +108,6 @@
     "Link": "https://reliefweb.int/node/4177602"
   },
   {
-    "Job Title": "Agricultural Engineer – Field Officer / Fruit Trees Component",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-04",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4177523"
-  },
-  {
     "Job Title": "Agricultural Engineer – Field Officer / Wildfire Component",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -124,6 +115,15 @@
     "Deadline": "2025-10-04",
     "Description": "",
     "Link": "https://reliefweb.int/node/4177549"
+  },
+  {
+    "Job Title": "Agricultural Engineer – Field Officer / Fruit Trees Component",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-04",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4177523"
   },
   {
     "Job Title": "Agricultural Engineer – Field Officer / Food Processing Component",
@@ -144,24 +144,6 @@
     "Link": "https://reliefweb.int/node/4177846"
   },
   {
-    "Job Title": "CPAOR Child Protection Monitoring Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-13",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178397"
-  },
-  {
-    "Job Title": "Editorial Manager",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-08",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178946"
-  },
-  {
     "Job Title": "Transparency and Compliance Supervisor",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -178,5 +160,23 @@
     "Deadline": "2025-10-06",
     "Description": "",
     "Link": "https://reliefweb.int/node/4178510"
+  },
+  {
+    "Job Title": "Syria: Country Transparency & Compliance Manager - Damascus",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-31",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4178609"
+  },
+  {
+    "Job Title": "Media Officer- Damascus Office",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-11",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4178701"
   }
 ]
