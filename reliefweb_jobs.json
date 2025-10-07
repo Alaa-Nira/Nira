@@ -18,15 +18,6 @@
     "Link": "https://reliefweb.int/node/4144586"
   },
   {
-    "Job Title": "Program Coordinator - Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-08",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4176321"
-  },
-  {
     "Job Title": "GRANT & REPORTING OFFICER SYRIA M/F",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -45,6 +36,15 @@
     "Link": "https://reliefweb.int/node/4137822"
   },
   {
+    "Job Title": "Program Coordinator - Syria",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-08",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4176321"
+  },
+  {
     "Job Title": "Hospital General Manager",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -61,42 +61,6 @@
     "Deadline": "2025-10-09",
     "Description": "",
     "Link": "https://reliefweb.int/node/4176442"
-  },
-  {
-    "Job Title": "External evaluation – solarizing & rehabilitating water systems",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-24",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4177732"
-  },
-  {
-    "Job Title": "Transparency and Compliance Supervisor",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-11",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178457"
-  },
-  {
-    "Job Title": "Integrated Protection Coordinator (Service Provider)",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-06",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178510"
-  },
-  {
-    "Job Title": "Syria: Country Transparency & Compliance Manager - Damascus",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-31",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178609"
   },
   {
     "Job Title": "Translator (Arabic/English)",
@@ -126,22 +90,13 @@
     "Link": "https://reliefweb.int/node/4177492"
   },
   {
-    "Job Title": "Media Officer- Damascus Office",
+    "Job Title": "External evaluation – solarizing & rehabilitating water systems",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-10-11",
+    "Deadline": "2025-10-24",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4178701"
-  },
-  {
-    "Job Title": "Editorial Manager",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-08",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178946"
+    "Link": "https://reliefweb.int/node/4177732"
   },
   {
     "Job Title": "CPAOR Child Protection Monitoring Officer",
@@ -153,13 +108,58 @@
     "Link": "https://reliefweb.int/node/4178397"
   },
   {
-    "Job Title": "Reconciliation and Dialogue Facilitator",
+    "Job Title": "Editorial Manager",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-10-09",
+    "Deadline": "2025-10-08",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4178787"
+    "Link": "https://reliefweb.int/node/4178946"
+  },
+  {
+    "Job Title": "Transparency and Compliance Supervisor",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-11",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4178457"
+  },
+  {
+    "Job Title": "Integrated Protection Coordinator (Service Provider)",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-06",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4178510"
+  },
+  {
+    "Job Title": "Syria: Country Transparency & Compliance Manager - Damascus",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-31",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4178609"
+  },
+  {
+    "Job Title": "Media Officer- Damascus Office",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-11",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4178701"
+  },
+  {
+    "Job Title": "FSL Project Manager - Damascus",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-20",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4178817"
   },
   {
     "Job Title": "Partnership Manager",
@@ -171,12 +171,12 @@
     "Link": "https://reliefweb.int/node/4178723"
   },
   {
-    "Job Title": "GBV Case Worker - Menbij",
+    "Job Title": "Trainers for AMR and IPC Trainings in Syria",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-10-06",
+    "Deadline": "2025-10-10",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4178742"
+    "Link": "https://reliefweb.int/node/4178802"
   }
 ]
