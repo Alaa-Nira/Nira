@@ -9,6 +9,15 @@
     "Link": "https://reliefweb.int/node/4155257"
   },
   {
+    "Job Title": "FINANCIAL COORDINATOR SYRIA M/F",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-12-31",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4144586"
+  },
+  {
     "Job Title": "GRANT & REPORTING OFFICER SYRIA M/F",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -36,15 +45,6 @@
     "Link": "https://reliefweb.int/node/4176321"
   },
   {
-    "Job Title": "Hospital General Manager",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-07",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4175928"
-  },
-  {
     "Job Title": "MEAL Assistant (Aleppo - Marea)",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -52,15 +52,6 @@
     "Deadline": "2025-10-09",
     "Description": "",
     "Link": "https://reliefweb.int/node/4176442"
-  },
-  {
-    "Job Title": "FINANCIAL COORDINATOR SYRIA M/F",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-12-31",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4144586"
   },
   {
     "Job Title": "Country Logistics Manager - Syria",
@@ -72,13 +63,13 @@
     "Link": "https://reliefweb.int/node/4177492"
   },
   {
-    "Job Title": "Media Officer- Damascus Office",
+    "Job Title": "External evaluation – solarizing & rehabilitating water systems",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-10-11",
+    "Deadline": "2025-10-24",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4178701"
+    "Link": "https://reliefweb.int/node/4177732"
   },
   {
     "Job Title": "CPAOR Child Protection Monitoring Officer",
@@ -99,49 +90,13 @@
     "Link": "https://reliefweb.int/node/4178946"
   },
   {
-    "Job Title": "Partnership Manager",
+    "Job Title": "Media Officer- Damascus Office",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-10-07",
+    "Deadline": "2025-10-11",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4178723"
-  },
-  {
-    "Job Title": "Trainers for AMR and IPC Trainings in Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-10",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178802"
-  },
-  {
-    "Job Title": "Reconciliation and Dialogue Facilitator",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-09",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178787"
-  },
-  {
-    "Job Title": "Translator (Arabic/English)",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-07",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4177266"
-  },
-  {
-    "Job Title": "External evaluation – solarizing & rehabilitating water systems",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-24",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4177732"
+    "Link": "https://reliefweb.int/node/4178701"
   },
   {
     "Job Title": "Transparency and Compliance Supervisor",
@@ -162,15 +117,6 @@
     "Link": "https://reliefweb.int/node/4178609"
   },
   {
-    "Job Title": "Country Representative for Syria, based in Damascus - Re-advertisement",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-20",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4179581"
-  },
-  {
     "Job Title": "FSL Project Manager - Damascus",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -178,5 +124,59 @@
     "Deadline": "2025-10-20",
     "Description": "",
     "Link": "https://reliefweb.int/node/4178817"
+  },
+  {
+    "Job Title": "Trainers for AMR and IPC Trainings in Syria",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-10",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4178802"
+  },
+  {
+    "Job Title": "Reconciliation and Dialogue Facilitator",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-09",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4178787"
+  },
+  {
+    "Job Title": "Project Manager",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-08",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4179053"
+  },
+  {
+    "Job Title": "Case Manager Female",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-08",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4179076"
+  },
+  {
+    "Job Title": "Laboratory Technician",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-08",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4179089"
+  },
+  {
+    "Job Title": "Wash Site Engineer - Munbij",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-10",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4179458"
   }
 ]
