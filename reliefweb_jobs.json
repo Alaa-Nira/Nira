@@ -45,24 +45,6 @@
     "Link": "https://reliefweb.int/node/4177732"
   },
   {
-    "Job Title": "CPAOR Child Protection Monitoring Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-13",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178397"
-  },
-  {
-    "Job Title": "Media Officer- Damascus Office",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-11",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178701"
-  },
-  {
     "Job Title": "Transparency and Compliance Supervisor",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -81,58 +63,13 @@
     "Link": "https://reliefweb.int/node/4178609"
   },
   {
-    "Job Title": "FSL Project Manager - Damascus",
+    "Job Title": "Media Officer- Damascus Office",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-10-20",
+    "Deadline": "2025-10-11",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4178817"
-  },
-  {
-    "Job Title": "Trainers for AMR and IPC Trainings in Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-10",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178802"
-  },
-  {
-    "Job Title": "Wash Site Engineer - Munbij",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-10",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4179458"
-  },
-  {
-    "Job Title": "Governance and Improving Constitutions Trainer - Southern Aleppo Countryside",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-10",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4179449"
-  },
-  {
-    "Job Title": "Senior Finance Assistant - Jarablus",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-10",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4179456"
-  },
-  {
-    "Job Title": "Financial Management and Internal Control Trainer - Southern Aleppo Countryside",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-10",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4179447"
+    "Link": "https://reliefweb.int/node/4178701"
   },
   {
     "Job Title": "Supply Chain Officer",
@@ -153,22 +90,49 @@
     "Link": "https://reliefweb.int/node/4179491"
   },
   {
-    "Job Title": "Wash Site Engineer - Jandiras",
+    "Job Title": "Wash Site Engineer - Munbij",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
     "Deadline": "2025-10-10",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4179459"
+    "Link": "https://reliefweb.int/node/4179458"
   },
   {
-    "Job Title": "Modern Agricultural Techniques Trainer - Southern Aleppo Countryside",
+    "Job Title": "CPAOR Child Protection Monitoring Officer",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-13",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4178397"
+  },
+  {
+    "Job Title": "FSL Project Manager - Damascus",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-20",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4178817"
+  },
+  {
+    "Job Title": "Trainers for AMR and IPC Trainings in Syria",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
     "Deadline": "2025-10-10",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4179450"
+    "Link": "https://reliefweb.int/node/4178802"
+  },
+  {
+    "Job Title": "Country Representative for Syria, based in Damascus - Re-advertisement",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-20",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4179581"
   },
   {
     "Job Title": "Pediatrician",
@@ -178,5 +142,41 @@
     "Deadline": "2025-10-12",
     "Description": "",
     "Link": "https://reliefweb.int/node/4179891"
+  },
+  {
+    "Job Title": "Wash Site Engineer - Jandiras",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-10",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4179459"
+  },
+  {
+    "Job Title": "Governance and Improving Constitutions Trainer - Southern Aleppo Countryside",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-10",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4179449"
+  },
+  {
+    "Job Title": "Senior Finance Assistant - Jarablus",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-10",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4179456"
+  },
+  {
+    "Job Title": "Modern Agricultural Techniques Trainer - Southern Aleppo Countryside",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-10",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4179450"
   }
 ]
