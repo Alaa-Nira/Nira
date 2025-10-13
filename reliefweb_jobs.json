@@ -45,15 +45,6 @@
     "Link": "https://reliefweb.int/node/4177732"
   },
   {
-    "Job Title": "CPAOR Child Protection Monitoring Officer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-13",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178397"
-  },
-  {
     "Job Title": "Syria: Country Transparency & Compliance Manager - Damascus",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -61,15 +52,6 @@
     "Deadline": "2025-10-31",
     "Description": "",
     "Link": "https://reliefweb.int/node/4178609"
-  },
-  {
-    "Job Title": "FSL Project Manager - Damascus",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-20",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4178817"
   },
   {
     "Job Title": "Supply Chain Officer",
@@ -81,13 +63,31 @@
     "Link": "https://reliefweb.int/node/4179463"
   },
   {
-    "Job Title": "Country Representative for Syria, based in Damascus - Re-advertisement",
+    "Job Title": "CPAOR Child Protection Monitoring Officer",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-13",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4178397"
+  },
+  {
+    "Job Title": "FSL Project Manager - Damascus",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
     "Deadline": "2025-10-20",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4179581"
+    "Link": "https://reliefweb.int/node/4178817"
+  },
+  {
+    "Job Title": "Third-party Monitoring of JPF Funded Project in Syria",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-17",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4179539"
   },
   {
     "Job Title": "Safety and Liaison Officer",
@@ -108,22 +108,31 @@
     "Link": "https://reliefweb.int/node/4179672"
   },
   {
-    "Job Title": "Team Leader - Southern Aleppo Countryside",
+    "Job Title": "Deputy Head of Mission for Programs – based in Syria",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-10-13",
+    "Deadline": "2025-11-15",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4179928"
+    "Link": "https://reliefweb.int/node/4168790"
   },
   {
-    "Job Title": "Media Senior Assistant - Albab",
+    "Job Title": "Midwife (Syria - Aleppo)",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
     "Deadline": "2025-10-13",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4179989"
+    "Link": "https://reliefweb.int/node/4180060"
+  },
+  {
+    "Job Title": "Research Services to support Evidence and Learning and Informing the Agenda of SEP II",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-22",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4180202"
   },
   {
     "Job Title": "Job Placement Assistant / Damascus",
@@ -144,39 +153,30 @@
     "Link": "https://reliefweb.int/node/4180062"
   },
   {
-    "Job Title": "HR Volunteer",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-19",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4180099"
-  },
-  {
-    "Job Title": "Deputy Head of Mission for Programs – based in Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-11-15",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4168790"
-  },
-  {
-    "Job Title": "Third-party Monitoring of JPF Funded Project in Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-17",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4179539"
-  },
-  {
-    "Job Title": "Midwife (Syria - Aleppo)",
+    "Job Title": "Media Senior Assistant - Albab",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
     "Deadline": "2025-10-13",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4180060"
+    "Link": "https://reliefweb.int/node/4179989"
+  },
+  {
+    "Job Title": "Team Leader - Southern Aleppo Countryside",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-13",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4179928"
+  },
+  {
+    "Job Title": "Media Manager",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-16",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4180392"
   }
 ]
