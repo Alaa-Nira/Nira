@@ -81,24 +81,6 @@
     "Link": "https://reliefweb.int/node/4179463"
   },
   {
-    "Job Title": "Community Facilitator",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-12",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4179491"
-  },
-  {
-    "Job Title": "Pediatrician",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-12",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4179891"
-  },
-  {
     "Job Title": "Country Representative for Syria, based in Damascus - Re-advertisement",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -106,42 +88,6 @@
     "Deadline": "2025-10-20",
     "Description": "",
     "Link": "https://reliefweb.int/node/4179581"
-  },
-  {
-    "Job Title": "Deputy Head of Mission for Programs – based in Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-11-15",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4168790"
-  },
-  {
-    "Job Title": "Third-party Monitoring of JPF Funded Project in Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-17",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4179539"
-  },
-  {
-    "Job Title": "Midwife (Syria - Aleppo)",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-13",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4180060"
-  },
-  {
-    "Job Title": "Research Services to support Evidence and Learning and Informing the Agenda of SEP II",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-10-22",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4180202"
   },
   {
     "Job Title": "Safety and Liaison Officer",
@@ -178,5 +124,59 @@
     "Deadline": "2025-10-13",
     "Description": "",
     "Link": "https://reliefweb.int/node/4179989"
+  },
+  {
+    "Job Title": "Job Placement Assistant / Damascus",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-17",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4180084"
+  },
+  {
+    "Job Title": "Outreach Assistant / Aleppo",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-17",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4180062"
+  },
+  {
+    "Job Title": "HR Volunteer",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-19",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4180099"
+  },
+  {
+    "Job Title": "Deputy Head of Mission for Programs – based in Syria",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-11-15",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4168790"
+  },
+  {
+    "Job Title": "Third-party Monitoring of JPF Funded Project in Syria",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-17",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4179539"
+  },
+  {
+    "Job Title": "Midwife (Syria - Aleppo)",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-10-13",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4180060"
   }
 ]
