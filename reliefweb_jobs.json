@@ -1,5 +1,14 @@
 [
   {
+    "Job Title": "Mine Action and Risk Education Officer",
+    "Company": "Unknown",
+    "Location": "Afghanistan",
+    "Date": "",
+    "Deadline": "2025-12-31",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4155257"
+  },
+  {
     "Job Title": "GRANT & REPORTING OFFICER SYRIA M/F",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -18,24 +27,6 @@
     "Link": "https://reliefweb.int/node/4137822"
   },
   {
-    "Job Title": "Deputy Head of Mission for Programs – based in Syria",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-11-15",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4168790"
-  },
-  {
-    "Job Title": "Mine Action and Risk Education Officer",
-    "Company": "Unknown",
-    "Location": "Afghanistan",
-    "Date": "",
-    "Deadline": "2025-12-31",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4155257"
-  },
-  {
     "Job Title": "FINANCIAL COORDINATOR SYRIA M/F",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -45,13 +36,13 @@
     "Link": "https://reliefweb.int/node/4144586"
   },
   {
-    "Job Title": "Syria: Country Transparency & Compliance Manager - Damascus",
+    "Job Title": "Deputy Head of Mission for Programs – based in Syria",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
     "Deadline": "2025-11-15",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4181381"
+    "Link": "https://reliefweb.int/node/4168790"
   },
   {
     "Job Title": "SYR - DAMAS - CONFORMITY & RISK MANAGEMENT MANAGER - NATIONAL",
@@ -61,15 +52,6 @@
     "Deadline": "2025-11-11",
     "Description": "",
     "Link": "https://reliefweb.int/node/4181336"
-  },
-  {
-    "Job Title": "Media Assistant - مساعد إعلامي",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-11-03",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4183325"
   },
   {
     "Job Title": "Sr. Finance Officer (Reporting & Budgeting) - Damascus",
@@ -99,13 +81,13 @@
     "Link": "https://reliefweb.int/node/4183396"
   },
   {
-    "Job Title": "ECHO Proposal Development Consultant/ open to in-country and home-based (remote) candidates.",
+    "Job Title": "MEAL Enumerator (50% Part-Time)",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-11-01",
+    "Deadline": "2025-11-04",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4181501"
+    "Link": "https://reliefweb.int/node/4183419"
   },
   {
     "Job Title": "Re-Adv Grants Manager",
@@ -126,40 +108,31 @@
     "Link": "https://reliefweb.int/node/4182938"
   },
   {
-    "Job Title": "MEAL Enumerator (50% Part-Time)",
+    "Job Title": "Syria: Country Transparency & Compliance Manager - Damascus",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-11-04",
+    "Deadline": "2025-11-15",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4183419"
+    "Link": "https://reliefweb.int/node/4181381"
   },
   {
-    "Job Title": "Communications Officer – Damascus, Syria (National)",
+    "Job Title": "ECHO Proposal Development Consultant/ open to in-country and home-based (remote) candidates.",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
-    "Deadline": "2025-11-11",
+    "Deadline": "2025-11-01",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4184076"
+    "Link": "https://reliefweb.int/node/4181501"
   },
   {
-    "Job Title": "MEAL Officer",
+    "Job Title": "Media Assistant - مساعد إعلامي",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
     "Date": "",
     "Deadline": "2025-11-03",
     "Description": "",
-    "Link": "https://reliefweb.int/node/4180901"
-  },
-  {
-    "Job Title": "Projects Coordinator (Multi-Project) — Damascus-based",
-    "Company": "Unknown",
-    "Location": "Syrian Arab Republic",
-    "Date": "",
-    "Deadline": "2025-11-10",
-    "Description": "",
-    "Link": "https://reliefweb.int/node/4183996"
+    "Link": "https://reliefweb.int/node/4183325"
   },
   {
     "Job Title": "Protection Specialist (Legal Aid & Housing Land Property)",
@@ -171,6 +144,24 @@
     "Link": "https://reliefweb.int/node/4183560"
   },
   {
+    "Job Title": "MEAL Officer",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-11-03",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4180901"
+  },
+  {
+    "Job Title": "Communications Officer – Damascus, Syria (National)",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-11-11",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4184076"
+  },
+  {
     "Job Title": "Logistic Assistant",
     "Company": "Unknown",
     "Location": "Syrian Arab Republic",
@@ -178,5 +169,14 @@
     "Deadline": "2025-11-09",
     "Description": "",
     "Link": "https://reliefweb.int/node/4183540"
+  },
+  {
+    "Job Title": "Advocacy Field Coordinator",
+    "Company": "Unknown",
+    "Location": "Syrian Arab Republic",
+    "Date": "",
+    "Deadline": "2025-11-03",
+    "Description": "",
+    "Link": "https://reliefweb.int/node/4183717"
   }
 ]
